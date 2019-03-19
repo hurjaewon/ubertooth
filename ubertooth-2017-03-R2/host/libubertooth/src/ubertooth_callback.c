@@ -424,6 +424,11 @@ int cb_btle(ubertooth_t* ut, void* args)
 		printf("%02x ", rx->data[i]);
 	printf("\n");
 
+	// JWHUR packet based
+/*	if (rx->data[11] == 0xec &&rx->data[10] == 0x55 &&rx->data[9] == 0xf9 &&rx->data[8] == 0x7c &&rx->data[7] == 0xc9 &&rx->data[6] == 0x93) {
+		int pNum = (rx->data[24] << 24) | (rx->data[25] << 16) | (rx->data[26] << 8) | rx->data[27];
+		printf("%d	%d\n", pNum, rx->rssi_min-54);
+	}*/
 	//JWHUR test synchronization protocol
 	//When receive 'SYNC', stop ble scanning
 	if (rx->data[23] == 0xff && rx->data[24] == 0x53 && rx->data[25] == 0x59 && rx->data[26] == 0x4e && rx->data[27] == 0x43) {

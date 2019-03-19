@@ -168,6 +168,8 @@ Discarded input sections
                 0x0000000000000000       0x18 ../common/ubertooth.o
  .text.rbit     0x0000000000000000        0x6 ../common/ubertooth.o
  .text.wait_ms  0x0000000000000000        0xa ../common/ubertooth.o
+ .text.cc2400_get_rev
+                0x0000000000000000       0x58 ../common/ubertooth.o
  .text.cc2400_fifo_write
                 0x0000000000000000       0x90 ../common/ubertooth.o
  .text.cc2400_fifo_read
@@ -752,7 +754,7 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .comment       0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
  .comment       0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/armv7-m/crtend.o
 
-.debug_info     0x0000000000000000     0x6652
+.debug_info     0x0000000000000000     0x66ab
  .debug_info    0x0000000000000000      0x10a /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_info    0x000000000000010a       0xef /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_info    0x00000000000001f9      0x894 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -763,15 +765,15 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_info    0x00000000000035f9      0x9b9 ../common/usb_serial.o
  .debug_info    0x0000000000003fb2      0x117 ../common/LPC17xx_Startup.o
  .debug_info    0x00000000000040c9       0x7d ../common/LPC17xx_Interrupts.o
- .debug_info    0x0000000000004146      0xa96 ../common/ubertooth.o
- .debug_info    0x0000000000004bdc      0x47d ../common/lpcusb/target/usbcontrol.o
- .debug_info    0x0000000000005059      0x297 ../common/lpcusb/target/usbinit.o
- .debug_info    0x00000000000052f0      0xab0 ../common/lpcusb/target/usbhw_lpc.o
- .debug_info    0x0000000000005da0      0x74b ../common/lpcusb/target/usbstdreq.o
- .debug_info    0x00000000000064eb       0xb2 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
- .debug_info    0x000000000000659d       0xb5 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000004146      0xaef ../common/ubertooth.o
+ .debug_info    0x0000000000004c35      0x47d ../common/lpcusb/target/usbcontrol.o
+ .debug_info    0x00000000000050b2      0x297 ../common/lpcusb/target/usbinit.o
+ .debug_info    0x0000000000005349      0xab0 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_info    0x0000000000005df9      0x74b ../common/lpcusb/target/usbstdreq.o
+ .debug_info    0x0000000000006544       0xb2 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .debug_info    0x00000000000065f6       0xb5 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_abbrev   0x0000000000000000     0x1cc8
+.debug_abbrev   0x0000000000000000     0x1cd7
  .debug_abbrev  0x0000000000000000       0xb8 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_abbrev  0x00000000000000b8       0xbd /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_abbrev  0x0000000000000175      0x180 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -782,15 +784,15 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_abbrev  0x0000000000000c29      0x2fa ../common/usb_serial.o
  .debug_abbrev  0x0000000000000f23       0xb8 ../common/LPC17xx_Startup.o
  .debug_abbrev  0x0000000000000fdb       0x80 ../common/LPC17xx_Interrupts.o
- .debug_abbrev  0x000000000000105b      0x2df ../common/ubertooth.o
- .debug_abbrev  0x000000000000133a      0x249 ../common/lpcusb/target/usbcontrol.o
- .debug_abbrev  0x0000000000001583      0x13d ../common/lpcusb/target/usbinit.o
- .debug_abbrev  0x00000000000016c0      0x2ac ../common/lpcusb/target/usbhw_lpc.o
- .debug_abbrev  0x000000000000196c      0x2d8 ../common/lpcusb/target/usbstdreq.o
- .debug_abbrev  0x0000000000001c44       0x14 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
- .debug_abbrev  0x0000000000001c58       0x70 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_abbrev  0x000000000000105b      0x2ee ../common/ubertooth.o
+ .debug_abbrev  0x0000000000001349      0x249 ../common/lpcusb/target/usbcontrol.o
+ .debug_abbrev  0x0000000000001592      0x13d ../common/lpcusb/target/usbinit.o
+ .debug_abbrev  0x00000000000016cf      0x2ac ../common/lpcusb/target/usbhw_lpc.o
+ .debug_abbrev  0x000000000000197b      0x2d8 ../common/lpcusb/target/usbstdreq.o
+ .debug_abbrev  0x0000000000001c53       0x14 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .debug_abbrev  0x0000000000001c67       0x70 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_loc      0x0000000000000000     0x2636
+.debug_loc      0x0000000000000000     0x26a5
  .debug_loc     0x0000000000000000       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_loc     0x000000000000002c       0x5c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_loc     0x0000000000000088       0xae /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
@@ -799,13 +801,13 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_loc     0x00000000000003d8      0x7d3 assembly_test.o
  .debug_loc     0x0000000000000bab      0x319 ../common/usb_serial.o
  .debug_loc     0x0000000000000ec4       0x97 ../common/LPC17xx_Startup.o
- .debug_loc     0x0000000000000f5b      0x692 ../common/ubertooth.o
- .debug_loc     0x00000000000015ed      0x182 ../common/lpcusb/target/usbcontrol.o
- .debug_loc     0x000000000000176f      0x720 ../common/lpcusb/target/usbhw_lpc.o
- .debug_loc     0x0000000000001e8f      0x786 ../common/lpcusb/target/usbstdreq.o
- .debug_loc     0x0000000000002615       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_loc     0x0000000000000f5b      0x701 ../common/ubertooth.o
+ .debug_loc     0x000000000000165c      0x182 ../common/lpcusb/target/usbcontrol.o
+ .debug_loc     0x00000000000017de      0x720 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_loc     0x0000000000001efe      0x786 ../common/lpcusb/target/usbstdreq.o
+ .debug_loc     0x0000000000002684       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_aranges  0x0000000000000000      0x4f0
+.debug_aranges  0x0000000000000000      0x4f8
  .debug_aranges
                 0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_aranges
@@ -827,21 +829,21 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000200       0x20 ../common/LPC17xx_Interrupts.o
  .debug_aranges
-                0x0000000000000220      0x108 ../common/ubertooth.o
+                0x0000000000000220      0x110 ../common/ubertooth.o
  .debug_aranges
-                0x0000000000000328       0x38 ../common/lpcusb/target/usbcontrol.o
+                0x0000000000000330       0x38 ../common/lpcusb/target/usbcontrol.o
  .debug_aranges
-                0x0000000000000360       0x28 ../common/lpcusb/target/usbinit.o
+                0x0000000000000368       0x28 ../common/lpcusb/target/usbinit.o
  .debug_aranges
-                0x0000000000000388       0xd8 ../common/lpcusb/target/usbhw_lpc.o
+                0x0000000000000390       0xd8 ../common/lpcusb/target/usbhw_lpc.o
  .debug_aranges
-                0x0000000000000460       0x50 ../common/lpcusb/target/usbstdreq.o
+                0x0000000000000468       0x50 ../common/lpcusb/target/usbstdreq.o
  .debug_aranges
-                0x00000000000004b0       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+                0x00000000000004b8       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
  .debug_aranges
-                0x00000000000004d0       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+                0x00000000000004d8       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_ranges   0x0000000000000000      0x4c0
+.debug_ranges   0x0000000000000000      0x4c8
  .debug_ranges  0x0000000000000000       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_ranges  0x0000000000000010       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_ranges  0x0000000000000020       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
@@ -851,14 +853,14 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_ranges  0x0000000000000130       0x78 ../common/usb_serial.o
  .debug_ranges  0x00000000000001a8       0x10 ../common/LPC17xx_Startup.o
  .debug_ranges  0x00000000000001b8       0x10 ../common/LPC17xx_Interrupts.o
- .debug_ranges  0x00000000000001c8      0x128 ../common/ubertooth.o
- .debug_ranges  0x00000000000002f0       0x40 ../common/lpcusb/target/usbcontrol.o
- .debug_ranges  0x0000000000000330       0x18 ../common/lpcusb/target/usbinit.o
- .debug_ranges  0x0000000000000348       0xe0 ../common/lpcusb/target/usbhw_lpc.o
- .debug_ranges  0x0000000000000428       0x88 ../common/lpcusb/target/usbstdreq.o
- .debug_ranges  0x00000000000004b0       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_ranges  0x00000000000001c8      0x130 ../common/ubertooth.o
+ .debug_ranges  0x00000000000002f8       0x40 ../common/lpcusb/target/usbcontrol.o
+ .debug_ranges  0x0000000000000338       0x18 ../common/lpcusb/target/usbinit.o
+ .debug_ranges  0x0000000000000350       0xe0 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_ranges  0x0000000000000430       0x88 ../common/lpcusb/target/usbstdreq.o
+ .debug_ranges  0x00000000000004b8       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_line     0x0000000000000000     0x1b40
+.debug_line     0x0000000000000000     0x1b69
  .debug_line    0x0000000000000000       0xa6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_line    0x00000000000000a6       0x9c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_line    0x0000000000000142       0xd6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -869,15 +871,15 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_line    0x0000000000000be1      0x203 ../common/usb_serial.o
  .debug_line    0x0000000000000de4       0x96 ../common/LPC17xx_Startup.o
  .debug_line    0x0000000000000e7a       0x4e ../common/LPC17xx_Interrupts.o
- .debug_line    0x0000000000000ec8      0x44d ../common/ubertooth.o
- .debug_line    0x0000000000001315       0xf3 ../common/lpcusb/target/usbcontrol.o
- .debug_line    0x0000000000001408       0xa0 ../common/lpcusb/target/usbinit.o
- .debug_line    0x00000000000014a8      0x357 ../common/lpcusb/target/usbhw_lpc.o
- .debug_line    0x00000000000017ff      0x1af ../common/lpcusb/target/usbstdreq.o
- .debug_line    0x00000000000019ae       0xbb /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
- .debug_line    0x0000000000001a69       0xd7 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000000ec8      0x476 ../common/ubertooth.o
+ .debug_line    0x000000000000133e       0xf3 ../common/lpcusb/target/usbcontrol.o
+ .debug_line    0x0000000000001431       0xa0 ../common/lpcusb/target/usbinit.o
+ .debug_line    0x00000000000014d1      0x357 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_line    0x0000000000001828      0x1af ../common/lpcusb/target/usbstdreq.o
+ .debug_line    0x00000000000019d7       0xbb /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000001a92       0xd7 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
 
-.debug_str      0x0000000000000000     0x1f9d
+.debug_str      0x0000000000000000     0x1fac
  .debug_str     0x0000000000000000      0x199 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
                                         0x1d9 (size before relaxing)
  .debug_str     0x0000000000000199       0xaf /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
@@ -898,20 +900,20 @@ OUTPUT(assembly_test.elf elf32-littlearm)
                                         0x225 (size before relaxing)
  .debug_str     0x00000000000016f3       0x51 ../common/LPC17xx_Interrupts.o
                                         0x187 (size before relaxing)
- .debug_str     0x0000000000001744      0x11d ../common/ubertooth.o
-                                        0x3a6 (size before relaxing)
- .debug_str     0x0000000000001861       0xdf ../common/lpcusb/target/usbcontrol.o
+ .debug_str     0x0000000000001744      0x12c ../common/ubertooth.o
+                                        0x3bd (size before relaxing)
+ .debug_str     0x0000000000001870       0xdf ../common/lpcusb/target/usbcontrol.o
                                         0x2ef (size before relaxing)
- .debug_str     0x0000000000001940       0x56 ../common/lpcusb/target/usbinit.o
+ .debug_str     0x000000000000194f       0x56 ../common/lpcusb/target/usbinit.o
                                         0x283 (size before relaxing)
- .debug_str     0x0000000000001996      0x305 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_str     0x00000000000019a5      0x305 ../common/lpcusb/target/usbhw_lpc.o
                                         0x5cd (size before relaxing)
- .debug_str     0x0000000000001c9b      0x27d ../common/lpcusb/target/usbstdreq.o
+ .debug_str     0x0000000000001caa      0x27d ../common/lpcusb/target/usbstdreq.o
                                         0x4d1 (size before relaxing)
- .debug_str     0x0000000000001f18       0x85 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_str     0x0000000000001f27       0x85 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
                                         0x1a9 (size before relaxing)
 
-.debug_frame    0x0000000000000000      0xb58
+.debug_frame    0x0000000000000000      0xb74
  .debug_frame   0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_frame   0x0000000000000020       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_frame   0x000000000000004c       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
@@ -921,9 +923,9 @@ OUTPUT(assembly_test.elf elf32-littlearm)
  .debug_frame   0x0000000000000328      0x130 ../common/usb_serial.o
  .debug_frame   0x0000000000000458       0x2c ../common/LPC17xx_Startup.o
  .debug_frame   0x0000000000000484       0x20 ../common/LPC17xx_Interrupts.o
- .debug_frame   0x00000000000004a4      0x2e8 ../common/ubertooth.o
- .debug_frame   0x000000000000078c       0x84 ../common/lpcusb/target/usbcontrol.o
- .debug_frame   0x0000000000000810       0x3c ../common/lpcusb/target/usbinit.o
- .debug_frame   0x000000000000084c      0x220 ../common/lpcusb/target/usbhw_lpc.o
- .debug_frame   0x0000000000000a6c       0xcc ../common/lpcusb/target/usbstdreq.o
- .debug_frame   0x0000000000000b38       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_frame   0x00000000000004a4      0x304 ../common/ubertooth.o
+ .debug_frame   0x00000000000007a8       0x84 ../common/lpcusb/target/usbcontrol.o
+ .debug_frame   0x000000000000082c       0x3c ../common/lpcusb/target/usbinit.o
+ .debug_frame   0x0000000000000868      0x220 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_frame   0x0000000000000a88       0xcc ../common/lpcusb/target/usbstdreq.o
+ .debug_frame   0x0000000000000b54       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)

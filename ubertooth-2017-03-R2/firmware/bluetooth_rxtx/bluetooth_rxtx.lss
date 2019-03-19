@@ -19,17 +19,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00003cb5  00000000  00000000  00021276  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_loc    00006cc2  00000000  00000000  00024f2b  2**0
+  8 .debug_loc    00006cb6  00000000  00000000  00024f2b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_aranges 00000998  00000000  00000000  0002bbf0  2**3
+  9 .debug_aranges 00000998  00000000  00000000  0002bbe8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000a48  00000000  00000000  0002c588  2**0
+ 10 .debug_ranges 00000a48  00000000  00000000  0002c580  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   000041cd  00000000  00000000  0002cfd0  2**0
+ 11 .debug_line   000041d0  00000000  00000000  0002cfc8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_str    000033cb  00000000  00000000  0003119d  2**0
+ 12 .debug_str    000033cb  00000000  00000000  00031198  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00001708  00000000  00000000  00034568  2**2
+ 13 .debug_frame  00001708  00000000  00000000  00034564  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -6047,8 +6047,8 @@ void bt_le_sync_rssi(u8 active_mode)
     5d40:	f7fe fb9c 	bl	447c <cc2400_rx_sync>
 
 	requested_channel = 1;
-	channel = 2437;
-    5d44:	f640 1385 	movw	r3, #2437	; 0x985
+	channel = 2472;
+    5d44:	f640 13a8 	movw	r3, #2472	; 0x9a8
 	dma_init_le();
 	dio_ssp_start();
 
@@ -6068,7 +6068,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2437;
+	channel = 2472;
     5d50:	8033      	strh	r3, [r6, #0]
 	while (requested_mode == active_mode) {
     5d52:	e0ab      	b.n	5eac <bt_le_sync_rssi+0x1e8>
@@ -6086,7 +6086,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2437;
+	channel = 2472;
 	while (requested_mode == active_mode) {
 		if (requested_channel != 0) {
     5d60:	4b63      	ldr	r3, [pc, #396]	; (5ef0 <bt_le_sync_rssi+0x22c>)
@@ -6275,7 +6275,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2437;
+	channel = 2472;
 	while (requested_mode == active_mode) {
     5eac:	7ca3      	ldrb	r3, [r4, #18]
     5eae:	42bb      	cmp	r3, r7
@@ -6386,11 +6386,11 @@ void bt_le_sync(u8 active_mode)
 void bt_le_sync(u8 active_mode)
 {
     5f30:	4607      	mov	r7, r0
+
 	// enable USB interrupts
 	ISER0 = ISER0_ISE_USB;
 
 	RXLED_CLR;
-
 	queue_init();
     5f32:	f001 fcef 	bl	7914 <queue_init>
 	dio_ssp_init();
@@ -6449,7 +6449,6 @@ void bt_le_sync(u8 active_mode)
     5f8c:	2300      	movs	r3, #0
     5f8e:	81e3      	strh	r3, [r4, #14]
 		}
-
 		RXLED_CLR;
     5f90:	4b8b      	ldr	r3, [pc, #556]	; (61c0 <bt_le_sync+0x2b0>)
     5f92:	2210      	movs	r2, #16
@@ -6458,7 +6457,7 @@ void bt_le_sync(u8 active_mode)
 		/* Wait for DMA. Meanwhile keep track of RSSI. */
 		rssi_reset();
     5f96:	f001 fd4d 	bl	7a34 <rssi_reset>
-		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode)	;
+		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode) ;
     5f9a:	4b8a      	ldr	r3, [pc, #552]	; (61c4 <bt_le_sync+0x2b4>)
     5f9c:	681a      	ldr	r2, [r3, #0]
     5f9e:	469a      	mov	sl, r3
@@ -6481,7 +6480,7 @@ void bt_le_sync(u8 active_mode)
 
 		/* Wait for DMA. Meanwhile keep track of RSSI. */
 		rssi_reset();
-		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode)	;
+		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode) ;
 
 		rssi = (int8_t)(cc2400_get(RSSI) >> 8);
     5fbc:	f3c0 2007 	ubfx	r0, r0, #8, #8
@@ -6489,24 +6488,23 @@ void bt_le_sync(u8 active_mode)
     5fc0:	7018      	strb	r0, [r3, #0]
     5fc2:	4b83      	ldr	r3, [pc, #524]	; (61d0 <bt_le_sync+0x2c0>)
 
-		if (requested_mode != active_mode) {
+		if (requested_mode != active_mode)
     5fc4:	4a7b      	ldr	r2, [pc, #492]	; (61b4 <bt_le_sync+0x2a4>)
 		/* Wait for DMA. Meanwhile keep track of RSSI. */
 		rssi_reset();
-		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode)	;
+		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode) ;
 
 		rssi = (int8_t)(cc2400_get(RSSI) >> 8);
 		rssi_min = rssi_max = rssi;
     5fc6:	7018      	strb	r0, [r3, #0]
 
-		if (requested_mode != active_mode) {
+		if (requested_mode != active_mode)
     5fc8:	7ca3      	ldrb	r3, [r4, #18]
     5fca:	42bb      	cmp	r3, r7
     5fcc:	f040 8190 	bne.w	62f0 <bt_le_sync+0x3e0>
 			goto cleanup;
-		}
 
-		if (rx_err) {
+		if (rx_err)
     5fd0:	f8df 91f4 	ldr.w	r9, [pc, #500]	; 61c8 <bt_le_sync+0x2b8>
     5fd4:	f8d9 1000 	ldr.w	r1, [r9]
     5fd8:	46cb      	mov	fp, r9
@@ -6515,7 +6513,6 @@ void bt_le_sync(u8 active_mode)
     5fdc:	7851      	ldrb	r1, [r2, #1]
     5fde:	f041 0102 	orr.w	r1, r1, #2
     5fe2:	7051      	strb	r1, [r2, #1]
-		}
 
 		if (do_hop)
     5fe4:	7ae2      	ldrb	r2, [r4, #11]
@@ -6770,11 +6767,11 @@ void bt_le_sync(u8 active_mode)
 		// unwhiten the rest of the packet
 		for (i = 4; i < 44; i += 4) {
     60d8:	d1e0      	bne.n	609c <bt_le_sync+0x18c>
-					   | rxbuf1[i+3] << 0;
 			packet[i/4+1] = rbit(v) ^ whit[i/4];
 		}
 
-		
+		//JWHUR
+//		le.crc_verify = 0;
 		if (le.crc_verify) {
     60da:	696b      	ldr	r3, [r5, #20]
     60dc:	b933      	cbnz	r3, 60ec <bt_le_sync+0x1dc>
@@ -6789,10 +6786,10 @@ void bt_le_sync(u8 active_mode)
     60e6:	2bff      	cmp	r3, #255	; 0xff
     60e8:	d130      	bne.n	614c <bt_le_sync+0x23c>
     60ea:	e015      	b.n	6118 <bt_le_sync+0x208>
-			packet[i/4+1] = rbit(v) ^ whit[i/4];
 		}
 
-		
+		//JWHUR
+//		le.crc_verify = 0;
 		if (le.crc_verify) {
 			u32 calc_crc = btle_crcgen_lut(le.crc_init_reversed, p + 4, len);
     60ec:	4b32      	ldr	r3, [pc, #200]	; (61b8 <bt_le_sync+0x2a8>)
@@ -6804,18 +6801,18 @@ void bt_le_sync(u8 active_mode)
 						 | (p[4+len+1] << 8)
     60f8:	ab10      	add	r3, sp, #64	; 0x40
     60fa:	4443      	add	r3, r8
-		}
 
-		
+		//JWHUR
+//		le.crc_verify = 0;
 		if (le.crc_verify) {
 			u32 calc_crc = btle_crcgen_lut(le.crc_init_reversed, p + 4, len);
 			u32 wire_crc = (p[4+len+2] << 16)
     60fc:	f813 1c2e 	ldrb.w	r1, [r3, #-46]
 						 | (p[4+len+1] << 8)
     6100:	f813 2c2f 	ldrb.w	r2, [r3, #-47]
-		}
 
-		
+		//JWHUR
+//		le.crc_verify = 0;
 		if (le.crc_verify) {
 			u32 calc_crc = btle_crcgen_lut(le.crc_init_reversed, p + 4, len);
 			u32 wire_crc = (p[4+len+2] << 16)
@@ -9330,6 +9327,7 @@ void bt_slave_le() {
 
 	// Standards said maximum advertising channel PDU length 39 bytes (adv payload 16 + 3 + 1 (preamble))
 	// There's a probem, actual maximum length 34 bytes (adv payload 11 + 3  + 1 (preamble)) in ubertooth
+	
 	fin_adv_len = (dlen-6) % plen;
     6c94:	6a0a      	ldr	r2, [r1, #32]
     6c96:	230b      	movs	r3, #11
@@ -9337,11 +9335,11 @@ void bt_slave_le() {
     6c9c:	fb98 f6f3 	sdiv	r6, r8, r3
 	if (dlen >= plen + 6) {
     6ca0:	2a10      	cmp	r2, #16
-	for (i = 0; i < 6; i++)
 		slave_mac_address[i] = slave_mac_address_data[i];
 
 	// Standards said maximum advertising channel PDU length 39 bytes (adv payload 16 + 3 + 1 (preamble))
 	// There's a probem, actual maximum length 34 bytes (adv payload 11 + 3  + 1 (preamble)) in ubertooth
+	
 	fin_adv_len = (dlen-6) % plen;
     6ca2:	fb03 8816 	mls	r8, r3, r6, r8
 	if (dlen >= plen + 6) {
@@ -9351,9 +9349,9 @@ void bt_slave_le() {
 		if (fin_adv_len == 0) {
     6ca8:	f1b8 0f00 	cmp.w	r8, #0
     6cac:	d003      	beq.n	6cb6 <bt_slave_le+0x6a>
-
 	// Standards said maximum advertising channel PDU length 39 bytes (adv payload 16 + 3 + 1 (preamble))
 	// There's a probem, actual maximum length 34 bytes (adv payload 11 + 3  + 1 (preamble)) in ubertooth
+	
 	fin_adv_len = (dlen-6) % plen;
 	if (dlen >= plen + 6) {
 		num_adv_ind = (dlen-6)/plen + 1;
@@ -9554,32 +9552,31 @@ void bt_slave_le() {
     6d98:	461a      	mov	r2, r3
     6d9a:	9300      	str	r3, [sp, #0]
     6d9c:	f000 fcfa 	bl	7794 <btle_calc_crc>
-		adv_ind_len = (int) adv_ind_len;
-		adv_ind[i][adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[i][(int)adv_ind_len] = (calc_crc >> 0) & 0xff;
     6da0:	5962      	ldr	r2, [r4, r5]
     6da2:	9b00      	ldr	r3, [sp, #0]
-		adv_ind[i][adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[i][(int)adv_ind_len+1] = (calc_crc >> 8) & 0xff;
     6da4:	0a01      	lsrs	r1, r0, #8
+			adv_ind[i][12] = adv_len;
 			adv_ind_len = (u8) (fin_adv_len + 20);
 		}
 
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind[i], adv_ind_len);
-		adv_ind_len = (int) adv_ind_len;
-		adv_ind[i][adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[i][(int)adv_ind_len] = (calc_crc >> 0) & 0xff;
     6da6:	54d0      	strb	r0, [r2, r3]
-		adv_ind[i][adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[i][(int)adv_ind_len+1] = (calc_crc >> 8) & 0xff;
     6da8:	5962      	ldr	r2, [r4, r5]
-		adv_ind[i][adv_ind_len+2] = (calc_crc >> 16) & 0xff;
+		adv_ind[i][(int)adv_ind_len+2] = (calc_crc >> 16) & 0xff;
     6daa:	0c00      	lsrs	r0, r0, #16
+			adv_ind_len = (u8) (fin_adv_len + 20);
 		}
 
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind[i], adv_ind_len);
-		adv_ind_len = (int) adv_ind_len;
-		adv_ind[i][adv_ind_len] = (calc_crc >> 0) & 0xff;
-		adv_ind[i][adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[i][(int)adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[i][(int)adv_ind_len+1] = (calc_crc >> 8) & 0xff;
     6dac:	441a      	add	r2, r3
     6dae:	7051      	strb	r1, [r2, #1]
-		adv_ind[i][adv_ind_len+2] = (calc_crc >> 16) & 0xff;
+		adv_ind[i][(int)adv_ind_len+2] = (calc_crc >> 16) & 0xff;
     6db0:	5962      	ldr	r2, [r4, r5]
 	for (i=0; i< num_adv_ind-1; i++) {
 		adv_ind[i] = (u8*) malloc(sizeof(u8)*(20 + plen + 3));
@@ -9588,22 +9585,26 @@ void bt_slave_le() {
 
 	for (i=0; i< num_adv_ind; i++) {
     6db2:	3701      	adds	r7, #1
+		}
 
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind[i], adv_ind_len);
-		adv_ind_len = (int) adv_ind_len;
-		adv_ind[i][adv_ind_len] = (calc_crc >> 0) & 0xff;
-		adv_ind[i][adv_ind_len+1] = (calc_crc >> 8) & 0xff;
-		adv_ind[i][adv_ind_len+2] = (calc_crc >> 16) & 0xff;
+		adv_ind[i][(int)adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[i][(int)adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[i][(int)adv_ind_len+2] = (calc_crc >> 16) & 0xff;
     6db4:	4413      	add	r3, r2
     6db6:	7098      	strb	r0, [r3, #2]
     6db8:	3504      	adds	r5, #4
     6dba:	e796      	b.n	6cea <bt_slave_le+0x9e>
-	}
+	for (i=0; i<6; i++) adv_ind[0][i+2] = slave_mac_address[5-i];
+	
+	int pNum = 0;*/
+	//
 
 	clkn_start();
     6dbc:	f000 ff4a 	bl	7c54 <clkn_start>
 
 	// spam advertising packets
+
 	while (requested_mode == MODE_BT_SLAVE_LE) {
     6dc0:	f89b 2012 	ldrb.w	r2, [fp, #18]
     6dc4:	4b2b      	ldr	r3, [pc, #172]	; (6e74 <bt_slave_le+0x228>)
@@ -9629,10 +9630,10 @@ void bt_slave_le() {
 
 	for (i=0; i< num_adv_ind; i++) {
     6de2:	2500      	movs	r5, #0
-	while (requested_mode == MODE_BT_SLAVE_LE) {
-		if (requested_mode != mode) break;
-		ICER0 = ICER0_ICE_USB;
-		ICER0 = ICER0_ICE_DMA;
+		adv_ind[0][26] = (calc_crc >> 16) & 0xff;
+		pNum++;*/
+		//
+
 		for(i=0; i<3; i++) {
 			for(j=0; j<num_adv_ind; j++) {
     6de4:	42b5      	cmp	r5, r6
@@ -9641,13 +9642,13 @@ void bt_slave_le() {
     6de8:	454d      	cmp	r5, r9
     6dea:	ab03      	add	r3, sp, #12
     6dec:	da02      	bge.n	6df4 <bt_slave_le+0x1a8>
-					adv_ind_len = (u8) (20 + plen + 3);
+					adv_ind_len = (int) (20 + plen + 3);
 					le_transmit(0x8e89bed6, adv_ind_len, adv_ind[j], ch[i]);
     6dee:	4825      	ldr	r0, [pc, #148]	; (6e84 <bt_slave_le+0x238>)
     6df0:	2122      	movs	r1, #34	; 0x22
     6df2:	e003      	b.n	6dfc <bt_slave_le+0x1b0>
 				} else {
-					adv_ind_len = (u8) (fin_adv_len + 20 + 3);
+					adv_ind_len = (int) (fin_adv_len + 20 + 3);
     6df4:	f108 0117 	add.w	r1, r8, #23
 					le_transmit(0x8e89bed6, adv_ind_len, adv_ind[j], ch[i]);
     6df8:	4822      	ldr	r0, [pc, #136]	; (6e84 <bt_slave_le+0x238>)
@@ -9659,15 +9660,15 @@ void bt_slave_le() {
 				msleep(10);
     6e06:	200a      	movs	r0, #10
     6e08:	f7fd fabe 	bl	4388 <msleep>
-	while (requested_mode == MODE_BT_SLAVE_LE) {
-		if (requested_mode != mode) break;
-		ICER0 = ICER0_ICE_USB;
-		ICER0 = ICER0_ICE_DMA;
+		adv_ind[0][26] = (calc_crc >> 16) & 0xff;
+		pNum++;*/
+		//
+
 		for(i=0; i<3; i++) {
 			for(j=0; j<num_adv_ind; j++) {
     6e0c:	3501      	adds	r5, #1
     6e0e:	e7e9      	b.n	6de4 <bt_slave_le+0x198>
-					adv_ind_len = (u8) (fin_adv_len + 20 + 3);
+					adv_ind_len = (int) (fin_adv_len + 20 + 3);
 					le_transmit(0x8e89bed6, adv_ind_len, adv_ind[j], ch[i]);
 				}
 				msleep(10);
@@ -9676,11 +9677,11 @@ void bt_slave_le() {
     6e10:	2005      	movs	r0, #5
     6e12:	3702      	adds	r7, #2
     6e14:	f7fd fab8 	bl	4388 <msleep>
-	// spam advertising packets
-	while (requested_mode == MODE_BT_SLAVE_LE) {
-		if (requested_mode != mode) break;
-		ICER0 = ICER0_ICE_USB;
-		ICER0 = ICER0_ICE_DMA;
+		adv_ind[0][25] = (calc_crc >> 8) & 0xff;
+		adv_ind[0][26] = (calc_crc >> 16) & 0xff;
+		pNum++;*/
+		//
+
 		for(i=0; i<3; i++) {
     6e18:	2f06      	cmp	r7, #6
     6e1a:	d1e2      	bne.n	6de2 <bt_slave_le+0x196>
@@ -10547,7 +10548,7 @@ void led_specan()
     7272:	2003      	movs	r0, #3
     7274:	2129      	movs	r1, #41	; 0x29
     7276:	f001 fbd8 	bl	8a2a <cc2400_set>
-	cc2400_set(RSSI,    0x00F1); // RSSI Sample over 2 symbols
+	cc2400_set(RSSI,    0x00f1); // RSSI Sample over 2 symbols
     727a:	2006      	movs	r0, #6
     727c:	21f1      	movs	r1, #241	; 0xf1
     727e:	f001 fbd4 	bl	8a2a <cc2400_set>
@@ -19962,9 +19963,9 @@ BOOL USBHandleStandardRequest(TSetupPacket	*pSetup, int *piLen, U8 **ppbData)
 0000a03f <compile_info>:
     a03f:	72656275 746f6f74 30322068 302d3731     ubertooth 2017-0
     a04f:	32522d33 776d2820 6d406c6e 2d6c6e77     3-R2 (mwnl@mwnl-
-    a05f:	6f6e656c 20296f76 39313032 3130202e     lenovo) 2019. 01
-    a06f:	3231202e ed28202e 2029a086 313a3631     . 12. (...) 16:1
-    a07f:	39353a38 54534b20 bcb24000                       8:59 KST.
+    a05f:	6f6e656c 20296f76 39313032 3330202e     lenovo) 2019. 03
+    a06f:	3630202e ec28202e 20299888 313a3931     . 06. (...) 19:1
+    a07f:	35333a37 54534b20 bcb24000                       7:35 KST.
 
 0000a088 <whitening_word>:
     a088:	c3bcb240 5f4a371f 9a9cf685 44c5d6c1     @....7J_.......D

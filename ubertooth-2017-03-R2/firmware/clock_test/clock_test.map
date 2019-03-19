@@ -112,6 +112,8 @@ Discarded input sections
                 0x0000000000000000        0xa ../common/ubertooth.o
  .text.cc2400_get8
                 0x0000000000000000       0x12 ../common/ubertooth.o
+ .text.cc2400_get_rev
+                0x0000000000000000       0x58 ../common/ubertooth.o
  .text.cc2400_set8
                 0x0000000000000000        0xa ../common/ubertooth.o
  .text.cc2400_fifo_write
@@ -471,7 +473,7 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .comment       0x0000000000000000       0x20 ../common/ubertooth.o
  .comment       0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/armv7-m/crtend.o
 
-.debug_info     0x0000000000000000     0x2ba2
+.debug_info     0x0000000000000000     0x2bfb
  .debug_info    0x0000000000000000      0x10a /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_info    0x000000000000010a       0xef /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_info    0x00000000000001f9      0x894 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -481,9 +483,9 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_info    0x0000000000001e70      0x108 clock_test.o
  .debug_info    0x0000000000001f78      0x117 ../common/LPC17xx_Startup.o
  .debug_info    0x000000000000208f       0x7d ../common/LPC17xx_Interrupts.o
- .debug_info    0x000000000000210c      0xa96 ../common/ubertooth.o
+ .debug_info    0x000000000000210c      0xaef ../common/ubertooth.o
 
-.debug_abbrev   0x0000000000000000      0xd03
+.debug_abbrev   0x0000000000000000      0xd12
  .debug_abbrev  0x0000000000000000       0xb8 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_abbrev  0x00000000000000b8       0xbd /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_abbrev  0x0000000000000175      0x180 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -493,18 +495,18 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_abbrev  0x0000000000000843       0xa9 clock_test.o
  .debug_abbrev  0x00000000000008ec       0xb8 ../common/LPC17xx_Startup.o
  .debug_abbrev  0x00000000000009a4       0x80 ../common/LPC17xx_Interrupts.o
- .debug_abbrev  0x0000000000000a24      0x2df ../common/ubertooth.o
+ .debug_abbrev  0x0000000000000a24      0x2ee ../common/ubertooth.o
 
-.debug_loc      0x0000000000000000      0xb01
+.debug_loc      0x0000000000000000      0xb70
  .debug_loc     0x0000000000000000       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_loc     0x000000000000002c       0x5c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_loc     0x0000000000000088       0xae /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
  .debug_loc     0x0000000000000136      0x14d /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
  .debug_loc     0x0000000000000283      0x155 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
  .debug_loc     0x00000000000003d8       0x97 ../common/LPC17xx_Startup.o
- .debug_loc     0x000000000000046f      0x692 ../common/ubertooth.o
+ .debug_loc     0x000000000000046f      0x701 ../common/ubertooth.o
 
-.debug_aranges  0x0000000000000000      0x228
+.debug_aranges  0x0000000000000000      0x230
  .debug_aranges
                 0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_aranges
@@ -524,9 +526,9 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000100       0x20 ../common/LPC17xx_Interrupts.o
  .debug_aranges
-                0x0000000000000120      0x108 ../common/ubertooth.o
+                0x0000000000000120      0x110 ../common/ubertooth.o
 
-.debug_ranges   0x0000000000000000      0x1d0
+.debug_ranges   0x0000000000000000      0x1d8
  .debug_ranges  0x0000000000000000       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_ranges  0x0000000000000010       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_ranges  0x0000000000000020       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
@@ -535,9 +537,9 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_ranges  0x0000000000000078       0x10 clock_test.o
  .debug_ranges  0x0000000000000088       0x10 ../common/LPC17xx_Startup.o
  .debug_ranges  0x0000000000000098       0x10 ../common/LPC17xx_Interrupts.o
- .debug_ranges  0x00000000000000a8      0x128 ../common/ubertooth.o
+ .debug_ranges  0x00000000000000a8      0x130 ../common/ubertooth.o
 
-.debug_line     0x0000000000000000      0xbaa
+.debug_line     0x0000000000000000      0xbd3
  .debug_line    0x0000000000000000       0xa6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_line    0x00000000000000a6       0x9c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_line    0x0000000000000142       0xd6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -547,9 +549,9 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_line    0x00000000000005c7       0xb2 clock_test.o
  .debug_line    0x0000000000000679       0x96 ../common/LPC17xx_Startup.o
  .debug_line    0x000000000000070f       0x4e ../common/LPC17xx_Interrupts.o
- .debug_line    0x000000000000075d      0x44d ../common/ubertooth.o
+ .debug_line    0x000000000000075d      0x476 ../common/ubertooth.o
 
-.debug_str      0x0000000000000000      0xbad
+.debug_str      0x0000000000000000      0xc04
  .debug_str     0x0000000000000000      0x199 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
                                         0x1d9 (size before relaxing)
  .debug_str     0x0000000000000199       0xaf /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
@@ -568,10 +570,10 @@ OUTPUT(clock_test.elf elf32-littlearm)
                                         0x225 (size before relaxing)
  .debug_str     0x00000000000009ae       0x51 ../common/LPC17xx_Interrupts.o
                                         0x187 (size before relaxing)
- .debug_str     0x00000000000009ff      0x1ae ../common/ubertooth.o
-                                        0x3a6 (size before relaxing)
+ .debug_str     0x00000000000009ff      0x205 ../common/ubertooth.o
+                                        0x3bd (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x450
+.debug_frame    0x0000000000000000      0x46c
  .debug_frame   0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_frame   0x0000000000000020       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_frame   0x000000000000004c       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
@@ -580,4 +582,4 @@ OUTPUT(clock_test.elf elf32-littlearm)
  .debug_frame   0x00000000000000f0       0x2c clock_test.o
  .debug_frame   0x000000000000011c       0x2c ../common/LPC17xx_Startup.o
  .debug_frame   0x0000000000000148       0x20 ../common/LPC17xx_Interrupts.o
- .debug_frame   0x0000000000000168      0x2e8 ../common/ubertooth.o
+ .debug_frame   0x0000000000000168      0x304 ../common/ubertooth.o

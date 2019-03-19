@@ -201,6 +201,7 @@ int dataTx(uint8_t *mac_addr, uint8_t *data, int dlen, float txDur, ubertooth_t 
 	for(i=0; i<6; i++) printf("%02x ", mac_addr[i]);
 //	printf("\nBroadcast data: ");
 //	for(i=0; i<dlen; i++) printf("%02x", tot_data[i+6]);
+	printf("\ndlen: %d", dlen);
 	printf("\n");
 	cmd_btle_slave(ut->devh, tot_data, UBERTOOTH_BTLE_SLAVE, dlen+6);
 			
@@ -844,7 +845,7 @@ int main(int argc, char *argv[])
 	do_adv_index = 37;
 	do_slave_mode = do_target = do_data_mode = do_sync_mode = 0;
 	dlen = 0;
-	duration = 60000;
+	duration = 180000;
 
 	while ((opt=getopt(argc,argv,"a::r:hfoRpU:v::A:s:d:ST:l:t:x:H:G:c:o:q:jJiI")) != EOF) {
 		switch(opt) {

@@ -1348,36 +1348,36 @@ OUTPUT(bluetooth_rxtx.elf elf32-littlearm)
  .debug_abbrev  0x00000000000039da      0x258 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
  .debug_abbrev  0x0000000000003c32       0x83 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 
-.debug_loc      0x0000000000000000     0x6cc2
+.debug_loc      0x0000000000000000     0x6cb6
  .debug_loc     0x0000000000000000       0x2c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_loc     0x000000000000002c       0x5c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_loc     0x0000000000000088       0xae /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
  .debug_loc     0x0000000000000136      0x18b /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
  .debug_loc     0x00000000000002c1      0x14d /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
  .debug_loc     0x000000000000040e      0x155 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .debug_loc     0x0000000000000563     0x236e bluetooth_rxtx.o
- .debug_loc     0x00000000000028d1      0x75b bluetooth.o
- .debug_loc     0x000000000000302c      0x37c bluetooth_le.o
- .debug_loc     0x00000000000033a8      0x324 ubertooth_usb.o
- .debug_loc     0x00000000000036cc       0x8c ubertooth_rssi.o
- .debug_loc     0x0000000000003758       0x7d ubertooth_cs.o
- .debug_loc     0x00000000000037d5       0x1f ubertooth_dma.o
- .debug_loc     0x00000000000037f4      0x295 cc2400_rangetest.o
- .debug_loc     0x0000000000003a89      0x2fa ego.o
- .debug_loc     0x0000000000003d83      0x319 ../common/usb_serial.o
- .debug_loc     0x000000000000409c       0x97 ../common/LPC17xx_Startup.o
- .debug_loc     0x0000000000004133      0x701 ../common/ubertooth.o
- .debug_loc     0x0000000000004834      0x182 ../common/lpcusb/target/usbcontrol.o
- .debug_loc     0x00000000000049b6      0x720 ../common/lpcusb/target/usbhw_lpc.o
- .debug_loc     0x00000000000050d6      0x786 ../common/lpcusb/target/usbstdreq.o
- .debug_loc     0x000000000000585c       0x58 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
- .debug_loc     0x00000000000058b4      0xd1f /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
- .debug_loc     0x00000000000065d3       0xe3 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
- .debug_loc     0x00000000000066b6       0x3f /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
- .debug_loc     0x00000000000066f5       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
- .debug_loc     0x0000000000006716      0x450 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
- .debug_loc     0x0000000000006b66      0x13b /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
- .debug_loc     0x0000000000006ca1       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
+ .debug_loc     0x0000000000000563     0x2362 bluetooth_rxtx.o
+ .debug_loc     0x00000000000028c5      0x75b bluetooth.o
+ .debug_loc     0x0000000000003020      0x37c bluetooth_le.o
+ .debug_loc     0x000000000000339c      0x324 ubertooth_usb.o
+ .debug_loc     0x00000000000036c0       0x8c ubertooth_rssi.o
+ .debug_loc     0x000000000000374c       0x7d ubertooth_cs.o
+ .debug_loc     0x00000000000037c9       0x1f ubertooth_dma.o
+ .debug_loc     0x00000000000037e8      0x295 cc2400_rangetest.o
+ .debug_loc     0x0000000000003a7d      0x2fa ego.o
+ .debug_loc     0x0000000000003d77      0x319 ../common/usb_serial.o
+ .debug_loc     0x0000000000004090       0x97 ../common/LPC17xx_Startup.o
+ .debug_loc     0x0000000000004127      0x701 ../common/ubertooth.o
+ .debug_loc     0x0000000000004828      0x182 ../common/lpcusb/target/usbcontrol.o
+ .debug_loc     0x00000000000049aa      0x720 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_loc     0x00000000000050ca      0x786 ../common/lpcusb/target/usbstdreq.o
+ .debug_loc     0x0000000000005850       0x58 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
+ .debug_loc     0x00000000000058a8      0xd1f /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+ .debug_loc     0x00000000000065c7       0xe3 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .debug_loc     0x00000000000066aa       0x3f /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
+ .debug_loc     0x00000000000066e9       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_loc     0x000000000000670a      0x450 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
+ .debug_loc     0x0000000000006b5a      0x13b /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
+ .debug_loc     0x0000000000006c95       0x21 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 
 .debug_aranges  0x0000000000000000      0x998
  .debug_aranges
@@ -1488,7 +1488,7 @@ OUTPUT(bluetooth_rxtx.elf elf32-littlearm)
  .debug_ranges  0x0000000000000a08       0x30 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
  .debug_ranges  0x0000000000000a38       0x10 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 
-.debug_line     0x0000000000000000     0x41cd
+.debug_line     0x0000000000000000     0x41d0
  .debug_line    0x0000000000000000       0xa6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .debug_line    0x00000000000000a6       0x9c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .debug_line    0x0000000000000142       0xd6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
@@ -1496,35 +1496,35 @@ OUTPUT(bluetooth_rxtx.elf elf32-littlearm)
  .debug_line    0x00000000000002cd       0xff /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
  .debug_line    0x00000000000003cc      0x160 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
  .debug_line    0x000000000000052c      0x19a /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .debug_line    0x00000000000006c6     0x11b1 bluetooth_rxtx.o
- .debug_line    0x0000000000001877      0x1b8 bluetooth.o
- .debug_line    0x0000000000001a2f      0x149 bluetooth_le.o
- .debug_line    0x0000000000001b78      0x237 ubertooth_usb.o
- .debug_line    0x0000000000001daf       0xfe ubertooth_rssi.o
- .debug_line    0x0000000000001ead       0xfd ubertooth_cs.o
- .debug_line    0x0000000000001faa       0xbe ubertooth_clock.o
- .debug_line    0x0000000000002068      0x134 ubertooth_dma.o
- .debug_line    0x000000000000219c      0x23d cc2400_rangetest.o
- .debug_line    0x00000000000023d9      0x2af ego.o
- .debug_line    0x0000000000002688      0x203 ../common/usb_serial.o
- .debug_line    0x000000000000288b       0x96 ../common/LPC17xx_Startup.o
- .debug_line    0x0000000000002921       0x4e ../common/LPC17xx_Interrupts.o
- .debug_line    0x000000000000296f      0x476 ../common/ubertooth.o
- .debug_line    0x0000000000002de5       0xf3 ../common/lpcusb/target/usbcontrol.o
- .debug_line    0x0000000000002ed8       0xa0 ../common/lpcusb/target/usbinit.o
- .debug_line    0x0000000000002f78      0x357 ../common/lpcusb/target/usbhw_lpc.o
- .debug_line    0x00000000000032cf      0x1af ../common/lpcusb/target/usbstdreq.o
- .debug_line    0x000000000000347e       0x6f /usr/lib/gcc/arm-none-eabi/4.8.2/armv7-m/libgcc.a(_ashldi3.o)
- .debug_line    0x00000000000034ed      0x138 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
- .debug_line    0x0000000000003625      0x325 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
- .debug_line    0x000000000000394a       0xf6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
- .debug_line    0x0000000000003a40       0xbb /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
- .debug_line    0x0000000000003afb       0xf4 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mlock.o)
- .debug_line    0x0000000000003bef      0x12c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
- .debug_line    0x0000000000003d1b       0xd7 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
- .debug_line    0x0000000000003df2      0x221 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
- .debug_line    0x0000000000004013      0x162 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
- .debug_line    0x0000000000004175       0x58 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
+ .debug_line    0x00000000000006c6     0x11b4 bluetooth_rxtx.o
+ .debug_line    0x000000000000187a      0x1b8 bluetooth.o
+ .debug_line    0x0000000000001a32      0x149 bluetooth_le.o
+ .debug_line    0x0000000000001b7b      0x237 ubertooth_usb.o
+ .debug_line    0x0000000000001db2       0xfe ubertooth_rssi.o
+ .debug_line    0x0000000000001eb0       0xfd ubertooth_cs.o
+ .debug_line    0x0000000000001fad       0xbe ubertooth_clock.o
+ .debug_line    0x000000000000206b      0x134 ubertooth_dma.o
+ .debug_line    0x000000000000219f      0x23d cc2400_rangetest.o
+ .debug_line    0x00000000000023dc      0x2af ego.o
+ .debug_line    0x000000000000268b      0x203 ../common/usb_serial.o
+ .debug_line    0x000000000000288e       0x96 ../common/LPC17xx_Startup.o
+ .debug_line    0x0000000000002924       0x4e ../common/LPC17xx_Interrupts.o
+ .debug_line    0x0000000000002972      0x476 ../common/ubertooth.o
+ .debug_line    0x0000000000002de8       0xf3 ../common/lpcusb/target/usbcontrol.o
+ .debug_line    0x0000000000002edb       0xa0 ../common/lpcusb/target/usbinit.o
+ .debug_line    0x0000000000002f7b      0x357 ../common/lpcusb/target/usbhw_lpc.o
+ .debug_line    0x00000000000032d2      0x1af ../common/lpcusb/target/usbstdreq.o
+ .debug_line    0x0000000000003481       0x6f /usr/lib/gcc/arm-none-eabi/4.8.2/armv7-m/libgcc.a(_ashldi3.o)
+ .debug_line    0x00000000000034f0      0x138 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
+ .debug_line    0x0000000000003628      0x325 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+ .debug_line    0x000000000000394d       0xf6 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .debug_line    0x0000000000003a43       0xbb /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000003afe       0xf4 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mlock.o)
+ .debug_line    0x0000000000003bf2      0x12c /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
+ .debug_line    0x0000000000003d1e       0xd7 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000003df5      0x221 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
+ .debug_line    0x0000000000004016      0x162 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
+ .debug_line    0x0000000000004178       0x58 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 
 .debug_str      0x0000000000000000     0x33cb
  .debug_str     0x0000000000000000      0x199 /usr/lib/gcc/arm-none-eabi/4.8.2/../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)

@@ -15,21 +15,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .comment      0000001f  00000000  00000000  00010525  2**0
                   CONTENTS, READONLY
-  6 .debug_info   00006652  00000000  00000000  00010544  2**0
+  6 .debug_info   000066ab  00000000  00000000  00010544  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00001cc8  00000000  00000000  00016b96  2**0
+  7 .debug_abbrev 00001cd7  00000000  00000000  00016bef  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_loc    00002636  00000000  00000000  0001885e  2**0
+  8 .debug_loc    000026a5  00000000  00000000  000188c6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_aranges 000004f0  00000000  00000000  0001ae98  2**3
+  9 .debug_aranges 000004f8  00000000  00000000  0001af70  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 000004c0  00000000  00000000  0001b388  2**0
+ 10 .debug_ranges 000004c8  00000000  00000000  0001b468  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00001b40  00000000  00000000  0001b848  2**0
+ 11 .debug_line   00001b69  00000000  00000000  0001b930  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_str    00001f9d  00000000  00000000  0001d388  2**0
+ 12 .debug_str    00001fac  00000000  00000000  0001d499  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00000b58  00000000  00000000  0001f328  2**2
+ 13 .debug_frame  00000b74  00000000  00000000  0001f448  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3929,6 +3929,7 @@ u8 cc2400_get8(u8 reg)
     1438:	bd08      	pop	{r3, pc}
 
 0000143a <cc2400_set8>:
+}
 
 /* write 8 bit value to a register */
 void cc2400_set8(u8 reg, u8 val)
@@ -4057,7 +4058,7 @@ void clock_start()
 	while (PLL0STAT & PLL0STAT_PLLC0_STAT);
     14b0:	4a3f      	ldr	r2, [pc, #252]	; (15b0 <clock_start+0x124>)
     14b2:	6812      	ldr	r2, [r2, #0]
-    14b4:	0194      	lsls	r4, r2, #6
+    14b4:	0190      	lsls	r0, r2, #6
     14b6:	d4fb      	bmi.n	14b0 <clock_start+0x24>
 
 	/* turn off PLL0 */
@@ -4104,7 +4105,7 @@ void cc2400_set(u8 reg, u16 val)
     14e6:	f7ff ffb4 	bl	1452 <cc2400_strobe>
 	while (!(cc2400_status() & XOSC16M_STABLE));
     14ea:	f7ff ffab 	bl	1444 <cc2400_status>
-    14ee:	0640      	lsls	r0, r0, #25
+    14ee:	0641      	lsls	r1, r0, #25
     14f0:	d5fb      	bpl.n	14ea <clock_start+0x5e>
 
 	/* activate main oscillator */
@@ -4114,7 +4115,7 @@ void cc2400_set(u8 reg, u16 val)
     14f6:	601a      	str	r2, [r3, #0]
 	while (!(SCS & SCS_OSCSTAT));
     14f8:	681a      	ldr	r2, [r3, #0]
-    14fa:	0651      	lsls	r1, r2, #25
+    14fa:	0652      	lsls	r2, r2, #25
     14fc:	d5fc      	bpl.n	14f8 <clock_start+0x6c>
 	 * connecting PLL0
  	 */
@@ -4176,7 +4177,7 @@ void cc2400_set(u8 reg, u16 val)
 	while (!(PLL0STAT & PLL0STAT_PLLE0_STAT));
     1534:	4b1e      	ldr	r3, [pc, #120]	; (15b0 <clock_start+0x124>)
     1536:	681b      	ldr	r3, [r3, #0]
-    1538:	01da      	lsls	r2, r3, #7
+    1538:	01db      	lsls	r3, r3, #7
     153a:	d5fb      	bpl.n	1534 <clock_start+0xa8>
 
 	/* set CPU clock divider */
@@ -4198,7 +4199,7 @@ void cc2400_set(u8 reg, u16 val)
 	while (!(PLL0STAT & PLL0STAT_PLLC0_STAT));
     155a:	4b15      	ldr	r3, [pc, #84]	; (15b0 <clock_start+0x124>)
     155c:	681b      	ldr	r3, [r3, #0]
-    155e:	019b      	lsls	r3, r3, #6
+    155e:	019c      	lsls	r4, r3, #6
     1560:	d5fb      	bpl.n	155a <clock_start+0xce>
 
 	/* configure PLL1 */
@@ -4233,11 +4234,11 @@ void cc2400_set(u8 reg, u16 val)
 	while (!(PLL1STAT & PLL1STAT_PLLE1_STAT));
     157e:	4b15      	ldr	r3, [pc, #84]	; (15d4 <clock_start+0x148>)
     1580:	681a      	ldr	r2, [r3, #0]
-    1582:	05d4      	lsls	r4, r2, #23
+    1582:	05d0      	lsls	r0, r2, #23
     1584:	d5fb      	bpl.n	157e <clock_start+0xf2>
 	while (!(PLL1STAT & PLL1STAT_PLOCK1));
     1586:	681a      	ldr	r2, [r3, #0]
-    1588:	0550      	lsls	r0, r2, #21
+    1588:	0551      	lsls	r1, r2, #21
     158a:	d5fc      	bpl.n	1586 <clock_start+0xfa>
 
 	/* connect PLL1 */
@@ -4254,7 +4255,7 @@ void cc2400_set(u8 reg, u16 val)
 	while (!(PLL1STAT & PLL1STAT_PLLC1_STAT));
     159e:	4b0d      	ldr	r3, [pc, #52]	; (15d4 <clock_start+0x148>)
     15a0:	681b      	ldr	r3, [r3, #0]
-    15a2:	0599      	lsls	r1, r3, #22
+    15a2:	059a      	lsls	r2, r3, #22
     15a4:	d5fb      	bpl.n	159e <clock_start+0x112>
 }
     15a6:	bd10      	pop	{r4, pc}

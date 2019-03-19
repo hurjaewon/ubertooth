@@ -1756,7 +1756,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2437;
+	channel = 2472;
 	while (requested_mode == active_mode) {
 		if (requested_channel != 0) {
 			cc2400_strobe(SRFOFF);
@@ -1830,7 +1830,6 @@ void bt_le_sync(u8 active_mode)
 	ISER0 = ISER0_ISE_USB;
 
 	RXLED_CLR;
-
 	queue_init();
 	dio_ssp_init();
 	dma_init_le();
@@ -1855,23 +1854,20 @@ void bt_le_sync(u8 active_mode)
 
 			requested_channel = 0;
 		}
-
 		RXLED_CLR;
 
 		/* Wait for DMA. Meanwhile keep track of RSSI. */
 		rssi_reset();
-		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode)	;
+		while ((rx_tc == 0) && (rx_err == 0) && (do_hop == 0) && requested_mode == active_mode) ;
 
 		rssi = (int8_t)(cc2400_get(RSSI) >> 8);
 		rssi_min = rssi_max = rssi;
 
-		if (requested_mode != active_mode) {
+		if (requested_mode != active_mode)
 			goto cleanup;
-		}
 
-		if (rx_err) {
+		if (rx_err)
 			status |= DMA_ERROR;
-		}
 
 		if (do_hop)
 			goto rx_flush;
@@ -1924,7 +1920,8 @@ void bt_le_sync(u8 active_mode)
 			packet[i/4+1] = rbit(v) ^ whit[i/4];
 		}
 
-		
+		//JWHUR
+//		le.crc_verify = 0;
 		if (le.crc_verify) {
 			u32 calc_crc = btle_crcgen_lut(le.crc_init_reversed, p + 4, len);
 			u32 wire_crc = (p[4+len+2] << 16)
@@ -2684,6 +2681,7 @@ void bt_slave_le() {
 
 	// Standards said maximum advertising channel PDU length 39 bytes (adv payload 16 + 3 + 1 (preamble))
 	// There's a probem, actual maximum length 34 bytes (adv payload 11 + 3  + 1 (preamble)) in ubertooth
+	
 	fin_adv_len = (dlen-6) % plen;
 	if (dlen >= plen + 6) {
 		num_adv_ind = (dlen-6)/plen + 1;
@@ -2722,26 +2720,57 @@ void bt_slave_le() {
 		}
 
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind[i], adv_ind_len);
-		adv_ind_len = (int) adv_ind_len;
-		adv_ind[i][adv_ind_len] = (calc_crc >> 0) & 0xff;
-		adv_ind[i][adv_ind_len+1] = (calc_crc >> 8) & 0xff;
-		adv_ind[i][adv_ind_len+2] = (calc_crc >> 16) & 0xff;
+		adv_ind[i][(int)adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[i][(int)adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[i][(int)adv_ind_len+2] = (calc_crc >> 16) & 0xff;
 	}
+	
+	// For packet based
+	
+/*	num_adv_ind = 1;
+	fin_adv_len = 4;
+	u8 tot_len = (u8) (fin_adv_len + 18);
+	u8 adv_len = (u8) (fin_adv_len + 7);
+	adv_ind_len = (u8) (fin_adv_len + 20);
+	adv_ind = (u8**) malloc(sizeof(u8*)*num_adv_ind);
+	adv_ind[0] = (u8*) malloc(sizeof(u8)*(fin_adv_len + 1 + 3 + 4 + 4 + 3 + 6 + 2));
+	for (i=0; i<20; i++) adv_ind[0][i] = adv_overhead[i];
+	adv_ind[0][1] = tot_len;
+	adv_ind[0][12] = adv_len;
+	for (i=0; i<6; i++) adv_ind[0][i+2] = slave_mac_address[5-i];
+	
+	int pNum = 0;*/
+	//
 
 	clkn_start();
 
 	// spam advertising packets
+
 	while (requested_mode == MODE_BT_SLAVE_LE) {
 		if (requested_mode != mode) break;
 		ICER0 = ICER0_ICE_USB;
 		ICER0 = ICER0_ICE_DMA;
+
+		// For packet based
+/*		adv_ind[0][20] = (u8) (pNum >> 24) & 0xff;
+		adv_ind[0][21] = (u8) (pNum >> 16) & 0xff;
+		adv_ind[0][22] = (u8) (pNum >> 8) & 0xff;
+		adv_ind[0][23] = (u8) (pNum >> 0) & 0xff;
+		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind[0], 24);
+
+		adv_ind[0][24] = (calc_crc >> 0) & 0xff;
+		adv_ind[0][25] = (calc_crc >> 8) & 0xff;
+		adv_ind[0][26] = (calc_crc >> 16) & 0xff;
+		pNum++;*/
+		//
+
 		for(i=0; i<3; i++) {
 			for(j=0; j<num_adv_ind; j++) {
 				if (j < num_adv_ind -1) {
-					adv_ind_len = (u8) (20 + plen + 3);
+					adv_ind_len = (int) (20 + plen + 3);
 					le_transmit(0x8e89bed6, adv_ind_len, adv_ind[j], ch[i]);
 				} else {
-					adv_ind_len = (u8) (fin_adv_len + 20 + 3);
+					adv_ind_len = (int) (fin_adv_len + 20 + 3);
 					le_transmit(0x8e89bed6, adv_ind_len, adv_ind[j], ch[i]);
 				}
 				msleep(10);
@@ -2982,7 +3011,7 @@ void led_specan()
 	cc2400_set(MDMTST0, 0x134b); // without PRNG
 	cc2400_set(GRMDM,   0x0101); // un-buffered mode, GFSK
 	cc2400_set(MDMCTRL, 0x0029); // 160 kHz frequency deviation
-	cc2400_set(RSSI,    0x00F1); // RSSI Sample over 2 symbols
+	cc2400_set(RSSI,    0x00f1); // RSSI Sample over 2 symbols
 
 	while (!(cc2400_status() & XOSC16M_STABLE));
 	while ((cc2400_status() & FS_LOCK));
