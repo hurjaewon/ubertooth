@@ -19,7 +19,7 @@ rm rssi
 
 ./procData.out
 paste time.dat rssi.dat > ./data/exp0_$1.dat
-rm time.dat rssi.dat log0
+rm time.dat rssi.dat
 mv signal.dat signal0.dat
 
 #catTime=$(sed -n -e 's/^.*measurement : //p' log1)

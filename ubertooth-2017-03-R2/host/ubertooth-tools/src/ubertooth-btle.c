@@ -1158,7 +1158,7 @@ int main(int argc, char *argv[])
 			do_rssi = 1;
 			uint64_t start = 0;
 	
-			usleep(1000);
+			usleep(100000);
 			usb_pkt_rx rx;
 			while (1) {
 				int r = cmd_poll(ut->devh, &rx);

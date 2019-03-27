@@ -847,6 +847,20 @@ static void msleep(uint32_t millis)
 	}
 }
 
+static void usleep(uint32_t micro)
+{
+	uint32_t now = (clkn & 0xffffff);
+	uint32_t stop_at = now + micro * 10 / 3125; // micro -> clkn ticks
+
+	// handle clkn overflow
+	if (stop_at >= ((uint32_t)1<<28)) {
+		stop_at -= ((uint32_t)1<<28);
+		while ((clkn & 0xffffff) >= now || (clkn & 0xffffff) < stop_at);
+	} else {
+		while ((clkn & 0xffffff) < stop_at);
+	}
+}
+
 void DMA_IRQHandler()
 {
 	if ( mode == MODE_RX_SYMBOLS
@@ -1920,8 +1934,6 @@ void bt_le_sync(u8 active_mode)
 			packet[i/4+1] = rbit(v) ^ whit[i/4];
 		}
 
-		//JWHUR
-//		le.crc_verify = 0;
 		if (le.crc_verify) {
 			u32 calc_crc = btle_crcgen_lut(le.crc_init_reversed, p + 4, len);
 			u32 wire_crc = (p[4+len+2] << 16)
@@ -1936,7 +1948,8 @@ void bt_le_sync(u8 active_mode)
 		if (p[23] == 0xff && p[24] == 0x53 && p[25] == 0x59 && p[26] == 0x4e && p[27] == 0x43) {
 			sync_flag = 1;
 			now_sync = (clkn & 0xffffff);
-			start_sync = now_sync + 100 * 10000 / 3125; // wait for 100 ms
+			u8 remTime = p[28];
+			start_sync = now_sync + remTime * 10000 / 3125; // wait for remaining time
 //			sync_channel = (u16)p[28];
 		}
 
@@ -2726,8 +2739,8 @@ void bt_slave_le() {
 	}
 	
 	// For packet based
-	
-/*	num_adv_ind = 1;
+/*	
+	num_adv_ind = 1;
 	fin_adv_len = 4;
 	u8 tot_len = (u8) (fin_adv_len + 18);
 	u8 adv_len = (u8) (fin_adv_len + 7);
@@ -2739,9 +2752,9 @@ void bt_slave_le() {
 	adv_ind[0][12] = adv_len;
 	for (i=0; i<6; i++) adv_ind[0][i+2] = slave_mac_address[5-i];
 	
-	int pNum = 0;*/
+	int pNum = 0;
 	//
-
+*/
 	clkn_start();
 
 	// spam advertising packets
@@ -2750,9 +2763,9 @@ void bt_slave_le() {
 		if (requested_mode != mode) break;
 		ICER0 = ICER0_ICE_USB;
 		ICER0 = ICER0_ICE_DMA;
-
+/*
 		// For packet based
-/*		adv_ind[0][20] = (u8) (pNum >> 24) & 0xff;
+		adv_ind[0][20] = (u8) (pNum >> 24) & 0xff;
 		adv_ind[0][21] = (u8) (pNum >> 16) & 0xff;
 		adv_ind[0][22] = (u8) (pNum >> 8) & 0xff;
 		adv_ind[0][23] = (u8) (pNum >> 0) & 0xff;
@@ -2761,9 +2774,9 @@ void bt_slave_le() {
 		adv_ind[0][24] = (calc_crc >> 0) & 0xff;
 		adv_ind[0][25] = (calc_crc >> 8) & 0xff;
 		adv_ind[0][26] = (calc_crc >> 16) & 0xff;
-		pNum++;*/
+		pNum++;
 		//
-
+*/
 		for(i=0; i<3; i++) {
 			for(j=0; j<num_adv_ind; j++) {
 				if (j < num_adv_ind -1) {
@@ -2797,43 +2810,47 @@ void bt_sync_le() {
 	u32 calc_crc;
 	int i, j;
 	int num_adv_ind = 1;
-	u8 adv_ind_len;
+	int adv_ind_len;
 	u8 *adv_ind;
 	u16 ch[] = {2402, 2426, 2480};
 
-	u8 adv_sync[24] = {0x42, 0x16,	// adv_nonconn_ind, length 22 (0001 0110)
+	u8 adv_sync[25] = {0x42, 0x17,	// adv_nonconn_ind, length 23 (0001 0111)
 					  0xff, 0xff, 0xff, 0xff, 0xff, 0xff, // adv mac address
 					  0x03, 0x03, 0xaa, 0xfe, // service advertised - len, type, eddystone UUID
-					  0x0b, 0x16, 0xaa, 0xfe, // len(3 + URL frame + Eddystone URL), type, eddystone UUID
+					  0x0c, 0x16, 0xaa, 0xfe, // len(3 + URL frame + Eddystone URL), type, eddystone UUID
 					  0x10, 0x00, 0x02, // URL frame - frametype(URL), tx power, URL scheme prefix (0x02: http://)
-					  0xff, 0x53, 0x59, 0x4e, 0x43}; // preamble 0xff, S, Y, N, C
+					  0xff, 0x53, 0x59, 0x4e, 0x43, 0x64}; // preamble 0xff, S, Y, N, C, remaining time (dec)
 
 	// Standards said maximum advertising channel PDU length 39 bytes (adv payload 19 + 1 (preamble))
 	// There's a probem, actual maximum length 34 bytes (adv payload 14 + 1 (preamble)) in ubertooth
 	// Nexsus 5 smartphone can not receive BLE packet which has length over 31 bytes (adv payload 11 + 1 (preamble))
-	adv_ind_len = 24; 
-	adv_ind = (u8*) malloc(sizeof(u8)*24);
+	adv_ind_len = 25; 
+	adv_ind = (u8*) malloc(sizeof(u8)*(adv_ind_len + 3));
 
-	for (i=0; i<24; i++)
+	for (i=0; i<25; i++)
 		adv_ind[i] = adv_sync[i];
 	for (i=0; i<6; i++) 
 		adv_ind[i+2] = slave_mac_address_data[5-i];
 
-	calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
-	adv_ind_len = (int) adv_ind_len;
-	adv_ind[adv_ind_len+0] = (calc_crc >> 0) & 0xff;
-	adv_ind[adv_ind_len+1] = (calc_crc >> 8) & 0xff;
-	adv_ind[adv_ind_len+2] = (calc_crc >> 16) & 0xff;
 
 	clkn_start();
 
 	ICER0 = ICER0_ICE_USB;
 	ICER0 = ICER0_ICE_DMA;
-	adv_ind_len = (u8) (adv_ind_len + 3);
-	le_transmit(0x8e89bed6, adv_ind_len, adv_ind, ch[0]);
+
 	now_sync = (clkn & 0xffffff);
 	start_sync = now_sync + 100 * 10000 / 3125; // wait for 99.8 ms
 
+	for (i=0; i<9; i++) {
+		int remTime = 100 - i*10;
+		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
+		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
+		adv_ind[adv_ind_len] = (calc_crc >> 0) & 0xff;
+		adv_ind[adv_ind_len+1] = (calc_crc >> 8) & 0xff;
+		adv_ind[adv_ind_len+2] = (calc_crc >> 16) & 0xff;
+		le_transmit(0x8e89bed6, adv_ind_len+3, adv_ind, ch[0]);
+		usleep(9655); // Manually match 10 ms for one loop
+	}
 	ISER0 = ISER0_ISE_USB;
 	ISER0 = ISER0_ISE_DMA;
 
