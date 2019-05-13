@@ -6047,8 +6047,8 @@ void bt_le_sync_rssi(u8 active_mode)
     5d40:	f7fe fb9c 	bl	447c <cc2400_rx_sync>
 
 	requested_channel = 1;
-	channel = 2472;
-    5d44:	f640 13a8 	movw	r3, #2472	; 0x9a8
+	channel = 2462;
+    5d44:	f640 139e 	movw	r3, #2462	; 0x99e
 	dma_init_le();
 	dio_ssp_start();
 
@@ -6068,7 +6068,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2472;
+	channel = 2462;
     5d50:	8033      	strh	r3, [r6, #0]
 	while (requested_mode == active_mode) {
     5d52:	e0ab      	b.n	5eac <bt_le_sync_rssi+0x1e8>
@@ -6086,7 +6086,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2472;
+	channel = 2462;
 	while (requested_mode == active_mode) {
 		if (requested_channel != 0) {
     5d60:	4b63      	ldr	r3, [pc, #396]	; (5ef0 <bt_le_sync_rssi+0x22c>)
@@ -6275,7 +6275,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2472;
+	channel = 2462;
 	while (requested_mode == active_mode) {
     5eac:	7ca3      	ldrb	r3, [r4, #18]
     5eae:	42bb      	cmp	r3, r7
@@ -9908,14 +9908,14 @@ void bt_sync_le() {
     6f00:	4b26      	ldr	r3, [pc, #152]	; (6f9c <bt_sync_le+0x100>)
     6f02:	f022 427f 	bic.w	r2, r2, #4278190080	; 0xff000000
     6f06:	631a      	str	r2, [r3, #48]	; 0x30
-	start_sync = now_sync + 100 * 10000 / 3125; // wait for 99.8 ms
-    6f08:	f502 72a0 	add.w	r2, r2, #320	; 0x140
+	start_sync = now_sync + 250 * 10000 / 3125; // wait for 99.8 ms
+    6f08:	f502 7248 	add.w	r2, r2, #800	; 0x320
     6f0c:	62da      	str	r2, [r3, #44]	; 0x2c
-    6f0e:	2564      	movs	r5, #100	; 0x64
+    6f0e:	25fa      	movs	r5, #250	; 0xfa
     6f10:	4698      	mov	r8, r3
 
-	for (i=0; i<9; i++) {
-		int remTime = 100 - i*10;
+	for (i=0; i<19; i++) {
+		int remTime = 250 - i*10;
 		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
     6f12:	4b23      	ldr	r3, [pc, #140]	; (6fa0 <bt_sync_le+0x104>)
@@ -9923,10 +9923,10 @@ void bt_sync_le() {
     6f16:	6918      	ldr	r0, [r3, #16]
     6f18:	2219      	movs	r2, #25
 	now_sync = (clkn & 0xffffff);
-	start_sync = now_sync + 100 * 10000 / 3125; // wait for 99.8 ms
+	start_sync = now_sync + 250 * 10000 / 3125; // wait for 99.8 ms
 
-	for (i=0; i<9; i++) {
-		int remTime = 100 - i*10;
+	for (i=0; i<19; i++) {
+		int remTime = 250 - i*10;
 		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
     6f1a:	7625      	strb	r5, [r4, #24]
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
@@ -9935,8 +9935,8 @@ void bt_sync_le() {
 		adv_ind[adv_ind_len+1] = (calc_crc >> 8) & 0xff;
     6f20:	0a03      	lsrs	r3, r0, #8
 
-	for (i=0; i<9; i++) {
-		int remTime = 100 - i*10;
+	for (i=0; i<19; i++) {
+		int remTime = 250 - i*10;
 		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
 		adv_ind[adv_ind_len] = (calc_crc >> 0) & 0xff;
@@ -9944,8 +9944,8 @@ void bt_sync_le() {
 		adv_ind[adv_ind_len+1] = (calc_crc >> 8) & 0xff;
 		adv_ind[adv_ind_len+2] = (calc_crc >> 16) & 0xff;
     6f24:	0c00      	lsrs	r0, r0, #16
-	for (i=0; i<9; i++) {
-		int remTime = 100 - i*10;
+	for (i=0; i<19; i++) {
+		int remTime = 250 - i*10;
 		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
 		adv_ind[adv_ind_len] = (calc_crc >> 0) & 0xff;
@@ -9984,10 +9984,10 @@ static void usleep(uint32_t micro)
 	ICER0 = ICER0_ICE_DMA;
 
 	now_sync = (clkn & 0xffffff);
-	start_sync = now_sync + 100 * 10000 / 3125; // wait for 99.8 ms
+	start_sync = now_sync + 250 * 10000 / 3125; // wait for 99.8 ms
 
-	for (i=0; i<9; i++) {
-    6f4e:	2d0a      	cmp	r5, #10
+	for (i=0; i<19; i++) {
+    6f4e:	2d3c      	cmp	r5, #60	; 0x3c
     6f50:	d1df      	bne.n	6f12 <bt_sync_le+0x76>
 		adv_ind[adv_ind_len+1] = (calc_crc >> 8) & 0xff;
 		adv_ind[adv_ind_len+2] = (calc_crc >> 16) & 0xff;
@@ -20028,9 +20028,9 @@ BOOL USBHandleStandardRequest(TSetupPacket	*pSetup, int *piLen, U8 **ppbData)
 0000a073 <compile_info>:
     a073:	72656275 746f6f74 30322068 302d3731     ubertooth 2017-0
     a083:	32522d33 776d2820 6d406c6e 2d6c6e77     3-R2 (mwnl@mwnl-
-    a093:	6f6e656c 20296f76 39313032 3330202e     lenovo) 2019. 03
-    a0a3:	3732202e ec28202e 20299888 343a3331     . 27. (...) 13:4
-    a0b3:	35323a32 54534b20 bcb24000                       2:25 KST.
+    a093:	6f6e656c 20296f76 39313032 3430202e     lenovo) 2019. 04
+    a0a3:	3130202e ec28202e 2029949b 323a3431     . 01. (...) 14:2
+    a0b3:	31333a33 54534b20 bcb24000                       3:31 KST.
 
 0000a0bc <whitening_word>:
     a0bc:	c3bcb240 5f4a371f 9a9cf685 44c5d6c1     @....7J_.......D

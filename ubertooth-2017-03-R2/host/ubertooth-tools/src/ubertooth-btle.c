@@ -172,9 +172,9 @@ int syncStart(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_d
 	dataLen = ofsRssi;
 	ubertooth_stop(ut);
 
+	usleep(100);
 
-	free(ut);
-	ut = ubertooth_init();
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0) {
 		return 1;
@@ -211,8 +211,7 @@ int dataTx(uint8_t *mac_addr, uint8_t *data, int dlen, float txDur, ubertooth_t 
 	usleep(100000);
 
 	free(ut);
-	ut = (ubertooth_t *) realloc(ut, sizeof(ubertooth_t));
-	ut = ubertooth_init();
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0) 
 		return 1;
@@ -265,8 +264,8 @@ int scanGuest(uint8_t *APMAC, uint8_t **guestMac, int maxGuest, float rxDur, ube
 	}
 	ubertooth_stop(ut);
 
-	free(ut);
-	ut = ubertooth_init();
+	usleep(100);
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0) {
 		return status;
@@ -371,10 +370,8 @@ int listenSync(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_
 	dataLen = ofsRssi;
 	ubertooth_stop(ut);
 
-	free(ut);
-	ut = (ubertooth_t *) realloc(ut, sizeof(ubertooth_t));
-	memset(ut, 0, sizeof(ubertooth_t));
-	ut = ubertooth_init();
+	usleep(100);
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0)
 		return 1;
@@ -482,9 +479,9 @@ int listenPubkey(uint8_t *APMAC, int do_adv_index, uint8_t *pubKey, float dur, u
 	}
 
 	ubertooth_stop(ut);
-	free(ut);
-	
-	ut = ubertooth_init();
+
+	usleep(100);
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0)
 		return 1;
@@ -588,9 +585,9 @@ int listenPWD(uint8_t *APMAC, uint8_t *guestMac, int do_adv_index, uint8_t *pwd,
 	}
 
 	ubertooth_stop(ut);
-	free(ut);
-	
-	ut = ubertooth_init();
+
+	usleep(100);
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0)
 		return 1;
@@ -688,9 +685,9 @@ int listenData(uint8_t **guestMac, int nGuest, int *statGuest, int do_adv_index,
 	ubertooth_stop(ut);
 	free(ut);
 	
-	usleep(100000);
+	usleep(100);
 
-	ut = ubertooth_init();
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0)
 		return 1;
@@ -758,9 +755,9 @@ int listenAck(uint8_t *guestMac, int do_adv_index, int rxDur, ubertooth_t *ut, i
 	}
 
 	ubertooth_stop(ut);
-	free(ut);
-	
-	ut = ubertooth_init();
+
+	usleep(100);
+	ut = ubertooth_resume();
 	status = ubertooth_connect(ut, ubertooth_device);
 	if (status < 0)
 		return 1;
@@ -845,7 +842,7 @@ int main(int argc, char *argv[])
 	do_adv_index = 37;
 	do_slave_mode = do_target = do_data_mode = do_sync_mode = 0;
 	dlen = 0;
-	duration = 180000;
+	duration = 20000;
 
 	while ((opt=getopt(argc,argv,"a::r:hfoRpU:v::A:s:d:ST:l:t:x:H:G:c:o:q:jJiI")) != EOF) {
 		switch(opt) {
@@ -1158,7 +1155,7 @@ int main(int argc, char *argv[])
 			do_rssi = 1;
 			uint64_t start = 0;
 	
-			usleep(100000);
+			usleep(250000);
 			usb_pkt_rx rx;
 			while (1) {
 				int r = cmd_poll(ut->devh, &rx);

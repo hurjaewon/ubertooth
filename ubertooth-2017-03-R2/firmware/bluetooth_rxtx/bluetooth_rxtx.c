@@ -1770,7 +1770,7 @@ void bt_le_sync_rssi(u8 active_mode)
 	cc2400_rx_sync(rbit(le.access_address));
 
 	requested_channel = 1;
-	channel = 2472;
+	channel = 2462;
 	while (requested_mode == active_mode) {
 		if (requested_channel != 0) {
 			cc2400_strobe(SRFOFF);
@@ -2839,10 +2839,10 @@ void bt_sync_le() {
 	ICER0 = ICER0_ICE_DMA;
 
 	now_sync = (clkn & 0xffffff);
-	start_sync = now_sync + 100 * 10000 / 3125; // wait for 99.8 ms
+	start_sync = now_sync + 250 * 10000 / 3125; // wait for 99.8 ms
 
-	for (i=0; i<9; i++) {
-		int remTime = 100 - i*10;
+	for (i=0; i<19; i++) {
+		int remTime = 250 - i*10;
 		adv_ind[24] = (u8) (remTime >> 0) & 0xff; // 100ms remaining time
 		calc_crc = btle_calc_crc(le.crc_init_reversed, adv_ind, adv_ind_len);
 		adv_ind[adv_ind_len] = (calc_crc >> 0) & 0xff;

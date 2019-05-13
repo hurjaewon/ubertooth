@@ -546,6 +546,34 @@ ubertooth_t* ubertooth_init()
 	return ut;
 }
 
+ubertooth_t* ubertooth_resume()
+{
+	ubertooth_t* ut = (ubertooth_t*) realloc(ut, sizeof(ubertooth_t));
+	if(ut == NULL) {
+		fprintf(stderr, "Unable to allocate memory\n");
+		return NULL;
+	}
+
+	ut->fifo = fifo_init();
+	if(ut->fifo == NULL)
+		fprintf(stderr, "Unable to initialize ringbuffer\n");
+
+	ut->devh = NULL;
+	ut->rx_xfer = NULL;
+	ut->stop_ubertooth = 0;
+	ut->abs_start_ns = 0;
+	ut->start_clk100ns = 0;
+	ut->last_clk100ns = 0;
+	ut->clk100ns_upper = 0;
+
+	ut->h_pcap_bredr = NULL;
+	ut->h_pcap_le = NULL;
+	ut->h_pcapng_bredr = NULL;
+	ut->h_pcapng_le = NULL;
+
+	return ut;
+}
+
 int ubertooth_connect(ubertooth_t* ut, int ubertooth_device)
 {
 	int r = libusb_init(NULL);
