@@ -3,9 +3,11 @@
 #include <openssl/aes.h>
 #include <openssl/pem.h>
 #include <openssl/ssl.h>
-#include <openssl/bio.h>
-#include <openssl/err.h>
 #include <openssl/rsa.h>
+#include <openssl/evp.h>
+#include <openssl/ec.h>
+#include <openssl/ecdh.h>
+
 #include <string.h>
 #include <stdint.h>
 
@@ -141,3 +143,74 @@ int private_decrypt(unsigned char *enc_data, int data_len, unsigned char *key, u
 	int result = RSA_private_decrypt(data_len, enc_data, decrypted, rsa, RSA_PKCS1_PADDING);
 	return result;
 }
+
+EC_KEY *createECDH() {
+	EC_KEY *privKey = NULL;
+	if ((privKey = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1)) == NULL) {
+		printf("Failed to generate ECDH key curve\n");
+		return NULL;
+	}
+
+	if (EC_KEY_generate_key(privKey) != 1) {
+		printf("Failed to generate ECDH key\n");
+		return NULL;
+	}
+
+	return privKey;
+}
+
+int getECPubKey(EC_KEY *privKey, unsigned char *charPubKey) {
+	int i =0;
+	const EC_POINT *pubKey = EC_KEY_get0_public_key(privKey);
+
+	EC_GROUP *ec_group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
+	BIGNUM *x = BN_new();
+	BIGNUM *y = BN_new();
+
+	if (!EC_POINT_get_affine_coordinates_GFp(ec_group, pubKey, x, y, NULL)) {
+		printf("EC PubKey coordinate not generated!\n");
+		return 0;
+	}
+	unsigned char charX[32], charY[32];
+	BN_bn2bin(x, charX);
+	BN_bn2bin(y, charY);
+
+	for(i=0; i<32; i++) {
+		charPubKey[i] = charX[i];
+		charPubKey[i+32] = charY[i];
+	}
+	return 1;
+}
+
+int getSharedSecret(EC_KEY *key, unsigned char *charPubKey, size_t *secret_len, unsigned char *secret) {
+	int field_size, i;
+	const EC_POINT *peerPubKey;
+	EC_GROUP *ec_group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
+
+	unsigned char charX[32], charY[32];
+	for (i=0; i<32; i++) {
+		charX[i] = charPubKey[i];
+		charY[i] = charPubKey[i+32];
+	}
+	BIGNUM *x = BN_bin2bn(charX, 32, NULL);
+	BIGNUM *y = BN_bin2bn(charY, 32, NULL);
+
+	field_size = EC_GROUP_get_degree(EC_KEY_get0_group(key));
+	*secret_len = (field_size + 7)/8;
+
+	if ((secret = OPENSSL_malloc(*secret_len)) == NULL) {
+		printf("Failed to allocate memory for secret\n");
+		return 0;
+	}
+
+	if (!EC_POINT_set_affine_coordinates_GFp(ec_group, peerPubKey, x, y, NULL)) {
+		printf("EC peerPubKey coordinate not generated!\n");
+		return 0;
+	}
+
+	*secret_len = ECDH_compute_key(secret, *secret_len, peerPubKey, key, NULL);
+
+	return 1;
+}
+
+

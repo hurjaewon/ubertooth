@@ -24,6 +24,7 @@ set(INSTALL_DEFAULT_BINDIR "bin" CACHE STRING
 
 find_package(BTBB REQUIRED)
 find_package(BLUETOOTH)
+find_package(OpenSSL REQUIRED)
 
 if( ${BUILD_STATIC_BINS} )
 	find_package(USB1 REQUIRED)

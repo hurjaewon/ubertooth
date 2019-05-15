@@ -72,37 +72,50 @@ float kMeans(int8_t *rssi, int lenData) {
 		return -80;
 }
 
-int8_t *maFilter(int *sTime, int8_t *sRssi, int nSignal) {
+int maFilter(int *myTime, int8_t *myRssi, int nMySignal, int8_t *rssiMA) {
 	// Moving average filtering
 	FILE *output;
 	int i, j, index;
-	int8_t *rssiMA = malloc(sizeof(int8_t)*300);
-	float *Samples = malloc(sizeof(float)*300);
-	float *nSample = malloc(sizeof(float)*300);
+	float *Samples = malloc(sizeof(float)*500);
+	float *nSample = malloc(sizeof(float)*500);
 	
-	memset(rssiMA, 0, sizeof(int8_t)*300);
-	memset(Samples, 0, sizeof(float)*300);
-	memset(nSample, 0, sizeof(float)*300);
+	memset(rssiMA, 0, sizeof(int8_t)*500);
+	memset(Samples, 0, sizeof(float)*500);
+	memset(nSample, 0, sizeof(float)*500);
 
 	// Make a 10 ms  moving averaged samples of 3 seconds, which equals 300 bytes
-	for (i=0; i<nSignal; i++) {
-		if (sTime[i] < 3000e4) {
-			index = sTime[i] / 10e4;
-			Samples[index] += sRssi[i];
+	for (i=0; i<nMySignal; i++) {
+		if (myTime[i] < 5000e4) {
+			index = myTime[i] / 10e4;
+			Samples[index] += myRssi[i];
 			nSample[index]++;
 		}
 	}
 
-	for (i=0; i<300; i++) {
+	for (i=0; i<500; i++) {
 		if (nSample[i] == 0) {
-			for (j=0; j<i; j++) {
-				if (nSample[j] != 0)
-					Samples[i] = Samples[j];
+			j=i-1;
+			while (j>=0) {
+				if (nSample[j] != 0) {
+					rssiMA[i] = Samples[j] / nSample[j];
+					break;
+				}
+				j--;
 			}
 		} else {
-			Samples[i] /= nSample[i];
+			rssiMA[i] = Samples[i] / nSample[i];
 		}
-		rssiMA[i] = (int8_t) Samples[i];
+	}
+
+	if (nSample[0] == 0) {
+		i = 1;
+		while(i<500) {
+			if (nSample[i] != 0) {
+				rssiMA[0] = rssiMA[i];
+				break;
+			}
+			i++;
+		}
 	}
 
 	// Save Moving averaged data to rssiMA.dat
@@ -118,7 +131,7 @@ int8_t *maFilter(int *sTime, int8_t *sRssi, int nSignal) {
 	fclose(output);	
 */
 	free(nSample); free(Samples); 
-	return rssiMA;
+	return 1;
 }
 
 int signalDetect(int *time, int8_t *rssi, int *sTime, int8_t *sRssi, int lenData, float threshold, char *oFile) {
@@ -145,6 +158,34 @@ int signalDetect(int *time, int8_t *rssi, int *sTime, int8_t *sRssi, int lenData
 	fclose(output);
 
 	return nSignal;
+}
+
+int mySignalDetect(int *sTime, int8_t *sRssi, int *myTime, int8_t *myRssi, int lenData) {
+	int i, j;
+	int nMySignal = 0;
+	int meanRssi = 0, stdRssi = 0, rDiff;
+
+	for(i=0; i<lenData; i++)
+		meanRssi += sRssi[i];
+	meanRssi /= lenData;
+
+	for(i=0; i<lenData; i++)
+		stdRssi += (sRssi[i] - meanRssi) * (sRssi[i] - meanRssi);
+	stdRssi /= lenData;
+	stdRssi = sqrt(stdRssi);
+
+	printf("meanRssi: %d, stdRssi: %d\n", meanRssi, stdRssi);
+
+	for(i=0; i<lenData; i++) {
+		rDiff = sRssi[i] - meanRssi;
+		if (rDiff > -stdRssi && rDiff < stdRssi) {
+			myTime[nMySignal] = sTime[i];
+			myRssi[nMySignal] = sRssi[i];
+			nMySignal++;
+		}
+	}
+
+	return nMySignal;
 }
 
 int makeBarcode(int *eTime, int *eRssi, int nEdge, int *Barcode, char *oFile) {
@@ -221,7 +262,7 @@ int getData(char *tFile, char*rFile, int *time, int *rssi) {
 }
 
 int8_t *procData(int *rTime, int8_t *rssi, int lenData) {
-	int nSignal, nDiff = 0, i;
+	int nSignal, nMySignal, nDiff = 0, i;
 	float thr;
 	srand(time(NULL));
 
@@ -235,11 +276,16 @@ int8_t *procData(int *rTime, int8_t *rssi, int lenData) {
 	int8_t *sRssi = malloc(sizeof(int8_t)*lenData);
 	int *sTime = malloc(sizeof(int)*lenData);
 	nSignal = signalDetect(rTime, rssi, sTime, sRssi, lenData, -82,"signal.dat");
+
+	int8_t *myRssi = (int8_t *)malloc(sizeof(int8_t)*nSignal);
+	int *myTime = (int *)malloc(sizeof(int)*nSignal);
+	nMySignal = mySignalDetect(sTime, sRssi, myTime, myRssi, nSignal);
 	
-	int8_t *rssiMA = malloc(sizeof(int8_t) * 300);
-	rssiMA = maFilter(sTime, sRssi, nSignal);
+	int8_t *rssiMA = malloc(sizeof(int8_t) * 500);
+	int status = maFilter(myTime, myRssi, nMySignal, rssiMA);
 
 	free(sRssi); free(sTime);
+	free(myRssi); free(myTime);
 	return rssiMA;
 }
 

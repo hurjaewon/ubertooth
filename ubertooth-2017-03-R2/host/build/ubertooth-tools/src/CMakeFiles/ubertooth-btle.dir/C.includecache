@@ -99,6 +99,12 @@ time.h
 -
 stdint.h
 -
+openssl/evp.h
+-
+openssl/ec.h
+-
+openssl/ecdh.h
+-
 ubertooth.h
 /home/mwnl/JWHUR/ubertooth/ubertooth-2017-03-R2/host/ubertooth-tools/src/ubertooth.h
 ubertooth_callback.h

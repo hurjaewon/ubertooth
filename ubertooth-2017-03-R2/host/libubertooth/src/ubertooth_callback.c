@@ -64,8 +64,8 @@ static void determine_signal_and_noise( usb_pkt_rx *rx, int8_t * sig, int8_t * n
 
 	/* Shift rssi max history and append current max */
 	memmove(channel_rssi_history,
-	        channel_rssi_history+1,
-	        RSSI_HISTORY_LEN-1);
+			channel_rssi_history+1,
+			RSSI_HISTORY_LEN-1);
 	channel_rssi_history[RSSI_HISTORY_LEN-1] = rx->rssi_max;
 
 #if 0
@@ -87,7 +87,7 @@ static void determine_signal_and_noise( usb_pkt_rx *rx, int8_t * sig, int8_t * n
 
 static uint64_t now_ns( void )
 {
-/* As per Apple QA1398 */
+	/* As per Apple QA1398 */
 #if defined( __APPLE__ )
 	static mach_timebase_info_data_t sTimebaseInfo;
 	uint64_t ts = mach_absolute_time( );
@@ -120,8 +120,8 @@ static uint64_t now_ns_from_clk100ns( ubertooth_t* ut, const usb_pkt_rx* rx )
 {
 	track_clk100ns( ut, rx );
 	return ut->abs_start_ns +
-	       100ull*(uint64_t)((rx->clk100ns - ut->start_clk100ns) & 0xffffffff) +
-	       ((100ull*ut->clk100ns_upper)<<32);
+		100ull*(uint64_t)((rx->clk100ns - ut->start_clk100ns) & 0xffffffff) +
+		((100ull*ut->clk100ns_upper)<<32);
 }
 
 /* Sniff for LAPs. If a piconet is provided, use the given LAP to
@@ -159,18 +159,18 @@ void cb_scan(ubertooth_t* ut, void* args __attribute__((unused)))
 	 * btbb library can shift it be CLK1 if needed. */
 	clkn = (rx->clkn_high << 20) + (le32toh(rx->clk100ns) + offset*10) / 3125;
 	btbb_packet_set_data(pkt, syms + offset, BANK_LEN - offset,
-	                     rx->channel, clkn);
+			rx->channel, clkn);
 
 	printf("systime=%u ch=%2d LAP=%06x err=%u clk100ns=%u clk1=%u s=%d n=%d snr=%d\n",
-	       (int)time(NULL),
-	       btbb_packet_get_channel(pkt),
-	       btbb_packet_get_lap(pkt),
-	       btbb_packet_get_ac_errors(pkt),
-	       rx->clk100ns,
-	       btbb_packet_get_clkn(pkt),
-	       signal_level,
-	       noise_level,
-	       snr);
+			(int)time(NULL),
+			btbb_packet_get_channel(pkt),
+			btbb_packet_get_lap(pkt),
+			btbb_packet_get_ac_errors(pkt),
+			rx->clk100ns,
+			btbb_packet_get_clkn(pkt),
+			signal_level,
+			noise_level,
+			snr);
 
 	btbb_process_packet(pkt, NULL);
 
@@ -202,13 +202,13 @@ void cb_afh_initial(ubertooth_t* ut, void* args)
 
 		/* Don't allow single unused channels */
 		if (!btbb_piconet_get_channel_seen(pn, channel+1) &&
-		    btbb_piconet_get_channel_seen(pn, channel+2))
+				btbb_piconet_get_channel_seen(pn, channel+2))
 		{
 			printf("activating additional channel %d\n", channel+1);
-		    btbb_piconet_set_channel_seen(pn, channel+1);
+			btbb_piconet_set_channel_seen(pn, channel+1);
 		}
 		if (!btbb_piconet_get_channel_seen(pn, channel-1) &&
-		    btbb_piconet_get_channel_seen(pn, channel-2))
+				btbb_piconet_get_channel_seen(pn, channel-2))
 		{
 			printf("activating additional channel %d\n", channel-1);
 			btbb_piconet_set_channel_seen(pn, channel-1);
@@ -250,24 +250,24 @@ void cb_afh_monitor(ubertooth_t* ut, void* args)
 	if(btbb_piconet_set_channel_seen(pn, channel)) {
 		printf("+ channel %2d is used now\n", channel);
 		btbb_print_afh_map(pn);
-	// } else {
-	// 	printf("channel %d is already used\n", channel);
-	}
+		// } else {
+		// 	printf("channel %d is already used\n", channel);
+}
 
-	for(i=0; i<79; i++) {
-		if((counter - last_seen[i] >= packet_counter_max)) {
-			if(btbb_piconet_clear_channel_seen(pn, i)) {
-				printf("- channel %2d is not used any more\n", i);
-				btbb_print_afh_map(pn);
-			}
+for(i=0; i<79; i++) {
+	if((counter - last_seen[i] >= packet_counter_max)) {
+		if(btbb_piconet_clear_channel_seen(pn, i)) {
+			printf("- channel %2d is not used any more\n", i);
+			btbb_print_afh_map(pn);
 		}
 	}
-	cmd_hop(ut->devh);
+}
+cmd_hop(ut->devh);
 
 out:
-	if (pkt)
-		btbb_packet_unref(pkt);
-}
+if (pkt)
+	btbb_packet_unref(pkt);
+	}
 
 void cb_afh_r(ubertooth_t* ut, void* args)
 {
@@ -374,10 +374,10 @@ int cb_btle(ubertooth_t* ut, void* args)
 
 	/* do nothing further if filtered due to bad AA */
 	// JWHUR for nearfield test
-	 
+
 	if (opts &&
-	    (opts->allowed_access_address_errors <
-	     lell_get_access_address_offenses(pkt))) {
+			(opts->allowed_access_address_errors <
+			 lell_get_access_address_offenses(pkt))) {
 		lell_packet_unref(pkt);
 		return;
 	}
@@ -391,19 +391,19 @@ int cb_btle(ubertooth_t* ut, void* args)
 		/* only one of these two will succeed, depending on
 		 * whether PCAP was opened with DLT_PPI or not */
 		lell_pcap_append_packet(ut->h_pcap_le, nowns,
-					sig, noise,
-					refAA, pkt);
+				sig, noise,
+				refAA, pkt);
 		// read the above comment: this function may silently fail
 		lell_pcap_append_ppi_packet(ut->h_pcap_le, nowns,
-		                            rx->clkn_high,
-		                            rx->rssi_min, rx->rssi_max,
-		                            rx->rssi_avg, rx->rssi_count,
-		                            pkt);
+				rx->clkn_high,
+				rx->rssi_min, rx->rssi_max,
+				rx->rssi_avg, rx->rssi_count,
+				pkt);
 	}
 	if (ut->h_pcapng_le) {
 		lell_pcapng_append_packet(ut->h_pcapng_le, nowns,
-		                          sig, noise,
-		                          refAA, pkt);
+				sig, noise,
+				refAA, pkt);
 	}
 
 	// rollover
@@ -414,8 +414,8 @@ int cb_btle(ubertooth_t* ut, void* args)
 	prev_ts = rx->clk100ns;
 
 	printf("systime=%u freq=%d addr=%08x delta_t=%.03f ms rssi=%d\n",
-	       systime, rx->channel + 2402, lell_get_access_address(pkt),
-	       ts_diff / 10000.0, rx->rssi_min - 54);
+			systime, rx->channel + 2402, lell_get_access_address(pkt),
+			ts_diff / 10000.0, rx->rssi_min - 54);
 
 	int len = (rx->data[5] & 0x3f) + 6 + 3;
 	if (len > 50) len = 50;
@@ -425,10 +425,10 @@ int cb_btle(ubertooth_t* ut, void* args)
 	printf("\n");
 
 	// JWHUR packet based
-/*	if (rx->data[11] == 0xec &&rx->data[10] == 0x55 &&rx->data[9] == 0xf9 &&rx->data[8] == 0x7c &&rx->data[7] == 0xc9 &&rx->data[6] == 0x93) {
+	/*	if (rx->data[11] == 0xec &&rx->data[10] == 0x55 &&rx->data[9] == 0xf9 &&rx->data[8] == 0x7c &&rx->data[7] == 0xc9 &&rx->data[6] == 0x93) {
 		int pNum = (rx->data[24] << 24) | (rx->data[25] << 16) | (rx->data[26] << 8) | rx->data[27];
 		printf("%d	%d\n", pNum, rx->rssi_min-54);
-	}*/
+		}*/
 	//JWHUR test synchronization protocol
 	//When receive 'SYNC', stop ble scanning
 	if (rx->data[23] == 0xff && rx->data[24] == 0x53 && rx->data[25] == 0x59 && rx->data[26] == 0x4e && rx->data[27] == 0x43) {
@@ -449,7 +449,7 @@ int recv_PUB(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uint
 {
 	int PAYLOAD_LEN = 11;
 	int i, j, ret = 0;
-	
+
 	usb_pkt_rx usb = fifo_pop(ut->fifo);
 	usb_pkt_rx* rx = &usb;
 
@@ -487,7 +487,7 @@ int recv_PWD(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uint
 {
 	int PAYLOAD_LEN = 11;
 	int i, j, ret = 0;
-	
+
 	usb_pkt_rx usb = fifo_pop(ut->fifo);
 	usb_pkt_rx* rx = &usb;
 
@@ -500,10 +500,10 @@ int recv_PWD(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uint
 				nFrag[0] = (int) rx->data[21];
 				fNum[0] = (int) (rx->data[23] - 0xaa);
 				pLen[0] = (int) (rx->data[16] - 0x07);
-				
+
 				for (j=0; j<pLen[0]; j++) 
 					frag[j] = rx->data[24+j];
-				
+
 				ret = 1;
 			} else {
 				fNum[0] = (int) (rx->data[23] - 0xaa);
@@ -525,7 +525,7 @@ int recv_DATA(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uin
 {
 	int PAYLOAD_LEN = 11;
 	int i, j, ret = -1;
-	
+
 	usb_pkt_rx usb = fifo_pop(ut->fifo);
 	usb_pkt_rx* rx = &usb;
 
@@ -539,7 +539,7 @@ int recv_DATA(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uin
 				break;
 			}
 		}
-		
+
 		if (ret == -1)
 			return ret;
 
@@ -547,7 +547,7 @@ int recv_DATA(ubertooth_t* ut, int target, int *nFrag, int *fNum, int *pLen, uin
 			nFrag[0] = (int) rx->data[21];
 			fNum[0] = (int) (rx->data[23] - 0xaa);
 			pLen[0] = (int) (rx->data[16] - 0x07);
-		
+
 			for (j=0; j<pLen[0]; j++) 
 				frag[j] = rx->data[24+j];
 		} else if (statGuest[ret] == 1) {
@@ -571,7 +571,7 @@ int find_SYNC(ubertooth_t* ut, uint8_t *APMAC)
 {
 	int sync = 0;
 	int i;
-	
+
 	usb_pkt_rx usb = fifo_pop(ut->fifo);
 	usb_pkt_rx* rx = &usb;
 	// u32 access_address = 0; // Build warning
@@ -593,7 +593,7 @@ int find_SYNC(ubertooth_t* ut, uint8_t *APMAC)
 
 int find_Guest(ubertooth_t* ut, uint8_t *APMAC, uint8_t **guestMac, int nGuest)
 {
-	int i;
+	int i, j;
 	usb_pkt_rx usb = fifo_pop(ut->fifo);
 	usb_pkt_rx* rx = &usb;
 
@@ -606,7 +606,7 @@ int find_Guest(ubertooth_t* ut, uint8_t *APMAC, uint8_t **guestMac, int nGuest)
 				return nGuest;
 		}
 		nGuest++;
-		for(i=0; i<6; i++)
+		for (i=0; i<6; i++)
 			guestMac[nGuest-1][i] = rx->data[11-i];
 	}
 
@@ -648,12 +648,12 @@ void cb_btle_tracking(ubertooth_t* ut, void* args)
 		gettimeofday(&tv, NULL);
 		double time_in_null = (tv.tv_sec) * 1000 + (tv.tv_usec)/1000;
 		printf("\nCFO systime %f, Device: %d\n", time_in_null, rx->reserved[0]);
-	len = (rx->data[DMA_SIZE - 1] & 0x03f) + 6 + 3;
-	printf("cfo estimation : ");
-	for (i = 0; i < 35; i++)
-		printf("%02x ", rx->data[i]);
-	printf("\n\n");
-	fflush(stdout);
+		len = (rx->data[DMA_SIZE - 1] & 0x03f) + 6 + 3;
+		printf("cfo estimation : ");
+		for (i = 0; i < 35; i++)
+			printf("%02x ", rx->data[i]);
+		printf("\n\n");
+		fflush(stdout);
 	} else if (rx->pkt_type == RSSI_TRACK) {	
 		u32 rx_ts = rx->clk100ns;
 		if (rx_ts < prev_ts) rx_ts += 327600000;
@@ -768,8 +768,8 @@ void cb_ego(ubertooth_t* ut, void* args __attribute__((unused)))
 	u32 ts_diff = rx_time - prev_ts;
 	prev_ts = rx->clk100ns;
 	printf("time=%u delta_t=%.06f ms freq=%d \n",
-	       rx->clk100ns, ts_diff / 10000.0,
-	       rx->channel + 2402);
+			rx->clk100ns, ts_diff / 10000.0,
+			rx->channel + 2402);
 
 	int len = 36; // FIXME
 
@@ -845,7 +845,7 @@ void cb_rx(ubertooth_t* ut, void* args)
 	 * btbb library can shift it be CLK1 if needed. */
 	clkn = (le32toh(rx->clkn_high) << 20) + (le32toh(rx->clk100ns) + offset*10 - 4000) / 3125;
 	btbb_packet_set_data(pkt, syms + offset, BANK_LEN*10 - offset,
-	                     rx->channel, clkn);
+			rx->channel, clkn);
 
 	/* When reading from file, caller will read
 	 * systime before calling this routine, so do
@@ -854,47 +854,47 @@ void cb_rx(ubertooth_t* ut, void* args)
 		systime = time(NULL);
 
 	printf("systime=%u ch=%2d LAP=%06x err=%u clkn=%u clk_offset=%u s=%d n=%d snr=%d\n",
-	       (uint32_t)time(NULL),
-	       btbb_packet_get_channel(pkt),
-	       btbb_packet_get_lap(pkt),
-	       btbb_packet_get_ac_errors(pkt),
-	       clkn,
-	       clk_offset,
-	       signal_level,
-	       noise_level,
-	       snr
-	);
+			(uint32_t)time(NULL),
+			btbb_packet_get_channel(pkt),
+			btbb_packet_get_lap(pkt),
+			btbb_packet_get_ac_errors(pkt),
+			clkn,
+			clk_offset,
+			signal_level,
+			noise_level,
+			snr
+		  );
 
 	/* calibrate Ubertooth clock such that the first bit of the AC
 	 * arrives CLK_TUNE_TIME after the rising edge of CLKN */
 	if (pn != NULL && infile == NULL) {
 		if (trim_counter < -CLOCK_TRIM_THRESHOLD
-		    || ((clk_offset < CLK_TUNE_TIME) && !calibrated)) {
+				|| ((clk_offset < CLK_TUNE_TIME) && !calibrated)) {
 			printf("offset < CLK_TUNE_TIME\n");
 			printf("CLK100ns Trim: %d\n", 6250 + clk_offset - CLK_TUNE_TIME);
 			cmd_trim_clock(ut->devh, 6250 + clk_offset - CLK_TUNE_TIME);
 			trim_counter = 0;
 			if (calibrated) {
 				printf("Clock drifted %d in %f s. %d PPM too slow.\n",
-				       (clk_offset-CLK_TUNE_TIME),
-				       (double)(clkn-clkn_trim)/3200,
-				       (clk_offset-CLK_TUNE_TIME) * 320 / (int32_t)(clkn-clkn_trim));
+						(clk_offset-CLK_TUNE_TIME),
+						(double)(clkn-clkn_trim)/3200,
+						(clk_offset-CLK_TUNE_TIME) * 320 / (int32_t)(clkn-clkn_trim));
 				cmd_fix_clock_drift(ut->devh, (clk_offset-CLK_TUNE_TIME) * 320 / (int32_t)(clkn-clkn_trim));
 			}
 			clkn_trim = clkn;
 			calibrated = 1;
 			goto out;
 		} else if (trim_counter > CLOCK_TRIM_THRESHOLD
-		           || ((clk_offset > CLK_TUNE_TIME) && !calibrated)) {
+				|| ((clk_offset > CLK_TUNE_TIME) && !calibrated)) {
 			printf("offset > CLK_TUNE_TIME\n");
 			printf("CLK100ns Trim: %d\n", clk_offset - CLK_TUNE_TIME);
 			cmd_trim_clock(ut->devh, clk_offset - CLK_TUNE_TIME);
 			trim_counter = 0;
 			if (calibrated) {
 				printf("Clock drifted %d in %f s. %d PPM too fast.\n",
-				       (clk_offset-CLK_TUNE_TIME),
-				       (double)(clkn-clkn_trim)/3200,
-				       (clk_offset-CLK_TUNE_TIME) * 320 / (clkn-clkn_trim));
+						(clk_offset-CLK_TUNE_TIME),
+						(double)(clkn-clkn_trim)/3200,
+						(clk_offset-CLK_TUNE_TIME) * 320 / (clkn-clkn_trim));
 				cmd_fix_clock_drift(ut->devh, (clk_offset-CLK_TUNE_TIME) * 320 / (clkn-clkn_trim));
 			}
 			clkn_trim = clkn;
@@ -928,13 +928,13 @@ void cb_rx(ubertooth_t* ut, void* args)
 	/* Dump to PCAP/PCAPNG if specified */
 	if (ut->h_pcap_bredr) {
 		btbb_pcap_append_packet(ut->h_pcap_bredr, nowns,
-		                        signal_level, noise_level,
-		                        lap, uap, pkt);
+				signal_level, noise_level,
+				lap, uap, pkt);
 	}
 	if (ut->h_pcapng_bredr) {
 		btbb_pcapng_append_packet(ut->h_pcapng_bredr, nowns,
-		                          signal_level, noise_level,
-		                          lap, uap, pkt);
+				signal_level, noise_level,
+				lap, uap, pkt);
 	}
 
 	if(infile == NULL && r < 0) {

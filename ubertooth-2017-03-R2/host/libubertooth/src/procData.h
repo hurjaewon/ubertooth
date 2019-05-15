@@ -5,8 +5,9 @@
 
 float kMeans_clustering(int8_t *rssi, int *cls1, int *cls2, int lenData, float *mu);
 float kMeans(int8_t *rssi, int lenData);
-int8_t *maFilter(int *sTime, int8_t *sRssi, int nSignal);
+int maFilter(int *myTime, int8_t *myRssi, int nMySignal, int8_t *rssiMA);
 int signalDetect(int *time, int8_t *rssi, int *sTime, int8_t *sRssi, int lenData, float threshold, char *oFile);
+int mySignalDetect(int *sTime, int8_t *sRssi, int *myTime, int8_t *myRssi, int lenData);
 int makeBarcode(int *eTime, int *eRssi, int nEdge, int *Barcode, char *oFile);
 int getData(char *tFile, char*rFile, int *time, int *rssi);
 int8_t *procData(int *rTime, int8_t *rssi, int lenData);

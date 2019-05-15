@@ -1744,9 +1744,9 @@ void bt_le_sync_rssi(u8 active_mode)
 		while ((clkn & 0xffffff) < start_sync);
 	}
 
-	// rssi sampling for only 3000 ms
+	// rssi sampling for only 5000 ms
 	uint32_t now = (clkn & 0xffffff);
-	uint32_t stop_at = now + 10000 * 10000 / 3125; // millis -> clkn ticks
+	uint32_t stop_at = now + 5000 * 10000 / 3125; // millis -> clkn ticks
 	int overflow = 0;
 	// handle clkn overflow
 	if (stop_at >= ((uint32_t)1<<28)) {
