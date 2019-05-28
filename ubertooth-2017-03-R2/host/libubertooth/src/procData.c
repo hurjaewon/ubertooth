@@ -400,7 +400,6 @@ int startAPTx() {
 	return 0;
 }
 	
-
 int getBCHdata(char *APMAC, uint8_t *data) {
 	FILE *dataFile;
 	int status, len, i;

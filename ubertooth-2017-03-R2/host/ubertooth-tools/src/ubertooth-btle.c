@@ -103,7 +103,7 @@ int convert_data(char *filename, uint8_t *o) {
 	return slen+1;
 }
 
-int syncStart(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_device, int *time, int8_t *rssi) {
+int syncStart(uint8_t *myMac, int do_adv_index, ubertooth_t *ut, int ubertooth_device, int *time, int8_t *rssi) {
 	int status, i, ofsRssi, ofsTime, dataLen;
 	u16 channel;
 
@@ -117,7 +117,7 @@ int syncStart(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_d
 
 	printf("********** Start RSSI Sampling **********\n");
 
-	cmd_btle_slave(ut->devh, APMAC, UBERTOOTH_BTLE_SYNC, 6);
+	cmd_btle_slave(ut->devh, myMac, UBERTOOTH_BTLE_SYNC, 6);
 	struct timespec tspec;
 	clock_gettime(CLOCK_MONOTONIC, &tspec);
 	uint64_t sync_start = (tspec.tv_sec)*1000 + (tspec.tv_nsec)/1000000;
@@ -195,12 +195,12 @@ int dataTx(uint8_t *mac_addr, uint8_t *data, int dlen, float txDur, ubertooth_t 
 	for(i=0; i<6; i++) tot_data[i] = mac_addr[i];
 	for(i=0; i<dlen; i++) tot_data[i+6] = data[i];
 
-	printf("Tx Mac address: ");
+/*	printf("Tx Mac address: ");
 	for(i=0; i<6; i++) printf("%02x ", mac_addr[i]);
 	printf("\nBroadcast data: \n");
 	for(i=0; i<dlen; i++) printf("%02x ", tot_data[i+6]);
 	printf("\ndlen: %d", dlen);
-	printf("\n");
+	printf("\n");*/
 	cmd_btle_slave(ut->devh, tot_data, UBERTOOTH_BTLE_SLAVE, dlen+6);
 
 	usleep(txDur * 1000000);
@@ -226,7 +226,7 @@ int dataTx(uint8_t *mac_addr, uint8_t *data, int dlen, float txDur, ubertooth_t 
 	return status;
 }
 
-int scanGuest(uint8_t *APMAC, uint8_t **guestMac, int maxGuest, float rxDur, ubertooth_t *ut, int ubertooth_device) {
+int scanGuest(uint8_t *myMac, uint8_t **guestMac, int maxGuest, float rxDur, ubertooth_t *ut, int ubertooth_device) {
 
 	printf("********** Start Scanning Guest **********\n");
 	int status, nGuest = 0, i;
@@ -255,7 +255,7 @@ int scanGuest(uint8_t *APMAC, uint8_t **guestMac, int maxGuest, float rxDur, ube
 		}
 		if (r == sizeof(usb_pkt_rx)) {
 			fifo_push(ut->fifo, &rx);
-			nGuest = find_Guest(ut, APMAC, guestMac, nGuest);
+			nGuest = find_Guest(ut, myMac, guestMac, nGuest);
 			if (nGuest == maxGuest)
 				break;
 		}
@@ -279,7 +279,7 @@ int scanGuest(uint8_t *APMAC, uint8_t **guestMac, int maxGuest, float rxDur, ube
 	return nGuest;
 }
 
-int listenSync(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_device, int *time, int8_t *rssi) {
+int listenSync(uint8_t *myMac, int do_adv_index, ubertooth_t *ut, int ubertooth_device, int *time, int8_t *rssi) {
 
 	printf("********** Start Sync Packet Listening **********\n");
 	int status, sync = 0, rssiSampling = 0;
@@ -313,7 +313,7 @@ int listenSync(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_
 		}
 		if (r == sizeof(usb_pkt_rx)) {
 			fifo_push(ut->fifo, &rx);
-			if (!rssiSampling) sync = find_SYNC(ut, APMAC);
+			if (!rssiSampling) sync = find_SYNC(ut, myMac);
 			if (!rssiSampling) {
 				if (sync == 1) {
 					clock_gettime(CLOCK_MONOTONIC, &tspec);
@@ -384,7 +384,7 @@ int listenSync(uint8_t *APMAC, int do_adv_index, ubertooth_t *ut, int ubertooth_
 	return dataLen;
 }
 
-int listenPubkey(uint8_t *APMAC, int do_adv_index, uint8_t *pubKey, float dur, ubertooth_t *ut, int ubertooth_device) {
+int listenPubkey(uint8_t *myMac, int do_adv_index, uint8_t *pubKey, float dur, ubertooth_t *ut, int ubertooth_device) {
 
 	printf("********** Start Public Key Listening **********\n");
 	int PAYLOAD_LEN = 11;
@@ -492,7 +492,7 @@ int listenPubkey(uint8_t *APMAC, int do_adv_index, uint8_t *pubKey, float dur, u
 	register_cleanup_handler(ut, 1);
 
 	for (i=0; i<6; i++)
-		APMAC[i] = targetMac[i];
+		myMac[i] = targetMac[i];
 
 	if (target == 1)
 		free(fragRecv); 
@@ -500,11 +500,11 @@ int listenPubkey(uint8_t *APMAC, int do_adv_index, uint8_t *pubKey, float dur, u
 	return keyLen;
 }
 
-int listenPWD(uint8_t *APMAC, uint8_t *guestMac, int do_adv_index, unsigned char *pwd, int dur, ubertooth_t *ut, int ubertooth_device) {
+int listenMessage(uint8_t *myMac, uint8_t *guestMac, int do_adv_index, unsigned char *encMessage, int dur, ubertooth_t *ut, int ubertooth_device) {
 
 	printf("********** Start Listening Password **********\n");
 	int PAYLOAD_LEN = 11;
-	int status, pwdRecv = 0, pwdLen = 0, numF = 0;
+	int status, msgRecv = 0, msgLen = 0, numF = 0;
 	int *fragRecv, nFrag[1], fNum[1], pLen[1];
 	uint8_t targetMac[6] = {0,};
 	int i, j, target = 0, same = 0;
@@ -545,32 +545,32 @@ int listenPWD(uint8_t *APMAC, uint8_t *guestMac, int do_adv_index, unsigned char
 					fragRecv = (int *) malloc(sizeof(int)*numF);
 					memset(fragRecv, 0, sizeof(int) * numF);
 					for (i=0; i<pLen[0]; i++) 
-						pwd[PAYLOAD_LEN * fNum[0] + i] = frag[i];
+						encMessage[PAYLOAD_LEN * fNum[0] + i] = frag[i];
 					fragRecv[fNum[0]] = pLen[0];
 				}
 			} else {
 				same = recv_PWD(ut, target, nFrag, fNum, pLen, guestMac, frag);
 				if (same == 2 && fragRecv[fNum[0]] == 0) {
 					for (i=0; i<pLen[0]; i++) 
-						pwd[PAYLOAD_LEN * fNum[0] + i] = frag[i];
+						encMessage[PAYLOAD_LEN * fNum[0] + i] = frag[i];
 					fragRecv[fNum[0]] = pLen[0];
 				}
 			}
 
 			if (target) {
-				pwdLen = 0;
-				pwdRecv = 1;
+				msgLen = 0;
+				msgRecv = 1;
 				for (i=0; i<numF; i++) {
 					if (fragRecv[i] == 0) {
-						pwdLen = 0;
-						pwdRecv = 0;
+						msgLen = 0;
+						msgRecv = 0;
 						break;
 					}
-					pwdLen += fragRecv[i];
+					msgLen += fragRecv[i];
 				}
 			}
 
-			if (pwdRecv) {
+			if (msgRecv) {
 				printf("Password received\n");
 				break;
 			}
@@ -598,13 +598,13 @@ int listenPWD(uint8_t *APMAC, uint8_t *guestMac, int do_adv_index, unsigned char
 	register_cleanup_handler(ut, 1);
 
 	for (i=0; i<6; i++)
-		APMAC[i] = targetMac[i];
+		myMac[i] = targetMac[i];
 
 	if (target == 1)
 		free(fragRecv); 
 	free(frag);
 
-	return pwdLen;
+	return msgLen;
 }
 
 int listenData(uint8_t **guestMac, int nGuest, int *statGuest, int do_adv_index, unsigned char **guestData, float dur, ubertooth_t *ut, int ubertooth_device) {
@@ -779,14 +779,12 @@ float getMMR(unsigned char *hostBitSeq, unsigned char *guestBitSeq, int seqLen)
 	unsigned char hostBit, guestBit;
 	float misMatch = 0;
 
-	printf("hostBit: ");
 	for(i=0; i<seqLen-1; i++) {
 		for(j=0; j<8; j++) {
 			hostBit = (hostBitSeq[i] >> j) & 0x1;
 			guestBit = (guestBitSeq[i] >> j) & 0x1;
 			if (hostBit == guestBit)
 				misMatch += 1;
-			printf("%d ", hostBit);
 		}
 	}
 	for(j=0; j<4; j++) {
@@ -794,9 +792,7 @@ float getMMR(unsigned char *hostBitSeq, unsigned char *guestBitSeq, int seqLen)
 		guestBit = (guestBitSeq[seqLen-1] >> j) & 0x1;
 		if (hostBit != guestBit)
 			misMatch += 1;
-		printf("%d ", hostBit);
 	}
-	printf("\n");
 
 	return misMatch/100;
 }
@@ -1266,9 +1262,8 @@ int main(int argc, char *argv[])
 		int minMMRGuest = 0;
 		float mmrTemp = 1;
 		float *MMR = (float *) malloc(sizeof(float)*maxGuest);
-		char APSSID[100] = "", APPWD[100] = "", APMAC[17] = "";
-		unsigned char encAPPWD[32] = "";
-		uint8_t APmac[6] = {0,};
+		char authMessage[22] = "You are authenticated!";
+		unsigned char myMac[6], encMessage[32] = "";
 		uint8_t **guestMac = (uint8_t **) malloc(sizeof(uint8_t *)*maxGuest);
 		unsigned char **guestPubKey = (unsigned char **) malloc(sizeof(unsigned char *)*maxGuest);
 		unsigned char **guestData = (unsigned char **) malloc(sizeof(unsigned char *)*maxGuest);
@@ -1286,21 +1281,21 @@ int main(int argc, char *argv[])
 		start = (tspec.tv_sec)*1000 + (tspec.tv_nsec)/1000000;
 
 		// Get AP information
-		status = getAPInfo(APMAC, APSSID, APPWD);
-		printf("APSSID: %s, APMAC: %s, APPWD: %s\n", APSSID, APMAC, APPWD);
-		convert_mac_address(APMAC, APmac);
+		for(i=0; i<6; i++)
+			myMac[i] = mac_address[i];
+
 		// ECDH private, public key generation
 		privKey = createECDH();
 		status = getECPubKey(privKey, myPubKey);
-		for (i=0; i<64; i++)
+/*		for (i=0; i<64; i++)
 			printf("%02x ", myPubKey[i]);
-		printf("\n");
+		printf("\n"); */
 
 		printf("********** Start Public Key Transmission **********\n");
 
-		status = dataTx(APmac, myPubKey, 64, 1.5, ut, ubertooth_device);
+		status = dataTx(myMac, myPubKey, 64, 1.5, ut, ubertooth_device);
 
-		nGuest = scanGuest(APmac, guestMac, maxGuest, 1.5, ut, ubertooth_device);
+		nGuest = scanGuest(myMac, guestMac, maxGuest, 1.5, ut, ubertooth_device);
 
 		if (nGuest == 0) {
 			printf("No guest!\n");
@@ -1326,13 +1321,13 @@ int main(int argc, char *argv[])
 
 		//status = startAPTx();
 
-		lenData = syncStart(APmac, do_adv_index, ut, ubertooth_device, time, rssi);
-		printf("lenData: %d\n", lenData);
+		lenData = syncStart(myMac, do_adv_index, ut, ubertooth_device, time, rssi);
+//		printf("lenData: %d\n", lenData);
 		rssiBitSeq = procData(time, rssi, lenData);
 
-		printf("rssiBitSeq:\n");
+		printf("rssiBitSeq: ");
 		for(i=0; i<13; i++)
-			printf("%02x", rssiBitSeq[i]);
+			printf("%02x ", rssiBitSeq[i]);
 		printf("\n");
 		for(i=0; i<13; i++)
 			printf("%d%d%d%d%d%d%d%d", rssiBitSeq[i] & 0x1, (rssiBitSeq[i] & 0x2) >> 1, (rssiBitSeq[i] & 0x4) >> 2, (rssiBitSeq[i] & 0x8) >>3, (rssiBitSeq[i] & 0x10) >> 4, (rssiBitSeq[i] & 0x20) >> 5, (rssiBitSeq[i] & 0x40) >> 6, (rssiBitSeq[i] & 0x80) >> 7);
@@ -1350,10 +1345,10 @@ int main(int argc, char *argv[])
 		printf("guest public key nRecv: %d\n", nRecv);
 		for(i=0; i<nGuest; i++) {
 			if (statGuest[i] == 2) {
-				printf("Guest: %d\nPeerPubKey: ");
-				for(j=0; j<64; j++)
+				printf("Guest: %d\n");
+/*				for(j=0; j<64; j++)
 					printf("%02x ", guestPubKey[i][j]);
-				printf("\n");
+				printf("\n"); */
 				sharedSecret[i] = getSharedSecret(privKey, guestPubKey[i], secretLen);
 				printf("Shared Secret: ");
 				for(j=0; j<32; j++)
@@ -1370,10 +1365,10 @@ int main(int argc, char *argv[])
 		printf("guest data nRecv: %d\n", nRecv);
 		for(i=0; i<nGuest; i++) {
 			if (statGuest[i] == 2) {
-				printf("Guest: %d\nguestData: ");
-				for(j=0; j<32; j++)
+				printf("Guest: %d Data received\n");
+/*				for(j=0; j<32; j++)
 					printf("%02x ", guestData[i][j]);
-				printf("\n");
+				printf("\n");*/
 				status = aesDecrypt(sharedSecret[i], guestData[i], guestBitSeq[i]);
 				printf("guestRssiBitSeq: ");
 				for(j=0; j<13; j++)
@@ -1395,8 +1390,8 @@ int main(int argc, char *argv[])
 
 		if (MMR[minMMRGuest] <= 1) {
 			printf("minMMRGuest: %d\n", minMMRGuest);
-			status = aesEncrypt(sharedSecret[minMMRGuest], (unsigned char *)APPWD, encAPPWD);
-			status = dataTx(guestMac[minMMRGuest], encAPPWD, 32, 2, ut, ubertooth_device);
+			status = aesEncrypt(sharedSecret[minMMRGuest], (unsigned char *)authMessage, encMessage);
+			status = dataTx(guestMac[minMMRGuest], encMessage, 32, 2, ut, ubertooth_device);
 			printf("Secure channel established with device %d!\n", minMMRGuest);
 		} else {
 			printf("No guest authenticated!\n");
@@ -1416,14 +1411,14 @@ int main(int argc, char *argv[])
 	}
 
 	if (do_guest) {
-		int status, i, lenData, txDur, pwdLen, keyLen = 0;
+		int status, i, lenData, txDur, msgLen, keyLen = 0;
 		int time[30000] = {0, };
 		int8_t rssi[30000] = {0, };
 		uint8_t *rssiBitSeq;
-		uint8_t APMAC[6] = {0, }, guestMac[6] = {0, }; // Need Fix
+		uint8_t masterMac[6] = {0, }, guestMac[6] = {0, }; // Need Fix
 
 		EC_KEY *privKey;
-		unsigned char myPubKey[64], peerPubKey[64], encRssiBitSeq[100], encPWD[32], PWD[32];
+		unsigned char myPubKey[64], peerPubKey[64], encRssiBitSeq[100], encMessage[32], decMessage[32];
 		unsigned char *sharedSecret;
 		size_t *secretLen = (size_t *) malloc(sizeof(size_t));
 
@@ -1438,30 +1433,30 @@ int main(int argc, char *argv[])
 		privKey = createECDH();
 		status = getECPubKey(privKey, myPubKey);
 
-		keyLen = listenPubkey(APMAC, do_adv_index, peerPubKey, 5, ut, ubertooth_device);
+		keyLen = listenPubkey(masterMac, do_adv_index, peerPubKey, 5, ut, ubertooth_device);
 
 		// Protocol 2, if public key received, advertise myself 
 		if (keyLen > 0) {
-			printf("peerPubKey: ");
+/*			printf("peerPubKey: ");
 			for(i=0; i<64; i++) {
 				printf("%02x", peerPubKey[i]);
 			}
-			printf("\n");
+			printf("\n");*/
 
-			printf("AP MAC address: ");
+			printf("Authenticator MAC address: ");
 			for(i=0; i<6; i++)
-				printf("%02x ", APMAC[i]);
+				printf("%02x ", masterMac[i]);
 			printf("\n");
 
 			printf("********** Start Guest Mac Address Advertising **********\n");
-			status = dataTx(guestMac, APMAC, 6, 1.5, ut, ubertooth_device);
+			status = dataTx(guestMac, masterMac, 6, 1.5, ut, ubertooth_device);
 		} else {
 			printf("No public key received!\n");
 			return 0;
 		}
 
 		// Protocol 3, after advertising, wait for the synchronizaton packet, and moving average filter the samples 
-		lenData = listenSync(APMAC, do_adv_index, ut, ubertooth_device, time, rssi);
+		lenData = listenSync(masterMac, do_adv_index, ut, ubertooth_device, time, rssi);
 
 		if (lenData == 0) {
 			printf("No synchronization packet received!\n");
@@ -1473,7 +1468,7 @@ int main(int argc, char *argv[])
 
 		printf("rssiBitSeq: ");
 		for(i=0; i<13; i++)
-			printf("%02x", rssiBitSeq[i]);
+			printf("%02x ", rssiBitSeq[i]);
 		printf("\n");
 		for(i=0; i<13; i++)
 			printf("%d%d%d%d%d%d%d%d", rssiBitSeq[i] & 0x1, (rssiBitSeq[i] & 0x2) >> 1, (rssiBitSeq[i] & 0x4) >> 2, (rssiBitSeq[i] & 0x8) >>3, (rssiBitSeq[i] & 0x10) >> 4, (rssiBitSeq[i] & 0x20) >> 5, (rssiBitSeq[i] & 0x40) >> 6, (rssiBitSeq[i] & 0x80) >> 7);
@@ -1488,24 +1483,24 @@ int main(int argc, char *argv[])
 		printf("\n");
 
 		status = aesEncrypt(sharedSecret, rssiBitSeq, encRssiBitSeq);
-		printf("encRssiBitSeq: ");
+/*		printf("encRssiBitSeq: ");
 		for(i=0; i<32; i++)
 			printf("%02x ", encRssiBitSeq[i]);
-		printf("\n");
+		printf("\n");*/
 
 		status = dataTx(guestMac, encRssiBitSeq, 32, 3, ut, ubertooth_device);
-		pwdLen = listenPWD(APMAC, guestMac, do_adv_index, encPWD, 10, ut, ubertooth_device);
+		msgLen = listenMessage(masterMac, guestMac, do_adv_index, encMessage, 10, ut, ubertooth_device);
 
-		if (pwdLen == 32) {
-			printf("pwdLen: %d, encPWD: ", pwdLen);
-			for (i=0; i<pwdLen; i++) 
-				printf("%02x ", encPWD[i]);
-			printf("\n");
-			status = aesDecrypt(sharedSecret, encPWD, PWD);
-			printf("PWD: ");
+		if (msgLen == 32) {
+/*			printf("encMessage: ");
+			for (i=0; i<msgLen; i++) 
+				printf("%02x ", encMessage[i]);
+			printf("\n"); */
+			status = aesDecrypt(sharedSecret, encMessage, decMessage);
+			printf("Decrypted Message: ");
 
-			for (i=0; i<strlen(PWD); i++) {
-				printf("%c", (char)PWD[i]);
+			for (i=0; i<strlen(decMessage); i++) {
+				printf("%c", (char)decMessage[i]);
 			}
 			printf("\n");
 
