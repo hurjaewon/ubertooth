@@ -2795,9 +2795,9 @@ void bt_slave_le() {
 		msleep(10);
 	}
 	free(slave_mac_address_data);	
-	free(adv_ind);
 	for(i=0; i<num_adv_ind; i++)
 		free(adv_ind[i]);
+	free(adv_ind);
 	
 	//JWHUR test
 	ICER0 = ICER0_ICE_USB;

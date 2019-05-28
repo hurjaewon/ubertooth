@@ -9735,25 +9735,25 @@ void bt_slave_le() {
 	free(slave_mac_address_data);	
     6e42:	f8da 0000 	ldr.w	r0, [sl]
     6e46:	f002 fbe3 	bl	9610 <free>
-	free(adv_ind);
-    6e4a:	4620      	mov	r0, r4
-    6e4c:	f002 fbe0 	bl	9610 <free>
 	for(i=0; i<num_adv_ind; i++)
-    6e50:	2500      	movs	r5, #0
-    6e52:	42b5      	cmp	r5, r6
-    6e54:	da05      	bge.n	6e62 <bt_slave_le+0x206>
+    6e4a:	2500      	movs	r5, #0
+    6e4c:	42b5      	cmp	r5, r6
+    6e4e:	da05      	bge.n	6e5c <bt_slave_le+0x200>
 		free(adv_ind[i]);
-    6e56:	f854 0025 	ldr.w	r0, [r4, r5, lsl #2]
-    6e5a:	f002 fbd9 	bl	9610 <free>
+    6e50:	f854 0025 	ldr.w	r0, [r4, r5, lsl #2]
+    6e54:	f002 fbdc 	bl	9610 <free>
+		ISER0 = ISER0_ISE_USB;
 		ISER0 = ISER0_ISE_DMA;
 		msleep(10);
 	}
 	free(slave_mac_address_data);	
-	free(adv_ind);
 	for(i=0; i<num_adv_ind; i++)
-    6e5e:	3501      	adds	r5, #1
-    6e60:	e7f7      	b.n	6e52 <bt_slave_le+0x1f6>
+    6e58:	3501      	adds	r5, #1
+    6e5a:	e7f7      	b.n	6e4c <bt_slave_le+0x1f0>
 		free(adv_ind[i]);
+	free(adv_ind);
+    6e5c:	4620      	mov	r0, r4
+    6e5e:	f002 fbd7 	bl	9610 <free>
 	
 	//JWHUR test
 	ICER0 = ICER0_ICE_USB;
@@ -20029,8 +20029,8 @@ BOOL USBHandleStandardRequest(TSetupPacket	*pSetup, int *piLen, U8 **ppbData)
     a073:	72656275 746f6f74 30322068 302d3731     ubertooth 2017-0
     a083:	32522d33 776d2820 6d406c6e 2d6c6e77     3-R2 (mwnl@mwnl-
     a093:	6f6e656c 20296f76 39313032 3530202e     lenovo) 2019. 05
-    a0a3:	3531202e ec28202e 20299888 343a3431     . 15. (...) 14:4
-    a0b3:	37353a36 54534b20 bcb24000                       6:57 KST.
+    a0a3:	3832202e ed28202e 20299499 353a3930     . 28. (...) 09:5
+    a0b3:	36343a34 54534b20 bcb24000                       4:46 KST.
 
 0000a0bc <whitening_word>:
     a0bc:	c3bcb240 5f4a371f 9a9cf685 44c5d6c1     @....7J_.......D

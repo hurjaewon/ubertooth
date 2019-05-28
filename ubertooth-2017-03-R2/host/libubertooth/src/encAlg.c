@@ -13,26 +13,21 @@
 
 #include "encAlg.h"
 
-#define BLOCK_SIZE 16
+#define BLOCK_SIZE 32
 #define FREAD_COUNT 4096
-#define KEY_BIT 128
-#define IV_SIZE 16
+#define KEY_BIT 256
+#define IV_SIZE 32
 #define RW_SIZE 1
 #define SUCC 0
 #define FAIL -1
 
 AES_KEY aes_ks3;
 
-int aesEncrypt(int8_t *guestRssi, char *data, char *encData) {
+int aesEncrypt(unsigned char *key32, unsigned char *data, unsigned char *encData) {
 	int i =0, j = 0, len = 0, padding_len = 0;
 	unsigned char iv[IV_SIZE];
-	unsigned char key16[16] = ""; // 128 AES encryption
 
 	len = strlen(data) + 1;
-
-	for(i=0; i<16; i++) {
-		key16[i] = (unsigned char) guestRssi[i];
-	}
 
 //	printf("data: %s", data);
 //	printf("\nkey16: ");
@@ -41,7 +36,7 @@ int aesEncrypt(int8_t *guestRssi, char *data, char *encData) {
 //	printf("\n");
 
 	memset(iv, 0, sizeof(iv));
-	AES_set_encrypt_key(key16, KEY_BIT, &aes_ks3);
+	AES_set_encrypt_key(key32, KEY_BIT, &aes_ks3);
 
 	padding_len = BLOCK_SIZE - len % BLOCK_SIZE;
 	memset(encData+len, padding_len, padding_len);
@@ -50,15 +45,11 @@ int aesEncrypt(int8_t *guestRssi, char *data, char *encData) {
 	return SUCC;
 }
 
-int aesDecrypt(int8_t *hostRssi, char *encData, char *data) {
+int aesDecrypt(unsigned char *key32, unsigned char *encData, unsigned char *data) {
 	int i, j, len = 0, total_size = 0, save_len = 0, w_len = 0;
 	unsigned char iv[IV_SIZE];
-	unsigned char key16[16] = "";
 
 	len = strlen(encData) + 1;
-
-	for(i=0; i<16; i++)
-		key16[i] = hostRssi[i];
 
 //	printf("enc data: %s", encData);
 //	printf("\ndec key16: ");
@@ -67,7 +58,7 @@ int aesDecrypt(int8_t *hostRssi, char *encData, char *data) {
 //	printf("\n");
 
 	memset(iv, 0, sizeof(iv));
-	AES_set_decrypt_key(key16, KEY_BIT, &aes_ks3);
+	AES_set_decrypt_key(key32, KEY_BIT, &aes_ks3);
 	AES_cbc_encrypt(encData, data, len, &aes_ks3, iv, AES_DECRYPT);
 
 //	printf("dec data: %s\n", data);
@@ -182,10 +173,11 @@ int getECPubKey(EC_KEY *privKey, unsigned char *charPubKey) {
 	return 1;
 }
 
-int getSharedSecret(EC_KEY *key, unsigned char *charPubKey, size_t *secret_len, unsigned char *secret) {
+unsigned char *getSharedSecret(EC_KEY *key, unsigned char *charPubKey, size_t *secret_len) {
 	int field_size, i;
-	const EC_POINT *peerPubKey;
+	unsigned char *secret; 
 	EC_GROUP *ec_group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1);
+	EC_POINT *peerPubKey = EC_POINT_new(ec_group);
 
 	unsigned char charX[32], charY[32];
 	for (i=0; i<32; i++) {
@@ -210,7 +202,7 @@ int getSharedSecret(EC_KEY *key, unsigned char *charPubKey, size_t *secret_len, 
 
 	*secret_len = ECDH_compute_key(secret, *secret_len, peerPubKey, key, NULL);
 
-	return 1;
+	return secret;
 }
 
 

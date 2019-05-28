@@ -548,7 +548,9 @@ ubertooth_t* ubertooth_init()
 
 ubertooth_t* ubertooth_resume(ubertooth_t *ut)
 {
-	ut = (ubertooth_t*) realloc(ut, sizeof(ubertooth_t));
+//	ut = (ubertooth_t*) realloc(ut, sizeof(ubertooth_t));
+//	free(ut);
+//	ut = (ubertooth_t *)malloc(sizeof(ubertooth_t));
 	if(ut == NULL) {
 		fprintf(stderr, "Unable to allocate memory\n");
 		return NULL;

@@ -261,6 +261,64 @@ int getData(char *tFile, char*rFile, int *time, int *rssi) {
 	return lenData;
 }
 
+float avg(int8_t *seq, int start, int end) {
+	int i;
+	float sum = 0;
+	for (i=start; i<=end; i++)
+		sum += seq[i];
+	sum /= (end - start + 1);
+	return sum;
+}
+
+int max(int a, int b) {
+	if (a<b) 
+		return b;
+	else
+		return a;
+}
+
+int min(int a, int b) {
+	if (a<b) 
+		return a;
+	else
+		return b;
+}
+
+int bitSeqGen(int8_t *rssiMA, uint8_t *rssiBitSeq) {
+	float movMeanRssi[500], lMovMeanRssi[500], zCenterRssi[500];
+	int mWindow = 60, lmWindow = 100;
+	int i, j, start, end;
+
+	memset(rssiBitSeq, 0, sizeof(uint8_t)*13);
+
+	for (i=0; i<500; i++) {
+		start = max(0, i - mWindow/2 + 1);
+		end = min(500, i + mWindow/2); 
+		movMeanRssi[i] = avg(rssiMA, start, end);
+
+		start = max(0, i - lmWindow/2 + 1);
+		end = min(500, i + lmWindow/2); 
+		lMovMeanRssi[i] = avg(rssiMA, start, end);
+
+//		printf("movMeanRssi: %f, lMovMeanRssi: %f\n", movMeanRssi[i], lMovMeanRssi[i]);
+
+		zCenterRssi[i] = movMeanRssi[i] - lMovMeanRssi[i];
+	}
+
+	for (i=0; i<500; i=i+5) {
+		j = i/40;
+		if (zCenterRssi[i] > 0) {
+			rssiBitSeq[j] = rssiBitSeq[j] << 1;
+			rssiBitSeq[j] = rssiBitSeq[j] | 0x1;
+		} else {
+			rssiBitSeq[j] = rssiBitSeq[j] << 1;
+		}
+//		printf("zCenterRssi: %f, rssiBitSeq: %02x\n", zCenterRssi[i], rssiBitSeq[j]);
+	}
+	return 1;
+}
+
+
 int8_t *procData(int *rTime, int8_t *rssi, int lenData) {
 	int nSignal, nMySignal, nDiff = 0, i;
 	float thr;
@@ -283,10 +341,14 @@ int8_t *procData(int *rTime, int8_t *rssi, int lenData) {
 	
 	int8_t *rssiMA = malloc(sizeof(int8_t) * 500);
 	int status = maFilter(myTime, myRssi, nMySignal, rssiMA);
+	
+	uint8_t *rssiBitSeq = (uint8_t *)malloc(sizeof(uint8_t)*13);
+	status = bitSeqGen(rssiMA, rssiBitSeq);
 
 	free(sRssi); free(sTime);
 	free(myRssi); free(myTime);
-	return rssiMA;
+	free(rssiMA);
+	return rssiBitSeq;
 }
 
 int getAPInfo(char *APMAC, char *APSSID, char *APPWD) {

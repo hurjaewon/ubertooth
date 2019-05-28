@@ -347,7 +347,7 @@ int cmd_set_isp(struct libusb_device_handle* devh)
 			NULL, 0, 1000);
 	/* LIBUSB_ERROR_PIPE or LIBUSB_ERROR_OTHER is expected */
 	if (r && (r != LIBUSB_ERROR_PIPE) && (r != LIBUSB_ERROR_OTHER) &&
-		(r != LIBUSB_ERROR_NO_DEVICE)) {
+			(r != LIBUSB_ERROR_NO_DEVICE)) {
 		show_libusb_error(r);
 		return r;
 	}
@@ -362,7 +362,7 @@ int cmd_reset(struct libusb_device_handle* devh)
 			NULL, 0, 1000);
 	/* LIBUSB_ERROR_PIPE or LIBUSB_ERROR_OTHER is expected */
 	if (r && (r != LIBUSB_ERROR_PIPE) && (r != LIBUSB_ERROR_OTHER) &&
-		(r != LIBUSB_ERROR_NO_DEVICE)) {
+			(r != LIBUSB_ERROR_NO_DEVICE)) {
 		show_libusb_error(r);
 		return r;
 	}
@@ -651,7 +651,7 @@ int cmd_set_bdaddr(struct libusb_device_handle* devh, u64 address)
 		data[r+8] = (syncword >> (8*r)) & 0xff;
 
 	r = libusb_control_transfer(devh, CTRL_OUT, UBERTOOTH_SET_BDADDR, 0, 0,
-		data, data_len, 1000);
+			data, data_len, 1000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -696,7 +696,7 @@ int cmd_set_clock(struct libusb_device_handle* devh, u32 clkn)
 		data[r] = (clkn >> (8*r)) & 0xff;
 
 	r = libusb_control_transfer(devh, CTRL_OUT, UBERTOOTH_SET_CLOCK, 0, 0,
-		data, 4, 1000);
+			data, 4, 1000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -775,7 +775,7 @@ int cmd_clear_afh_map(struct libusb_device_handle* devh)
 {
 	int r;
 	r = libusb_control_transfer(devh, CTRL_OUT, UBERTOOTH_CLEAR_AFHMAP, 0, 0,
-		NULL, 0, 1000);
+			NULL, 0, 1000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -811,7 +811,7 @@ int cmd_set_access_address(struct libusb_device_handle* devh, u32 access_address
 		data[r] = (access_address >> (8*r)) & 0xff;
 
 	r = libusb_control_transfer(devh, CTRL_OUT, UBERTOOTH_SET_ACCESS_ADDRESS, 0, 0,
-		data, 4, 1000);
+			data, 4, 1000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -826,7 +826,7 @@ int cmd_set_access_address(struct libusb_device_handle* devh, u32 access_address
 int cmd_do_something(struct libusb_device_handle *devh, unsigned char *data, int len)
 {
 	int r = libusb_control_transfer(devh, CTRL_OUT, UBERTOOTH_DO_SOMETHING, 0, 0,
-				data, len, 1000);
+			data, len, 1000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -841,7 +841,7 @@ int cmd_do_something(struct libusb_device_handle *devh, unsigned char *data, int
 int cmd_do_something_reply(struct libusb_device_handle* devh, unsigned char *data, int len)
 {
 	int r = libusb_control_transfer(devh, CTRL_IN, UBERTOOTH_DO_SOMETHING_REPLY, 0, 0,
-				data, len, 3000);
+			data, len, 3000);
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -939,8 +939,10 @@ int cmd_btle_slave(struct libusb_device_handle* devh, u8 *mac_address, int mode,
 	if (mode == UBERTOOTH_BTLE_SYNC) 
 		r = libusb_control_transfer(devh, CTRL_OUT, req, 0, 0, mac_address, 6, 1000);
 	else {
-		if (len <= 250) 
+		if (len <= 250) {
+			libusb_init(NULL);
 			r = libusb_control_transfer(devh, CTRL_OUT, req, 0, 0, mac_address, len, 1000);
+		}
 		else {
 			mac_address_bulk1 = (u8 *) malloc(sizeof(u8) * 250);
 			mac_address_bulk2 = (u8 *) malloc(sizeof(u8) * (len-250));
@@ -954,7 +956,7 @@ int cmd_btle_slave(struct libusb_device_handle* devh, u8 *mac_address, int mode,
 			r = libusb_control_transfer(devh, CTRL_OUT, req, 0, 0, mac_address_bulk2, len-250, 1000);
 		}
 	}
-	
+
 	if (r < 0) {
 		if (r == LIBUSB_ERROR_PIPE) {
 			fprintf(stderr, "control message unsupported\n");
@@ -965,8 +967,8 @@ int cmd_btle_slave(struct libusb_device_handle* devh, u8 *mac_address, int mode,
 	}
 
 	if (len > 250) {
-	free(mac_address_bulk1);
-	free(mac_address_bulk2);
+		free(mac_address_bulk1);
+		free(mac_address_bulk2);
 	}
 
 	return 0;
@@ -1055,10 +1057,10 @@ int cmd_hop(struct libusb_device_handle* devh)
 }
 
 int ubertooth_cmd_sync(struct libusb_device_handle* devh,
-                       uint8_t type,
-                       uint8_t command,
-                       uint8_t* data,
-                       uint16_t size)
+		uint8_t type,
+		uint8_t command,
+		uint8_t* data,
+		uint16_t size)
 {
 	int r;
 
@@ -1077,10 +1079,10 @@ int ubertooth_cmd_sync(struct libusb_device_handle* devh,
 }
 
 int ubertooth_cmd_async(struct libusb_device_handle* devh,
-                        uint8_t type,
-                        uint8_t command,
-                        uint8_t* data,
-                        uint16_t size)
+		uint8_t type,
+		uint8_t command,
+		uint8_t* data,
+		uint16_t size)
 {
 	int r = 0;
 

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccsbnBfC.s 			page 1
+ARM GAS  /tmp/ccEaklh0.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
   31:bluetooth_rxtx.c **** #include "ubertooth_dma.h"
   32:bluetooth_rxtx.c **** #include "ubertooth_clock.h"
   33:bluetooth_rxtx.c **** #include "bluetooth.h"
-ARM GAS  /tmp/ccsbnBfC.s 			page 2
+ARM GAS  /tmp/ccEaklh0.s 			page 2
 
 
   34:bluetooth_rxtx.c **** #include "bluetooth_le.h"
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
   88:bluetooth_rxtx.c **** 	.access_address = 0x8e89bed6,           // advertising channel access address
   89:bluetooth_rxtx.c **** 	.synch = 0x6b7d,                        // bit-reversed adv channel AA
   90:bluetooth_rxtx.c **** 	.syncl = 0x9171,
-ARM GAS  /tmp/ccsbnBfC.s 			page 3
+ARM GAS  /tmp/ccEaklh0.s 			page 3
 
 
   91:bluetooth_rxtx.c **** 	.crc_init  = 0x555555,                  // advertising channel CRCInit
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  145:bluetooth_rxtx.c **** 		f->clkn_high = (clkn >> 20) & 0xff;
  146:bluetooth_rxtx.c **** 		f->clk100ns = CLK100NS;
  147:bluetooth_rxtx.c **** 	} else {
-ARM GAS  /tmp/ccsbnBfC.s 			page 4
+ARM GAS  /tmp/ccEaklh0.s 			page 4
 
 
  148:bluetooth_rxtx.c **** 		f->clkn_high = idle_buf_clkn_high;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  202:bluetooth_rxtx.c **** 	return 1;
  203:bluetooth_rxtx.c **** }
  204:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 5
+ARM GAS  /tmp/ccEaklh0.s 			page 5
 
 
  205:bluetooth_rxtx.c **** static int vendor_request_handler(uint8_t request, uint16_t* request_params, uint8_t* data, int* da
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  259:bluetooth_rxtx.c **** 
  260:bluetooth_rxtx.c **** 	case UBERTOOTH_SET_TXLED:
  261:bluetooth_rxtx.c **** 		if (request_params[0])
-ARM GAS  /tmp/ccsbnBfC.s 			page 6
+ARM GAS  /tmp/ccEaklh0.s 			page 6
 
 
  262:bluetooth_rxtx.c **** 			TXLED_SET;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  316:bluetooth_rxtx.c **** 
  317:bluetooth_rxtx.c **** #ifdef TX_ENABLE
  318:bluetooth_rxtx.c **** 	case UBERTOOTH_TX_TEST:
-ARM GAS  /tmp/ccsbnBfC.s 			page 7
+ARM GAS  /tmp/ccEaklh0.s 			page 7
 
 
  319:bluetooth_rxtx.c **** 		requested_mode = MODE_TX_TEST;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  373:bluetooth_rxtx.c **** 		requested_channel = request_params[0];
  374:bluetooth_rxtx.c **** 		/* bluetooth band sweep mode, start at channel 2402 */
  375:bluetooth_rxtx.c **** 		if (requested_channel > MAX_FREQ) {
-ARM GAS  /tmp/ccsbnBfC.s 			page 8
+ARM GAS  /tmp/ccEaklh0.s 			page 8
 
 
  376:bluetooth_rxtx.c **** 			hop_mode = HOP_SWEEP;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  430:bluetooth_rxtx.c **** 
  431:bluetooth_rxtx.c **** 	case UBERTOOTH_GET_REV_NUM:
  432:bluetooth_rxtx.c **** 		data[0] = 0x00;
-ARM GAS  /tmp/ccsbnBfC.s 			page 9
+ARM GAS  /tmp/ccEaklh0.s 			page 9
 
 
  433:bluetooth_rxtx.c **** 		data[1] = 0x00;
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  487:bluetooth_rxtx.c **** 		requested_mode = MODE_BT_FOLLOW;
  488:bluetooth_rxtx.c **** 		break;
  489:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 10
+ARM GAS  /tmp/ccEaklh0.s 			page 10
 
 
  490:bluetooth_rxtx.c **** 	case UBERTOOTH_AFH:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  544:bluetooth_rxtx.c **** 			clk_drift_correction = 320 / (uint16_t)(-clk_drift_ppm);
  545:bluetooth_rxtx.c **** 			clkn_next_drift_fix = clkn_last_drift_fix + clk_drift_correction;
  546:bluetooth_rxtx.c **** 		}
-ARM GAS  /tmp/ccsbnBfC.s 			page 11
+ARM GAS  /tmp/ccEaklh0.s 			page 11
 
 
  547:bluetooth_rxtx.c **** 		// Too fast
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  601:bluetooth_rxtx.c **** 
  602:bluetooth_rxtx.c **** 	case UBERTOOTH_DO_SOMETHING:
  603:bluetooth_rxtx.c **** 		// do something! just don't commit anything here
-ARM GAS  /tmp/ccsbnBfC.s 			page 12
+ARM GAS  /tmp/ccEaklh0.s 			page 12
 
 
  604:bluetooth_rxtx.c **** 		break;
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  658:bluetooth_rxtx.c **** 			cc2400_set(data[i*3], reg_val);
  659:bluetooth_rxtx.c **** 		}
  660:bluetooth_rxtx.c **** 		break;
-ARM GAS  /tmp/ccsbnBfC.s 			page 13
+ARM GAS  /tmp/ccEaklh0.s 			page 13
 
 
  661:bluetooth_rxtx.c **** 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  715:bluetooth_rxtx.c **** 		// Store the target address in reverse order so that we can do a simple memcmp later
  716:bluetooth_rxtx.c **** 		le.target[0] = data[5];
  717:bluetooth_rxtx.c **** 		le.target[1] = data[4];
-ARM GAS  /tmp/ccsbnBfC.s 			page 14
+ARM GAS  /tmp/ccEaklh0.s 			page 14
 
 
  718:bluetooth_rxtx.c **** 		le.target[2] = data[3];
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  772:bluetooth_rxtx.c **** 				--le.interval_timer;
  773:bluetooth_rxtx.c **** 				if (le.interval_timer == 0) {
  774:bluetooth_rxtx.c **** 					do_hop = 1;
-ARM GAS  /tmp/ccsbnBfC.s 			page 15
+ARM GAS  /tmp/ccEaklh0.s 			page 15
 
 
  775:bluetooth_rxtx.c **** 					++le.conn_count;
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  829:bluetooth_rxtx.c **** }
  830:bluetooth_rxtx.c **** #endif // TC13BADGE
  831:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 16
+ARM GAS  /tmp/ccEaklh0.s 			page 16
 
 
  832:bluetooth_rxtx.c **** /*
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
   60              		.loc 1 848 0
   61 0024 10BD     		pop	{r4, pc}
   62              	.L6:
-ARM GAS  /tmp/ccsbnBfC.s 			page 17
+ARM GAS  /tmp/ccEaklh0.s 			page 17
 
 
   63 0026 00BF     		.align	2
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  892:bluetooth_rxtx.c **** 				active_rxbuf = idle_rxbuf;
  893:bluetooth_rxtx.c **** 				idle_rxbuf = tmp;
  894:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 18
+ARM GAS  /tmp/ccEaklh0.s 			page 18
 
 
  895:bluetooth_rxtx.c **** 				++rx_tc;
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  949:bluetooth_rxtx.c **** 	/* specan stuff */
  950:bluetooth_rxtx.c **** 	low_freq = 2400;
  951:bluetooth_rxtx.c **** 	high_freq = 2483;
-ARM GAS  /tmp/ccsbnBfC.s 			page 19
+ARM GAS  /tmp/ccEaklh0.s 			page 19
 
 
  952:bluetooth_rxtx.c **** 	rssi_threshold = -30;
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1006:bluetooth_rxtx.c **** 		// 0 00 00 1 000 11 0 00 0 1
 1007:bluetooth_rxtx.c **** 		//   |  |  | |   |  +--------> CRC off
 1008:bluetooth_rxtx.c **** 		//   |  |  | |   +-----------> sync word: 32 MSB bits of SYNC_WORD
-ARM GAS  /tmp/ccsbnBfC.s 			page 20
+ARM GAS  /tmp/ccEaklh0.s 			page 20
 
 
 1009:bluetooth_rxtx.c **** 		//   |  |  | +---------------> 0 preamble bytes of 01010101
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1063:bluetooth_rxtx.c **** 	while (!(cc2400_status() & XOSC16M_STABLE));
 1064:bluetooth_rxtx.c **** 	cc2400_strobe(SFSON);
 1065:bluetooth_rxtx.c **** 	while (!(cc2400_status() & FS_LOCK));
-ARM GAS  /tmp/ccsbnBfC.s 			page 21
+ARM GAS  /tmp/ccEaklh0.s 			page 21
 
 
 1066:bluetooth_rxtx.c **** 	cc2400_strobe(SRX);
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1120:bluetooth_rxtx.c **** 
 1121:bluetooth_rxtx.c **** /*
 1122:bluetooth_rxtx.c ****  * Transmit a BTLE packet with the specified access address.
-ARM GAS  /tmp/ccsbnBfC.s 			page 22
+ARM GAS  /tmp/ccEaklh0.s 			page 22
 
 
 1123:bluetooth_rxtx.c ****  *
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1177:bluetooth_rxtx.c **** 	//      |  | +---------------> 0 preamble bytes of 01010101
 1178:bluetooth_rxtx.c **** 	//      |  +-----------------> packet mode
 1179:bluetooth_rxtx.c **** 	//      +--------------------> buffered mode
-ARM GAS  /tmp/ccsbnBfC.s 			page 23
+ARM GAS  /tmp/ccEaklh0.s 			page 23
 
 
 1180:bluetooth_rxtx.c **** 
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1234:bluetooth_rxtx.c **** 
 1235:bluetooth_rxtx.c **** 	cc2400_strobe(SRFOFF);
 1236:bluetooth_rxtx.c **** 	while ((cc2400_status() & FS_LOCK));
-ARM GAS  /tmp/ccsbnBfC.s 			page 24
+ARM GAS  /tmp/ccEaklh0.s 			page 24
 
 
 1237:bluetooth_rxtx.c **** 
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1291:bluetooth_rxtx.c **** 	else if (hop_mode == HOP_SWEEP) {
 1292:bluetooth_rxtx.c **** 		do {
 1293:bluetooth_rxtx.c **** 			channel += 32;
-ARM GAS  /tmp/ccsbnBfC.s 			page 25
+ARM GAS  /tmp/ccEaklh0.s 			page 25
 
 
 1294:bluetooth_rxtx.c **** 			if (channel > 2480)
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1348:bluetooth_rxtx.c **** /* Bluetooth packet monitoring */
 1349:bluetooth_rxtx.c **** void bt_stream_rx()
 1350:bluetooth_rxtx.c **** {
-ARM GAS  /tmp/ccsbnBfC.s 			page 26
+ARM GAS  /tmp/ccEaklh0.s 			page 26
 
 
 1351:bluetooth_rxtx.c **** 	int8_t rssi;
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1405:bluetooth_rxtx.c **** 			status |= DMA_ERROR;
 1406:bluetooth_rxtx.c **** 		}
 1407:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 27
+ARM GAS  /tmp/ccEaklh0.s 			page 27
 
 
 1408:bluetooth_rxtx.c **** 		/* Missed a DMA trasfer? */
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1451:bluetooth_rxtx.c **** 	for(size_t i=0; i<8; i++)
   87              		.loc 1 1451 0
   88 0002 0023     		movs	r3, #0
-ARM GAS  /tmp/ccsbnBfC.s 			page 28
+ARM GAS  /tmp/ccEaklh0.s 			page 28
 
 
   89              	.LBE4:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  134              		.cfi_offset 3, -16
  135              		.cfi_offset 4, -12
  136              		.cfi_offset 5, -8
-ARM GAS  /tmp/ccsbnBfC.s 			page 29
+ARM GAS  /tmp/ccEaklh0.s 			page 29
 
 
  137              		.cfi_offset 14, -4
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  181              		.loc 1 972 0
  182 0042 2020     		movs	r0, #32
  183 0044 40F20111 		movw	r1, #257
-ARM GAS  /tmp/ccsbnBfC.s 			page 30
+ARM GAS  /tmp/ccEaklh0.s 			page 30
 
 
  184 0048 FFF7FEFF 		bl	cc2400_set
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  229 008a 054B     		ldr	r3, .L24+8
  230 008c 8022     		movs	r2, #128
  231 008e 1A60     		str	r2, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 31
+ARM GAS  /tmp/ccEaklh0.s 			page 31
 
 
  994:bluetooth_rxtx.c **** #endif
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1004:bluetooth_rxtx.c **** 		grmdm = 0x0461; // un-buffered mode, packet w/ sync word detection
  280              		.loc 1 1004 0
  281 0018 2925     		movs	r5, #41
-ARM GAS  /tmp/ccsbnBfC.s 			page 32
+ARM GAS  /tmp/ccEaklh0.s 			page 32
 
 
 1005:bluetooth_rxtx.c **** 		// 0 00 00 1 000 11 0 00 0 1
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  326 005e 89B2     		uxth	r1, r1
  327 0060 FFF7FEFF 		bl	cc2400_set
  328              	.LVL36:
-ARM GAS  /tmp/ccsbnBfC.s 			page 33
+ARM GAS  /tmp/ccEaklh0.s 			page 33
 
 
 1053:bluetooth_rxtx.c **** 
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  373 00a6 1A60     		str	r2, [r3]
  374              	.LVL45:
  375              	.L26:
-ARM GAS  /tmp/ccsbnBfC.s 			page 34
+ARM GAS  /tmp/ccEaklh0.s 			page 34
 
 
  376 00a8 70BD     		pop	{r4, r5, r6, pc}
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  425 001a 042E     		cmp	r6, #4
  143:bluetooth_rxtx.c **** 	if(type == SPECAN) {
  426              		.loc 1 143 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 35
+ARM GAS  /tmp/ccEaklh0.s 			page 35
 
 
  427 001c 0670     		strb	r6, [r0]
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  470 005e FFF7FEFF 		bl	rssi_get_avg
  471              	.LVL50:
  154:bluetooth_rxtx.c **** 	}
-ARM GAS  /tmp/ccsbnBfC.s 			page 36
+ARM GAS  /tmp/ccEaklh0.s 			page 36
 
 
  472              		.loc 1 154 0
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1461:bluetooth_rxtx.c **** 	uint16_t reversed = 0;
 1462:bluetooth_rxtx.c **** 
 1463:bluetooth_rxtx.c **** 	for(size_t i=0; i<16; i++)
-ARM GAS  /tmp/ccsbnBfC.s 			page 37
+ARM GAS  /tmp/ccEaklh0.s 			page 37
 
 
 1464:bluetooth_rxtx.c **** 	{
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1518:bluetooth_rxtx.c **** 			if (do_hop) {
 1519:bluetooth_rxtx.c **** 				hop();
 1520:bluetooth_rxtx.c **** 			}
-ARM GAS  /tmp/ccsbnBfC.s 			page 38
+ARM GAS  /tmp/ccEaklh0.s 			page 38
 
 
 1521:bluetooth_rxtx.c **** 		}
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  532              		.loc 1 1559 0
  533 000a 6081     		strh	r0, [r4, #10]	@ movhi
 1560:bluetooth_rxtx.c **** 	le.synch = aa_rev >> 16;
-ARM GAS  /tmp/ccsbnBfC.s 			page 39
+ARM GAS  /tmp/ccEaklh0.s 			page 39
 
 
  534              		.loc 1 1560 0
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  583 0026 43F8201C 		str	r1, [r3, #-32]
  916:bluetooth_rxtx.c **** 	USRLED_CLR;
  584              		.loc 1 916 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 40
+ARM GAS  /tmp/ccEaklh0.s 			page 40
 
 
  585 002a 43F8202C 		str	r2, [r3, #-32]
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  623 0060 A2F84A10 		strh	r1, [r2, #74]	@ movhi
  935:bluetooth_rxtx.c **** 	idle_buf_clk100ns = 0;
  624              		.loc 1 935 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 41
+ARM GAS  /tmp/ccEaklh0.s 			page 41
 
 
  625 0064 9C70     		strb	r4, [r3, #2]
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  664              	.L49:
  665 009c 5CC00920 		.word	537509980
  666 00a0 00000000 		.word	.LANCHOR0
-ARM GAS  /tmp/ccsbnBfC.s 			page 42
+ARM GAS  /tmp/ccEaklh0.s 			page 42
 
 
  667 00a4 00000000 		.word	.LANCHOR1
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1604:bluetooth_rxtx.c **** 	u8 hold;
 1605:bluetooth_rxtx.c **** 	int i, j;
 1606:bluetooth_rxtx.c **** 	int8_t rssi, rssi_at_trigger;
-ARM GAS  /tmp/ccsbnBfC.s 			page 43
+ARM GAS  /tmp/ccEaklh0.s 			page 43
 
 
 1607:bluetooth_rxtx.c **** 
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1661:bluetooth_rxtx.c **** 				rssi = MAX(rssi,(cs_threshold_cur+54));
 1662:bluetooth_rxtx.c **** 				rssi_at_trigger = rssi;
 1663:bluetooth_rxtx.c **** 			}
-ARM GAS  /tmp/ccsbnBfC.s 			page 44
+ARM GAS  /tmp/ccEaklh0.s 			page 44
 
 
 1664:bluetooth_rxtx.c **** 			rssi_add(rssi);
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1718:bluetooth_rxtx.c **** 		rx_tc = 0;
 1719:bluetooth_rxtx.c **** 		rx_err = 0;
 1720:bluetooth_rxtx.c **** 	}
-ARM GAS  /tmp/ccsbnBfC.s 			page 45
+ARM GAS  /tmp/ccEaklh0.s 			page 45
 
 
 1721:bluetooth_rxtx.c **** 
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1775:bluetooth_rxtx.c **** 		if (requested_channel != 0) {
 1776:bluetooth_rxtx.c **** 			cc2400_strobe(SRFOFF);
 1777:bluetooth_rxtx.c **** 			while ((cc2400_status() & FS_LOCK));
-ARM GAS  /tmp/ccsbnBfC.s 			page 46
+ARM GAS  /tmp/ccEaklh0.s 			page 46
 
 
 1778:bluetooth_rxtx.c **** 			cc2400_set(FSDIV, channel);
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1832:bluetooth_rxtx.c **** {
 1833:bluetooth_rxtx.c **** 	int i;
 1834:bluetooth_rxtx.c **** 	int8_t rssi;
-ARM GAS  /tmp/ccsbnBfC.s 			page 47
+ARM GAS  /tmp/ccEaklh0.s 			page 47
 
 
 1835:bluetooth_rxtx.c **** 	static int restart_jamming = 0;
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1889:bluetooth_rxtx.c **** 		/* No DMA transfer? */
 1890:bluetooth_rxtx.c **** 		if (!rx_tc)
 1891:bluetooth_rxtx.c **** 			continue;
-ARM GAS  /tmp/ccsbnBfC.s 			page 48
+ARM GAS  /tmp/ccEaklh0.s 			page 48
 
 
 1892:bluetooth_rxtx.c **** 
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1946:bluetooth_rxtx.c **** 		//JWHUR rssi sampling synchronization test
 1947:bluetooth_rxtx.c **** 		//If a BLE advertising packet with pdu preamble 0xff, data SYNC received, after 100ms goto le_syn
 1948:bluetooth_rxtx.c **** 		if (p[23] == 0xff && p[24] == 0x53 && p[25] == 0x59 && p[26] == 0x4e && p[27] == 0x43) {
-ARM GAS  /tmp/ccsbnBfC.s 			page 49
+ARM GAS  /tmp/ccEaklh0.s 			page 49
 
 
 1949:bluetooth_rxtx.c **** 			sync_flag = 1;
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2003:bluetooth_rxtx.c **** 			}
 2004:bluetooth_rxtx.c **** 
 2005:bluetooth_rxtx.c **** 			// go back to promisc if the connection dies
-ARM GAS  /tmp/ccsbnBfC.s 			page 50
+ARM GAS  /tmp/ccEaklh0.s 			page 50
 
 
 2006:bluetooth_rxtx.c **** 			if (active_mode == MODE_BT_PROMISC_LE)
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2060:bluetooth_rxtx.c **** void bt_le_sync_cfo(u8 active_mode) 
 2061:bluetooth_rxtx.c **** {
 2062:bluetooth_rxtx.c **** 	int i;
-ARM GAS  /tmp/ccsbnBfC.s 			page 51
+ARM GAS  /tmp/ccEaklh0.s 			page 51
 
 
 2063:bluetooth_rxtx.c **** 	int8_t rssi;
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2117:bluetooth_rxtx.c **** 		packet[0] = le.access_address;
 2118:bluetooth_rxtx.c **** 		
 2119:bluetooth_rxtx.c **** 		const uint32_t *whit = whitening_word[btle_channel_index(channel-2402)];
-ARM GAS  /tmp/ccsbnBfC.s 			page 52
+ARM GAS  /tmp/ccEaklh0.s 			page 52
 
 
 2120:bluetooth_rxtx.c **** 		for (i=0; i<4; i+= 4) {
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2174:bluetooth_rxtx.c **** 
 2175:bluetooth_rxtx.c **** 	rx_flush:
 2176:bluetooth_rxtx.c **** 		cc2400_strobe(SFSON);
-ARM GAS  /tmp/ccsbnBfC.s 			page 53
+ARM GAS  /tmp/ccEaklh0.s 			page 53
 
 
 2177:bluetooth_rxtx.c **** 		DIO_SSP_DMACR &= ~SSPDMACR_RXDMAE;
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2231:bluetooth_rxtx.c **** 	cs_trigger_disable();
 2232:bluetooth_rxtx.c **** }
 2233:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 54
+ARM GAS  /tmp/ccEaklh0.s 			page 54
 
 
 2234:bluetooth_rxtx.c **** /* low energy connection following
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2241:bluetooth_rxtx.c **** 	for (i = 0; i < 31; ++i) {
  722              		.loc 1 2241 0 discriminator 2
  723 0026 1F2B     		cmp	r3, #31
-ARM GAS  /tmp/ccsbnBfC.s 			page 55
+ARM GAS  /tmp/ccEaklh0.s 			page 55
 
 
  724              		.loc 1 2243 0 discriminator 2
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2257:bluetooth_rxtx.c **** 						bit ^= whitening[idx];
  761              		.loc 1 2257 0
  762 0056 0CEB050E 		add	lr, ip, r5
-ARM GAS  /tmp/ccsbnBfC.s 			page 56
+ARM GAS  /tmp/ccEaklh0.s 			page 56
 
 
  763 005a 9EF828E0 		ldrb	lr, [lr, #40]	@ zero_extendqisi2
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  807 0086 DAD1     		bne	.L55
 2263:bluetooth_rxtx.c **** 			}
 2264:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 57
+ARM GAS  /tmp/ccEaklh0.s 			page 57
 
 
 2265:bluetooth_rxtx.c **** 			// verify CRC
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  841              		.loc 1 2267 0
  842 00ac 05F03F05 		and	r5, r5, #63
  843              	.LVL87:
-ARM GAS  /tmp/ccsbnBfC.s 			page 58
+ARM GAS  /tmp/ccEaklh0.s 			page 58
 
 
 2268:bluetooth_rxtx.c **** 				u32 wire_crc = (idle_rxbuf[4+len+2] << 16)
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2287:bluetooth_rxtx.c **** }
  886              		.loc 1 2287 0
  887 00e4 0120     		movs	r0, #1
-ARM GAS  /tmp/ccsbnBfC.s 			page 59
+ARM GAS  /tmp/ccEaklh0.s 			page 59
 
 
  888 00e6 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  923              		.loc 1 2292 0
  924 0004 0546     		mov	r5, r0
  925              		.loc 1 2307 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 60
+ARM GAS  /tmp/ccEaklh0.s 			page 60
 
 
  926 0006 1A7E     		ldrb	r2, [r3, #24]	@ zero_extendqisi2
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2320:bluetooth_rxtx.c **** 		u8 llid =  header & 0x03;
 2321:bluetooth_rxtx.c **** 
 2322:bluetooth_rxtx.c **** 		// Apply any connection parameter update if necessary
-ARM GAS  /tmp/ccsbnBfC.s 			page 61
+ARM GAS  /tmp/ccEaklh0.s 			page 61
 
 
 2323:bluetooth_rxtx.c **** 		if (le.update_pending && le.conn_count == le.update_instant) {
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2334:bluetooth_rxtx.c **** 			// This is a CONNECTION_UPDATE_REQ.
 2335:bluetooth_rxtx.c **** 			// The host is changing the connection parameters.
 2336:bluetooth_rxtx.c **** 			le.win_size_update = packet[7];
-ARM GAS  /tmp/ccsbnBfC.s 			page 62
+ARM GAS  /tmp/ccEaklh0.s 			page 62
 
 
  1009              		.loc 1 2336 0 is_stmt 1
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2346:bluetooth_rxtx.c **** 		if (pkt_type == 0x05) {
  1052              		.loc 1 2346 0
  1053 00b8 01F00F01 		and	r1, r1, #15
-ARM GAS  /tmp/ccsbnBfC.s 			page 63
+ARM GAS  /tmp/ccEaklh0.s 			page 63
 
 
  1054              	.LVL106:
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1086              	.LVL109:
 2368:bluetooth_rxtx.c **** 
 2369:bluetooth_rxtx.c **** 			for (i = 0; i < 4; ++i)
-ARM GAS  /tmp/ccsbnBfC.s 			page 64
+ARM GAS  /tmp/ccEaklh0.s 			page 64
 
 
  1087              		.loc 1 2369 0
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2374:bluetooth_rxtx.c **** 			le.crc_init = (packet[CRC_INIT+2] << 16)
 2375:bluetooth_rxtx.c **** 						| (packet[CRC_INIT+1] << 8)
  1131              		.loc 1 2375 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 65
+ARM GAS  /tmp/ccEaklh0.s 			page 65
 
 
  1132 0126 E87D     		ldrb	r0, [r5, #23]	@ zero_extendqisi2
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2390:bluetooth_rxtx.c **** 			le.channel_idx = le.channel_increment;
  1164              		.loc 1 2390 0
  1165 0156 03F01F03 		and	r3, r3, #31
-ARM GAS  /tmp/ccsbnBfC.s 			page 66
+ARM GAS  /tmp/ccEaklh0.s 			page 66
 
 
  1166 015a A376     		strb	r3, [r4, #26]
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1216 000a 0F46     		mov	r7, r1
  1217 000c 1646     		mov	r6, r2
  212:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 67
+ARM GAS  /tmp/ccEaklh0.s 			page 67
 
 
  1218              		.loc 1 212 0
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1271 0074 4F03     		.2byte	(.L206-.L97)/2
  1272 0076 6F02     		.2byte	(.L142-.L97)/2
  1273 0078 7402     		.2byte	(.L143-.L97)/2
-ARM GAS  /tmp/ccsbnBfC.s 			page 68
+ARM GAS  /tmp/ccEaklh0.s 			page 68
 
 
  1274 007a 7A02     		.2byte	(.L144-.L97)/2
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1324 00c8 1B68     		ldr	r3, [r3]
  1325 00ca C3F34003 		ubfx	r3, r3, #1, #1
  1326 00ce 18E1     		b	.L224
-ARM GAS  /tmp/ccsbnBfC.s 			page 69
+ARM GAS  /tmp/ccEaklh0.s 			page 69
 
 
  1327              	.L101:
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1372 010c FBE7     		b	.L226
  1373              	.L112:
  280:bluetooth_rxtx.c **** 		break;
-ARM GAS  /tmp/ccsbnBfC.s 			page 70
+ARM GAS  /tmp/ccEaklh0.s 			page 70
 
 
  1374              		.loc 1 280 0
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1421              		.loc 1 313 0
  1422 0148 3F4A     		ldr	r2, .L255+24
  1423 014a DCE7     		b	.L226
-ARM GAS  /tmp/ccsbnBfC.s 			page 71
+ARM GAS  /tmp/ccEaklh0.s 			page 71
 
 
  1424              	.L117:
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  347:bluetooth_rxtx.c **** 		data[3] = rr.reply_pa;
  1470              		.loc 1 347 0
  1471 0182 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
-ARM GAS  /tmp/ccsbnBfC.s 			page 72
+ARM GAS  /tmp/ccEaklh0.s 			page 72
 
 
  1472 0184 B270     		strb	r2, [r6, #2]
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1516 01b8 40F6EA22 		movw	r2, #2794
  1517 01bc 89B2     		uxth	r1, r1
  1518 01be 9142     		cmp	r1, r2
-ARM GAS  /tmp/ccsbnBfC.s 			page 73
+ARM GAS  /tmp/ccEaklh0.s 			page 73
 
 
  1519 01c0 05D9     		bls	.L177
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1564 020e 00F05382 		beq	.L206
  388:bluetooth_rxtx.c **** 			requested_channel = 0;
  1565              		.loc 1 388 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 74
+ARM GAS  /tmp/ccEaklh0.s 			page 74
 
 
  1566 0212 D189     		ldrh	r1, [r2, #14]
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1614 026c 8B42     		cmp	r3, r1
  1615 026e 00F22682 		bhi	.L213
  409:bluetooth_rxtx.c **** 				request_params[1] < request_params[0])
-ARM GAS  /tmp/ccsbnBfC.s 			page 75
+ARM GAS  /tmp/ccEaklh0.s 			page 75
 
 
  1616              		.loc 1 409 0 discriminator 1
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1660              		.loc 1 432 0
  1661 02b6 0023     		movs	r3, #0
  1662 02b8 3370     		strb	r3, [r6]
-ARM GAS  /tmp/ccsbnBfC.s 			page 76
+ARM GAS  /tmp/ccEaklh0.s 			page 76
 
 
  433:bluetooth_rxtx.c **** 
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1708              	.L131:
  451:bluetooth_rxtx.c **** 		*data_len = 1;
  1709              		.loc 1 451 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 77
+ARM GAS  /tmp/ccEaklh0.s 			page 77
 
 
  1710 02f0 0120     		movs	r0, #1
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  468:bluetooth_rxtx.c **** 			target.address |= (uint64_t)data[i] << 8*i;
  1756              		.loc 1 468 0 discriminator 2
  1757 0332 B8F1080F 		cmp	r8, #8
-ARM GAS  /tmp/ccsbnBfC.s 			page 78
+ARM GAS  /tmp/ccEaklh0.s 			page 78
 
 
  469:bluetooth_rxtx.c **** 		}
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1801              	.LBB16:
  480:bluetooth_rxtx.c **** 			clkn_offset |= data[i];
  1802              		.loc 1 480 0 discriminator 2
-ARM GAS  /tmp/ccsbnBfC.s 			page 79
+ARM GAS  /tmp/ccEaklh0.s 			page 79
 
 
  1803 0372 1168     		ldr	r1, [r2]
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1843 03a4 A374     		strb	r3, [r4, #18]
  488:bluetooth_rxtx.c **** 
  1844              		.loc 1 488 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 80
+ARM GAS  /tmp/ccEaklh0.s 			page 80
 
 
  1845 03a6 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1888 03d0 E072     		strb	r0, [r4, #11]
  503:bluetooth_rxtx.c **** 
  1889              		.loc 1 503 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 81
+ARM GAS  /tmp/ccEaklh0.s 			page 81
 
 
  1890 03d2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1936              	.L148:
  214:bluetooth_rxtx.c **** 
  1937              		.loc 1 214 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 82
+ARM GAS  /tmp/ccEaklh0.s 			page 82
 
 
  1938 040a 0023     		movs	r3, #0
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  1984 043c 494B     		ldr	r3, .L257+28
  1985 043e 1A80     		strh	r2, [r3]	@ movhi
  1986 0440 3AE1     		b	.L206
-ARM GAS  /tmp/ccsbnBfC.s 			page 83
+ARM GAS  /tmp/ccEaklh0.s 			page 83
 
 
  1987              	.L163:
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2035              	.L197:
  554:bluetooth_rxtx.c **** 			clkn_next_drift_fix = 0;
  2036              		.loc 1 554 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 84
+ARM GAS  /tmp/ccEaklh0.s 			page 84
 
 
  2037 0496 0023     		movs	r3, #0
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2079              	.LVL207:
  2080              	.L199:
  2081              	.LBB21:
-ARM GAS  /tmp/ccsbnBfC.s 			page 85
+ARM GAS  /tmp/ccEaklh0.s 			page 85
 
 
  592:bluetooth_rxtx.c **** 		}
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2129 050a 0123     		movne	r3, #1
  2130 050c F9E6     		b	.L224
  2131              	.L144:
-ARM GAS  /tmp/ccsbnBfC.s 			page 86
+ARM GAS  /tmp/ccEaklh0.s 			page 86
 
 
  620:bluetooth_rxtx.c **** 		break;
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2176              	.L250:
  2177 0542 A374     		strb	r3, [r4, #18]
  2178 0544 92E0     		b	.L231
-ARM GAS  /tmp/ccsbnBfC.s 			page 87
+ARM GAS  /tmp/ccEaklh0.s 			page 87
 
 
  2179              	.L258:
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2227              		.loc 1 656 0 discriminator 1
  2228 05a2 3B88     		ldrh	r3, [r7]
  2229 05a4 A342     		cmp	r3, r4
-ARM GAS  /tmp/ccsbnBfC.s 			page 88
+ARM GAS  /tmp/ccEaklh0.s 			page 88
 
 
  2230 05a6 40F28780 		bls	.L206
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2273 05d4 2E2C     		cmp	r4, #46
  667:bluetooth_rxtx.c **** 			data[(i*3)+2] = reg_val & 0xff;
  2274              		.loc 1 667 0 discriminator 2
-ARM GAS  /tmp/ccsbnBfC.s 			page 89
+ARM GAS  /tmp/ccEaklh0.s 			page 89
 
 
  2275 05d6 7370     		strb	r3, [r6, #1]
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2317              	.LVL245:
  685:bluetooth_rxtx.c **** 		break;
  2318              		.loc 1 685 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 90
+ARM GAS  /tmp/ccEaklh0.s 			page 90
 
 
  2319 0608 0C23     		movs	r3, #12
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2364 0642 4FF4C373 		mov	r3, #390
  2365              	.LVL253:
  2366 0646 1362     		str	r3, [r2, #32]
-ARM GAS  /tmp/ccsbnBfC.s 			page 91
+ARM GAS  /tmp/ccEaklh0.s 			page 91
 
 
  699:bluetooth_rxtx.c **** 		break;
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  716:bluetooth_rxtx.c **** 		le.target[1] = data[4];
  2411              		.loc 1 716 0
  2412 067c 7279     		ldrb	r2, [r6, #5]	@ zero_extendqisi2
-ARM GAS  /tmp/ccsbnBfC.s 			page 92
+ARM GAS  /tmp/ccEaklh0.s 			page 92
 
 
  2413 067e 144B     		ldr	r3, .L259+12
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  743:bluetooth_rxtx.c **** }
  2455              		.loc 1 743 0
  2456 06b8 0120     		movs	r0, #1
-ARM GAS  /tmp/ccsbnBfC.s 			page 93
+ARM GAS  /tmp/ccEaklh0.s 			page 93
 
 
  2457 06ba BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2506 0014 10BD     		pop	{r4, pc}
  2507              	.LVL270:
  2508              	.L262:
-ARM GAS  /tmp/ccsbnBfC.s 			page 94
+ARM GAS  /tmp/ccEaklh0.s 			page 94
 
 
  2509              	.LBE25:
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2558 0010 0446     		mov	r4, r0
  2559 0012 28B9     		cbnz	r0, .L267
  184:bluetooth_rxtx.c **** 		return 0;
-ARM GAS  /tmp/ccsbnBfC.s 			page 95
+ARM GAS  /tmp/ccEaklh0.s 			page 95
 
 
  2560              		.loc 1 184 0
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  199:bluetooth_rxtx.c **** 	status = 0;
  2600              		.loc 1 199 0
  2601 0046 6370     		strb	r3, [r4, #1]
-ARM GAS  /tmp/ccsbnBfC.s 			page 96
+ARM GAS  /tmp/ccEaklh0.s 			page 96
 
 
  202:bluetooth_rxtx.c **** }
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2651 001e 3E4A     		ldr	r2, .L294+8
  754:bluetooth_rxtx.c **** 
  2652              		.loc 1 754 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 97
+ARM GAS  /tmp/ccEaklh0.s 			page 97
 
 
  2653 0020 0C68     		ldr	r4, [r1]
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  754:bluetooth_rxtx.c **** 
  2697              		.loc 1 754 0 discriminator 1
  2698 0058 201A     		subs	r0, r4, r0
-ARM GAS  /tmp/ccsbnBfC.s 			page 98
+ARM GAS  /tmp/ccEaklh0.s 			page 98
 
 
  2699              	.LVL282:
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2744 009a 0B68     		ldr	r3, [r1]
  2745 009c 80B2     		uxth	r0, r0
  2746 009e 2044     		add	r0, r0, r4
-ARM GAS  /tmp/ccsbnBfC.s 			page 99
+ARM GAS  /tmp/ccEaklh0.s 			page 99
 
 
  2747 00a0 9842     		cmp	r0, r3
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2791              		.loc 1 807 0
  2792 00e2 1888     		ldrh	r0, [r3]
  2793 00e4 40F63442 		movw	r2, #3124
-ARM GAS  /tmp/ccsbnBfC.s 			page 100
+ARM GAS  /tmp/ccEaklh0.s 			page 100
 
 
  2794 00e8 80B2     		uxth	r0, r0
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2845              		.cfi_startproc
  2846              		@ args = 0, pretend = 0, frame = 0
  2847              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 101
+ARM GAS  /tmp/ccEaklh0.s 			page 101
 
 
  2848              		@ link register save eliminated.
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2897 0002 2E4B     		ldr	r3, .L348
  2898 0004 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
  2899 0006 012A     		cmp	r2, #1
-ARM GAS  /tmp/ccsbnBfC.s 			page 102
+ARM GAS  /tmp/ccEaklh0.s 			page 102
 
 
  2900 0008 1DD0     		beq	.L301
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2943 0046 1E4A     		ldr	r2, .L348+4
  2944 0048 1268     		ldr	r2, [r2]
  2945 004a D007     		lsls	r0, r2, #31
-ARM GAS  /tmp/ccsbnBfC.s 			page 103
+ARM GAS  /tmp/ccEaklh0.s 			page 103
 
 
  2946 004c 35D5     		bpl	.L300
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  2990              	.LVL286:
  892:bluetooth_rxtx.c **** 				idle_rxbuf = tmp;
  2991              		.loc 1 892 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 104
+ARM GAS  /tmp/ccEaklh0.s 			page 104
 
 
  2992 0096 1868     		ldr	r0, [r3]
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3042              		.global	le_transmit
  3043              		.thumb
  3044              		.thumb_func
-ARM GAS  /tmp/ccsbnBfC.s 			page 105
+ARM GAS  /tmp/ccEaklh0.s 			page 105
 
 
  3046              	le_transmit:
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3092 0024 4270     		strb	r2, [r0, #1]
 1144:bluetooth_rxtx.c **** 		txbuf[i] = 0;
  3093              		.loc 1 1144 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 106
+ARM GAS  /tmp/ccEaklh0.s 			page 106
 
 
  3094 0026 2D0A     		lsrs	r5, r5, #8
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3136              		.loc 1 1156 0
  3137 0062 18F80420 		ldrb	r2, [r8, r4]	@ zero_extendqisi2
  3138              	.LVL304:
-ARM GAS  /tmp/ccsbnBfC.s 			page 107
+ARM GAS  /tmp/ccEaklh0.s 			page 107
 
 
  3139 0066 A444     		add	ip, ip, r4
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3182              	.L377:
 1169:bluetooth_rxtx.c **** 	cc2400_set(LMTST,   0x2b22);    // LNA and receive mixers test register
  3183              		.loc 1 1169 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 108
+ARM GAS  /tmp/ccEaklh0.s 			page 108
 
 
  3184 00a8 0D20     		movs	r0, #13
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3228              		.loc 1 1201 0
  3229 00f8 45F25551 		movwpl	r1, #21845
 1199:bluetooth_rxtx.c **** 	else
-ARM GAS  /tmp/ccsbnBfC.s 			page 109
+ARM GAS  /tmp/ccEaklh0.s 			page 109
 
 
  3230              		.loc 1 1199 0
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3272 0132 1C4B     		ldr	r3, .L378+4
  3273 0134 4FF48072 		mov	r2, #256
  3274 0138 1A60     		str	r2, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 110
+ARM GAS  /tmp/ccEaklh0.s 			page 110
 
 
 1212:bluetooth_rxtx.c **** #endif
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3321              	.L372:
 1236:bluetooth_rxtx.c **** 
  3322              		.loc 1 1236 0 discriminator 1
-ARM GAS  /tmp/ccsbnBfC.s 			page 111
+ARM GAS  /tmp/ccEaklh0.s 			page 111
 
 
  3323 0184 FFF7FEFF 		bl	cc2400_status
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3373              		.loc 1 1249 0
  3374 000c 1220     		movs	r0, #18
  3375 000e 42F62231 		movw	r1, #11042
-ARM GAS  /tmp/ccsbnBfC.s 			page 112
+ARM GAS  /tmp/ccEaklh0.s 			page 112
 
 
  3376 0012 FFF7FEFF 		bl	cc2400_set
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3421              	.L386:
 1271:bluetooth_rxtx.c **** 	cc2400_strobe(STX);
  3422              		.loc 1 1271 0 discriminator 1
-ARM GAS  /tmp/ccsbnBfC.s 			page 113
+ARM GAS  /tmp/ccEaklh0.s 			page 113
 
 
  3423 005c 0E20     		movs	r0, #14
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3472 0012 4AB9     		cbnz	r2, .L390
 1285:bluetooth_rxtx.c **** 			return;
  3473              		.loc 1 1285 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 114
+ARM GAS  /tmp/ccEaklh0.s 			page 114
 
 
  3474 0014 0220     		movs	r0, #2
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3521 0060 1D88     		ldrh	r5, [r3]
  3522 0062 92B2     		uxth	r2, r2
  3523 0064 A2F66213 		subw	r3, r2, #2402
-ARM GAS  /tmp/ccsbnBfC.s 			page 115
+ARM GAS  /tmp/ccEaklh0.s 			page 115
 
 
  3524 0068 0822     		movs	r2, #8
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3572 00be 32D0     		beq	.L392
 1307:bluetooth_rxtx.c **** 	}
  3573              		.loc 1 1307 0 is_stmt 0 discriminator 1
-ARM GAS  /tmp/ccsbnBfC.s 			page 116
+ARM GAS  /tmp/ccEaklh0.s 			page 116
 
 
  3574 00c0 1A88     		ldrh	r2, [r3]
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3623 011a 042B     		cmp	r3, #4
  3624 011c 03D1     		bne	.L392
 1319:bluetooth_rxtx.c **** 	}
-ARM GAS  /tmp/ccsbnBfC.s 			page 117
+ARM GAS  /tmp/ccEaklh0.s 			page 117
 
 
  3625              		.loc 1 1319 0
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3669 015c FFF7FEFF 		bl	cc2400_strobe
  3670              	.LVL358:
  3671              	.L410:
-ARM GAS  /tmp/ccsbnBfC.s 			page 118
+ARM GAS  /tmp/ccEaklh0.s 			page 118
 
 
 1338:bluetooth_rxtx.c **** 
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3720              		.cfi_def_cfa_offset 32
  3721              		.cfi_offset 3, -32
  3722              		.cfi_offset 4, -28
-ARM GAS  /tmp/ccsbnBfC.s 			page 119
+ARM GAS  /tmp/ccEaklh0.s 			page 119
 
 
  3723              		.cfi_offset 5, -24
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3766              		.loc 1 1381 0
  3767 0036 8025     		movs	r5, #128
  3768              	.LVL368:
-ARM GAS  /tmp/ccsbnBfC.s 			page 120
+ARM GAS  /tmp/ccEaklh0.s 			page 120
 
 
  3769              	.L433:
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3813 0076 FFF7FEFF 		bl	handle_usb
  3814              	.LVL376:
 1393:bluetooth_rxtx.c **** 				hop();
-ARM GAS  /tmp/ccsbnBfC.s 			page 121
+ARM GAS  /tmp/ccEaklh0.s 			page 121
 
 
  3815              		.loc 1 1393 0
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3858              		.loc 1 1413 0
  3859 00b8 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
  3860 00ba 42F02002 		orr	r2, r2, #32
-ARM GAS  /tmp/ccsbnBfC.s 			page 122
+ARM GAS  /tmp/ccEaklh0.s 			page 122
 
 
  3861 00be 5A70     		strb	r2, [r3, #1]
@@ -7318,7 +7318,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3906              	.LVL380:
 1434:bluetooth_rxtx.c **** 		rx_tc = 0;
  3907              		.loc 1 1434 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 123
+ARM GAS  /tmp/ccEaklh0.s 			page 123
 
 
  3908 0108 D8F80000 		ldr	r0, [r8]
@@ -7378,7 +7378,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  3957              		.cfi_startproc
  3958              		@ args = 0, pretend = 0, frame = 16
  3959              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 124
+ARM GAS  /tmp/ccEaklh0.s 			page 124
 
 
  3960 0000 2DE9FF41 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, lr}
@@ -7438,7 +7438,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4005              		.loc 1 1485 0
  4006 003c 8DF80000 		strb	r0, [sp]
 1487:bluetooth_rxtx.c **** 		reverse8((target.syncword >> 16) & 0xFF),
-ARM GAS  /tmp/ccsbnBfC.s 			page 125
+ARM GAS  /tmp/ccEaklh0.s 			page 125
 
 
  4007              		.loc 1 1487 0
@@ -7498,7 +7498,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4048 008a 8DF80700 		strb	r0, [sp, #7]
 1494:bluetooth_rxtx.c **** 		reverse8(0x77),
  4049              		.loc 1 1494 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 126
+ARM GAS  /tmp/ccEaklh0.s 			page 126
 
 
  4050 008e 3046     		mov	r0, r6
@@ -7558,7 +7558,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1501:bluetooth_rxtx.c **** 	};
  4091              		.loc 1 1501 0
  4092 00d4 1120     		movs	r0, #17
-ARM GAS  /tmp/ccsbnBfC.s 			page 127
+ARM GAS  /tmp/ccEaklh0.s 			page 127
 
 
  4093 00d6 FFF7FEFF 		bl	reverse8
@@ -7618,7 +7618,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4137 00fc 47F6FF71 		movw	r1, #32767
  4138 0100 FFF7FEFF 		bl	cc2400_set
  4139              	.LVL409:
-ARM GAS  /tmp/ccsbnBfC.s 			page 128
+ARM GAS  /tmp/ccEaklh0.s 			page 128
 
 
 1079:bluetooth_rxtx.c **** 	cc2400_set(MDMTST0, 0x134b);    // no PRNG
@@ -7678,7 +7678,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1097:bluetooth_rxtx.c **** 	} else if (modulation == MOD_BT_LOW_ENERGY) {
  4184              		.loc 1 1097 0
  4185 014c 0320     		movs	r0, #3
-ARM GAS  /tmp/ccsbnBfC.s 			page 129
+ARM GAS  /tmp/ccEaklh0.s 			page 129
 
 
  4186 014e 2921     		movs	r1, #41
@@ -7738,7 +7738,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4231 018e 6320     		movs	r0, #99
  4232 0190 FFF7FEFF 		bl	cc2400_strobe
  4233              	.LVL424:
-ARM GAS  /tmp/ccsbnBfC.s 			page 130
+ARM GAS  /tmp/ccEaklh0.s 			page 130
 
 
  4234              	.L474:
@@ -7798,7 +7798,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4278 01ca F7D0     		beq	.L483
 1519:bluetooth_rxtx.c **** 			}
  4279              		.loc 1 1519 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 131
+ARM GAS  /tmp/ccEaklh0.s 			page 131
 
 
  4280 01cc FFF7FEFF 		bl	hop
@@ -7858,7 +7858,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4324 0210 4107     		lsls	r1, r0, #29
  4325 0212 FBD4     		bmi	.L488
  4326              	.L490:
-ARM GAS  /tmp/ccsbnBfC.s 			page 132
+ARM GAS  /tmp/ccEaklh0.s 			page 132
 
 
 1535:bluetooth_rxtx.c **** 		cc2400_strobe(SFSON);
@@ -7918,7 +7918,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4372 0256 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
  4373              	.LVL445:
  4374              	.L504:
-ARM GAS  /tmp/ccsbnBfC.s 			page 133
+ARM GAS  /tmp/ccEaklh0.s 			page 133
 
 
  4375 025a 00BF     		.align	2
@@ -7978,7 +7978,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4423              		.loc 1 1570 0
  4424 001a 5A64     		str	r2, [r3, #68]
 1581:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 134
+ARM GAS  /tmp/ccEaklh0.s 			page 134
 
 
  4425              		.loc 1 1581 0
@@ -8038,7 +8038,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4467              		.align	1
  4468              		.global	reset_le_promisc
  4469              		.thumb
-ARM GAS  /tmp/ccsbnBfC.s 			page 135
+ARM GAS  /tmp/ccEaklh0.s 			page 135
 
 
  4470              		.thumb_func
@@ -8098,7 +8098,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1608:bluetooth_rxtx.c **** 	mode = active_mode;
  4523              		.loc 1 1608 0
  4524 0004 694C     		ldr	r4, .L556
-ARM GAS  /tmp/ccsbnBfC.s 			page 136
+ARM GAS  /tmp/ccEaklh0.s 			page 136
 
 
  4525 0006 0123     		movs	r3, #1
@@ -8158,7 +8158,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4565              		.loc 1 1628 0 discriminator 1
  4566 003a A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
  4567 003c 4345     		cmp	r3, r8
-ARM GAS  /tmp/ccsbnBfC.s 			page 137
+ARM GAS  /tmp/ccEaklh0.s 			page 137
 
 
  4568 003e 40F0A380 		bne	.L536
@@ -8218,7 +8218,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4613 0080 E37A     		ldrb	r3, [r4, #11]	@ zero_extendqisi2
  4614 0082 4C4E     		ldr	r6, .L556+8
  4615 0084 13B1     		cbz	r3, .L518
-ARM GAS  /tmp/ccsbnBfC.s 			page 138
+ARM GAS  /tmp/ccEaklh0.s 			page 138
 
 
 1647:bluetooth_rxtx.c **** 		} else {
@@ -8278,7 +8278,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4658 00bc 8033     		adds	r3, r3, #128
  4659 00be 09D1     		bne	.L521
 1661:bluetooth_rxtx.c **** 				rssi_at_trigger = rssi;
-ARM GAS  /tmp/ccsbnBfC.s 			page 139
+ARM GAS  /tmp/ccEaklh0.s 			page 139
 
 
  4660              		.loc 1 1661 0 is_stmt 1
@@ -8338,7 +8338,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4706 0102 1888     		ldrh	r0, [r3]
  4707 0104 80B2     		uxth	r0, r0
  4708 0106 FFF7FEFF 		bl	rssi_iir_update
-ARM GAS  /tmp/ccsbnBfC.s 			page 140
+ARM GAS  /tmp/ccEaklh0.s 			page 140
 
 
  4709              	.LVL473:
@@ -8398,7 +8398,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1697:bluetooth_rxtx.c **** 			goto rx_continue;
  4753              		.loc 1 1697 0
  4754 0142 6DB3     		cbz	r5, .L525
-ARM GAS  /tmp/ccsbnBfC.s 			page 141
+ARM GAS  /tmp/ccEaklh0.s 			page 141
 
 
  4755              	.LVL480:
@@ -8458,7 +8458,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1708:bluetooth_rxtx.c **** 				unpacked[DMA_SIZE*8 + i * 8 + j] = (idle_rxbuf[i] & 0x80) >> 7;
  4797              		.loc 1 1708 0 discriminator 2
  4798 0174 082A     		cmp	r2, #8
-ARM GAS  /tmp/ccsbnBfC.s 			page 142
+ARM GAS  /tmp/ccEaklh0.s 			page 142
 
 
 1710:bluetooth_rxtx.c **** 			}
@@ -8518,7 +8518,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4841 01a8 47E7     		b	.L512
  4842              	.L557:
  4843 01aa 00BF     		.align	2
-ARM GAS  /tmp/ccsbnBfC.s 			page 143
+ARM GAS  /tmp/ccEaklh0.s 			page 143
 
 
  4844              	.L556:
@@ -8578,7 +8578,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4895              		.loc 1 1738 0
  4896 000e 0021     		movs	r1, #0
  4897 0010 4046     		mov	r0, r8
-ARM GAS  /tmp/ccsbnBfC.s 			page 144
+ARM GAS  /tmp/ccEaklh0.s 			page 144
 
 
  4898              	.LVL495:
@@ -8638,7 +8638,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1757:bluetooth_rxtx.c **** 	requested_mode = active_mode;
  4940              		.loc 1 1757 0
  4941 0052 84F80090 		strb	r9, [r4]
-ARM GAS  /tmp/ccsbnBfC.s 			page 145
+ARM GAS  /tmp/ccEaklh0.s 			page 145
 
 
 1761:bluetooth_rxtx.c **** 
@@ -8698,7 +8698,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  4981              		.loc 1 1774 0
  4982 008e ABE0     		b	.L562
  4983              	.LVL506:
-ARM GAS  /tmp/ccsbnBfC.s 			page 146
+ARM GAS  /tmp/ccEaklh0.s 			page 146
 
 
  4984              	.L564:
@@ -8758,7 +8758,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1782:bluetooth_rxtx.c **** 		}
  5030              		.loc 1 1782 0
  5031 00d2 0023     		movs	r3, #0
-ARM GAS  /tmp/ccsbnBfC.s 			page 147
+ARM GAS  /tmp/ccEaklh0.s 			page 147
 
 
  5032 00d4 E381     		strh	r3, [r4, #14]	@ movhi
@@ -8818,7 +8818,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5077 011a 4949     		ldr	r1, .L584+20
  5078 011c 2A68     		ldr	r2, [r5]
  5079 011e 0968     		ldr	r1, [r1]
-ARM GAS  /tmp/ccsbnBfC.s 			page 148
+ARM GAS  /tmp/ccEaklh0.s 			page 148
 
 
  5080 0120 C2F31302 		ubfx	r2, r2, #0, #20
@@ -8878,7 +8878,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5126              	.L576:
 1801:bluetooth_rxtx.c **** 		}
  5127              		.loc 1 1801 0 is_stmt 0 discriminator 1
-ARM GAS  /tmp/ccsbnBfC.s 			page 149
+ARM GAS  /tmp/ccEaklh0.s 			page 149
 
 
  5128 0186 009A     		ldr	r2, [sp]
@@ -8938,7 +8938,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5174 01d6 FFF7FEFF 		bl	enqueue_time
  5175              	.LVL526:
 1812:bluetooth_rxtx.c **** 	
-ARM GAS  /tmp/ccsbnBfC.s 			page 150
+ARM GAS  /tmp/ccEaklh0.s 			page 150
 
 
  5176              		.loc 1 1812 0
@@ -8998,7 +8998,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 1827:bluetooth_rxtx.c **** }
  5223              		.loc 1 1827 0
  5224 0222 FFF7FEFF 		bl	cs_trigger_disable
-ARM GAS  /tmp/ccsbnBfC.s 			page 151
+ARM GAS  /tmp/ccEaklh0.s 			page 151
 
 
  5225              	.LVL531:
@@ -9058,7 +9058,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5276              		.loc 1 1838 0
  5277 000a 0123     		movs	r3, #1
  5278 000c 2370     		strb	r3, [r4]
-ARM GAS  /tmp/ccsbnBfC.s 			page 152
+ARM GAS  /tmp/ccEaklh0.s 			page 152
 
 
 1841:bluetooth_rxtx.c **** 
@@ -9118,7 +9118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5320 0046 DB89     		ldrh	r3, [r3, #14]
  5321 0048 9BB2     		uxth	r3, r3
  5322 004a CBB1     		cbz	r3, .L588
-ARM GAS  /tmp/ccsbnBfC.s 			page 153
+ARM GAS  /tmp/ccEaklh0.s 			page 153
 
 
 1856:bluetooth_rxtx.c **** 			while ((cc2400_status() & FS_LOCK)); // need to wait for unlock?
@@ -9178,7 +9178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5367              		.loc 1 1875 0 discriminator 1
  5368 008a 8E4B     		ldr	r3, .L653+16
  5369 008c 1A68     		ldr	r2, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 154
+ARM GAS  /tmp/ccEaklh0.s 			page 154
 
 
  5370 008e 9A46     		mov	r10, r3
@@ -9238,7 +9238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5413              	.L596:
 1886:bluetooth_rxtx.c **** 			goto rx_flush;
  5414              		.loc 1 1886 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 155
+ARM GAS  /tmp/ccEaklh0.s 			page 155
 
 
  5415 00d4 E27A     		ldrb	r2, [r4, #11]	@ zero_extendqisi2
@@ -9298,7 +9298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5458              	.LBB49:
 1903:bluetooth_rxtx.c **** 					   | rxbuf1[i+2] << 8
  5459              		.loc 1 1903 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 156
+ARM GAS  /tmp/ccEaklh0.s 			page 156
 
 
  5460 0116 7178     		ldrb	r1, [r6, #1]	@ zero_extendqisi2
@@ -9358,7 +9358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5501              		.loc 1 1917 0
  5502 0156 06EB8206 		add	r6, r6, r2, lsl #2
  5503              	.LVL559:
-ARM GAS  /tmp/ccsbnBfC.s 			page 157
+ARM GAS  /tmp/ccEaklh0.s 			page 157
 
 
  5504              	.L602:
@@ -9418,7 +9418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5547 0196 B21C     		adds	r2, r6, #2
 1932:bluetooth_rxtx.c **** 					   | rxbuf1[i+3] << 0;
  5548              		.loc 1 1932 0 discriminator 2
-ARM GAS  /tmp/ccsbnBfC.s 			page 158
+ARM GAS  /tmp/ccEaklh0.s 			page 158
 
 
  5549 0198 985C     		ldrb	r0, [r3, r2]	@ zero_extendqisi2
@@ -9478,7 +9478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5591 01d2 DFF82881 		ldr	r8, .L653+72
  5592              	.LVL565:
  5593 01d6 FF2B     		cmp	r3, #255
-ARM GAS  /tmp/ccsbnBfC.s 			page 159
+ARM GAS  /tmp/ccEaklh0.s 			page 159
 
 
  5594 01d8 38D1     		bne	.L632
@@ -9538,7 +9538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5639 0226 11D1     		bne	.L632
  5640              	.LVL569:
  5641              	.LBB55:
-ARM GAS  /tmp/ccsbnBfC.s 			page 160
+ARM GAS  /tmp/ccEaklh0.s 			page 160
 
 
 1952:bluetooth_rxtx.c **** //			sync_channel = (u16)p[28];
@@ -9598,7 +9598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5684              		.loc 1 1962 0
  5685 0264 03A9     		add	r1, sp, #12
  5686              	.LVL576:
-ARM GAS  /tmp/ccsbnBfC.s 			page 161
+ARM GAS  /tmp/ccEaklh0.s 			page 161
 
 
  5687 0266 0120     		movs	r0, #1
@@ -9658,7 +9658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5730 02a8 1B68     		ldr	r3, [r3]
  5731 02aa 5E07     		lsls	r6, r3, #29
  5732 02ac 28D5     		bpl	.L652
-ARM GAS  /tmp/ccsbnBfC.s 			page 162
+ARM GAS  /tmp/ccEaklh0.s 			page 162
 
 
  5733              	.LBB56:
@@ -9718,7 +9718,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5780 031e 38BF     		it	cc
  5781 0320 03F14343 		addcc	r3, r3, #-1023410176
  5782              	.LVL583:
-ARM GAS  /tmp/ccsbnBfC.s 			page 163
+ARM GAS  /tmp/ccEaklh0.s 			page 163
 
 
 1988:bluetooth_rxtx.c **** 			((le.link_state == LINK_CONNECTED || le.link_state == LINK_CONN_PENDING)
@@ -9778,7 +9778,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5823 0354 02D1     		bne	.L617
 2000:bluetooth_rxtx.c **** 				requested_mode = MODE_IDLE;
  5824              		.loc 1 2000 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 164
+ARM GAS  /tmp/ccEaklh0.s 			page 164
 
 
  5825 0356 D374     		strb	r3, [r2, #19]
@@ -9838,7 +9838,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5866 038c 6363     		str	r3, [r4, #52]
  5867              	.L616:
 2019:bluetooth_rxtx.c **** 		cc2400_set(SYNCH, le.synch);
-ARM GAS  /tmp/ccsbnBfC.s 			page 165
+ARM GAS  /tmp/ccEaklh0.s 			page 165
 
 
  5868              		.loc 1 2019 0
@@ -9898,7 +9898,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5912 03cc FFF7FEFF 		bl	cc2400_rx_sync
  5913              	.LVL596:
 2036:bluetooth_rxtx.c **** 			} else {
-ARM GAS  /tmp/ccsbnBfC.s 			page 166
+ARM GAS  /tmp/ccEaklh0.s 			page 166
 
 
  5914              		.loc 1 2036 0
@@ -9958,7 +9958,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  5959 0410 08400040 		.word	1073758216
  5960 0414 80F0FA02 		.word	50000000
  5961 0418 3CC00920 		.word	537509948
-ARM GAS  /tmp/ccsbnBfC.s 			page 167
+ARM GAS  /tmp/ccEaklh0.s 			page 167
 
 
  5962 041c 00000000 		.word	.LANCHOR0
@@ -10018,7 +10018,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6010 0016 0123     		movs	r3, #1
  6011 0018 2B70     		strb	r3, [r5]
 2070:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 168
+ARM GAS  /tmp/ccEaklh0.s 			page 168
 
 
  6012              		.loc 1 2070 0
@@ -10078,7 +10078,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6054              		.loc 1 2083 0
  6055 0056 6420     		movs	r0, #100
  6056 0058 FFF7FEFF 		bl	cc2400_strobe
-ARM GAS  /tmp/ccsbnBfC.s 			page 169
+ARM GAS  /tmp/ccEaklh0.s 			page 169
 
 
  6057              	.LVL612:
@@ -10138,7 +10138,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6102 009a 42B9     		cbnz	r2, .L664
 2093:bluetooth_rxtx.c **** 		rssi = (int8_t)(cc2400_get(RSSI) >> 8);
  6103              		.loc 1 2093 0 is_stmt 0 discriminator 2
-ARM GAS  /tmp/ccsbnBfC.s 			page 170
+ARM GAS  /tmp/ccEaklh0.s 			page 170
 
 
  6104 009c 894B     		ldr	r3, .L721+20
@@ -10198,7 +10198,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6146 00d8 EB7A     		ldrb	r3, [r5, #11]	@ zero_extendqisi2
  6147 00da 03F0FF08 		and	r8, r3, #255
  6148 00de 002B     		cmp	r3, #0
-ARM GAS  /tmp/ccsbnBfC.s 			page 171
+ARM GAS  /tmp/ccEaklh0.s 			page 171
 
 
  6149 00e0 40F0D680 		bne	.L669
@@ -10258,7 +10258,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6192              	.LBB59:
 2121:bluetooth_rxtx.c **** 					   | rxbuf1[i+1] << 16
  6193              		.loc 1 2121 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 172
+ARM GAS  /tmp/ccEaklh0.s 			page 172
 
 
  6194 0124 9BF800E0 		ldrb	lr, [fp]	@ zero_extendqisi2
@@ -10318,7 +10318,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6235 015e 5040     		eors	r0, r0, r2
  6236 0160 1090     		str	r0, [sp, #64]
 2126:bluetooth_rxtx.c **** 		}
-ARM GAS  /tmp/ccsbnBfC.s 			page 173
+ARM GAS  /tmp/ccEaklh0.s 			page 173
 
 
  6237              		.loc 1 2126 0
@@ -10378,7 +10378,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6281 01a8 DA07     		lsls	r2, r3, #31
  6282 01aa F9D4     		bmi	.L718
  6283              	.L676:
-ARM GAS  /tmp/ccsbnBfC.s 			page 174
+ARM GAS  /tmp/ccEaklh0.s 			page 174
 
 
 2141:bluetooth_rxtx.c **** 		cc2400_strobe(SFSON);
@@ -10438,7 +10438,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6324              	.LVL635:
  6325 01e8 009A     		ldr	r2, [sp]
  6326 01ea 1CAB     		add	r3, sp, #112
-ARM GAS  /tmp/ccsbnBfC.s 			page 175
+ARM GAS  /tmp/ccEaklh0.s 			page 175
 
 
  6327 01ec 03EB8201 		add	r1, r3, r2, lsl #2
@@ -10498,7 +10498,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6371              		.loc 1 2154 0
  6372 022a 224B     		ldr	r3, .L721+4
  6373 022c 10A9     		add	r1, sp, #64
-ARM GAS  /tmp/ccsbnBfC.s 			page 176
+ARM GAS  /tmp/ccEaklh0.s 			page 176
 
 
  6374 022e 1869     		ldr	r0, [r3, #16]
@@ -10558,7 +10558,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6419 027a 1C4B     		ldr	r3, .L721+60
  6420 027c 1C4A     		ldr	r2, .L721+64
  6421 027e 1B68     		ldr	r3, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 177
+ARM GAS  /tmp/ccEaklh0.s 			page 177
 
 
  6422 0280 1268     		ldr	r2, [r2]
@@ -10618,7 +10618,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6472              	.LBE67:
 2181:bluetooth_rxtx.c **** 		if (now <le.last_packet)
  6473              		.loc 1 2181 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 178
+ARM GAS  /tmp/ccEaklh0.s 			page 178
 
 
  6474 02fc 414B     		ldr	r3, .L723
@@ -10678,7 +10678,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6517              	.LVL651:
 2187:bluetooth_rxtx.c **** 			if (jam_mode == JAM_ONCE) {
  6518              		.loc 1 2187 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 179
+ARM GAS  /tmp/ccEaklh0.s 			page 179
 
 
  6519 033e 3449     		ldr	r1, .L723+12
@@ -10738,7 +10738,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6557              		.loc 1 2197 0
  6558 036a B4F84A30 		ldrh	r3, [r4, #74]
  6559 036e 9BB2     		uxth	r3, r3
-ARM GAS  /tmp/ccsbnBfC.s 			page 180
+ARM GAS  /tmp/ccEaklh0.s 			page 180
 
 
  6560 0370 23B1     		cbz	r3, .L703
@@ -10798,7 +10798,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6603 03ac 013B     		subs	r3, r3, #1
  6604 03ae F361     		str	r3, [r6, #28]
  6605 03b0 14E0     		b	.L697
-ARM GAS  /tmp/ccsbnBfC.s 			page 181
+ARM GAS  /tmp/ccEaklh0.s 			page 181
 
 
  6606              	.L696:
@@ -10858,7 +10858,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6649 03ea 4FF08072 		mov	r2, #16777216
  6650 03ee 1A60     		str	r2, [r3]
 2229:bluetooth_rxtx.c **** 	dio_ssp_stop ();
-ARM GAS  /tmp/ccsbnBfC.s 			page 182
+ARM GAS  /tmp/ccEaklh0.s 			page 182
 
 
  6651              		.loc 1 2229 0
@@ -10918,7 +10918,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6697              		.loc 1 2401 0
  6698 0006 044C     		ldr	r4, .L726
  6699 0008 044B     		ldr	r3, .L726+4
-ARM GAS  /tmp/ccsbnBfC.s 			page 183
+ARM GAS  /tmp/ccEaklh0.s 			page 183
 
 
 2402:bluetooth_rxtx.c **** 	bt_le_sync(MODE_BT_FOLLOW_LE);
@@ -10978,7 +10978,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6741 0004 FFF7FEFF 		bl	reset_le
  6742              	.LVL670:
 2416:bluetooth_rxtx.c **** 	packet_cb = connection_follow_cb;
-ARM GAS  /tmp/ccsbnBfC.s 			page 184
+ARM GAS  /tmp/ccEaklh0.s 			page 184
 
 
  6743              		.loc 1 2416 0
@@ -11038,7 +11038,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6791              	.LVL673:
  6792 0000 70B5     		push	{r4, r5, r6, lr}
  6793              		.cfi_def_cfa_offset 16
-ARM GAS  /tmp/ccsbnBfC.s 			page 185
+ARM GAS  /tmp/ccEaklh0.s 			page 185
 
 
  6794              		.cfi_offset 4, -16
@@ -11098,7 +11098,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6840              		.global	promisc_recover_hop_increment
  6841              		.thumb
  6842              		.thumb_func
-ARM GAS  /tmp/ccsbnBfC.s 			page 186
+ARM GAS  /tmp/ccEaklh0.s 			page 186
 
 
  6844              	promisc_recover_hop_increment:
@@ -11158,7 +11158,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6887              	.LBB73:
  6888              	.LBB74:
 2443:bluetooth_rxtx.c **** 		u32 second_ts = CLK100NS;
-ARM GAS  /tmp/ccsbnBfC.s 			page 187
+ARM GAS  /tmp/ccEaklh0.s 			page 187
 
 
  6889              		.loc 1 2443 0
@@ -11218,7 +11218,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6930 007c 0344     		add	r3, r3, r0
  6931              	.LVL689:
  6932 007e 93F87008 		ldrb	r0, [r3, #2160]	@ zero_extendqisi2
-ARM GAS  /tmp/ccsbnBfC.s 			page 188
+ARM GAS  /tmp/ccEaklh0.s 			page 188
 
 
  6933              		.loc 1 2452 0
@@ -11278,7 +11278,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  6969              	.LVL691:
 2463:bluetooth_rxtx.c **** 
 2464:bluetooth_rxtx.c **** 			if (jam_mode != JAM_NONE)
-ARM GAS  /tmp/ccsbnBfC.s 			page 189
+ARM GAS  /tmp/ccEaklh0.s 			page 189
 
 
  6970              		.loc 1 2464 0
@@ -11338,7 +11338,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2477:bluetooth_rxtx.c **** 
 2478:bluetooth_rxtx.c **** void promisc_recover_hop_interval(u8 *packet) {
  7014              		.loc 1 2478 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 190
+ARM GAS  /tmp/ccEaklh0.s 			page 190
 
 
  7015              		.cfi_startproc
@@ -11398,7 +11398,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2491:bluetooth_rxtx.c **** 	if (clk_diff < le_promisc.smallest_hop_interval)
  7056              		.loc 1 2491 0
  7057 0034 1B4A     		ldr	r2, .L751+12
-ARM GAS  /tmp/ccsbnBfC.s 			page 191
+ARM GAS  /tmp/ccEaklh0.s 			page 191
 
 
  7058 0036 D2F80011 		ldr	r1, [r2, #256]
@@ -11458,7 +11458,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7096 0070 0220     		movs	r0, #2
 2500:bluetooth_rxtx.c **** 			packet_cb = promisc_recover_hop_increment;
  7097              		.loc 1 2500 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 192
+ARM GAS  /tmp/ccEaklh0.s 			page 192
 
 
  7098 0072 AB61     		str	r3, [r5, #24]
@@ -11518,7 +11518,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7141 00b0 00000000 		.word	promisc_recover_hop_increment
  7142              		.cfi_endproc
  7143              	.LFE33:
-ARM GAS  /tmp/ccsbnBfC.s 			page 193
+ARM GAS  /tmp/ccEaklh0.s 			page 193
 
 
  7145              		.section	.text.promisc_follow_cb,"ax",%progbits
@@ -11578,7 +11578,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7188 001a 0002     		lsls	r0, r0, #8
  7189 001c 40EA0340 		orr	r0, r0, r3, lsl #16
  7190 0020 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
-ARM GAS  /tmp/ccsbnBfC.s 			page 194
+ARM GAS  /tmp/ccEaklh0.s 			page 194
 
 
  7191              		.loc 1 2521 0
@@ -11638,7 +11638,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2529:bluetooth_rxtx.c **** 	}
 2530:bluetooth_rxtx.c **** }
  7234              		.loc 1 2530 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 195
+ARM GAS  /tmp/ccEaklh0.s 			page 195
 
 
  7235 0058 BDE83840 		pop	{r3, r4, r5, lr}
@@ -11698,7 +11698,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7284 000e 8142     		cmp	r1, r0
  7285 0010 02D1     		bne	.L761
 2537:bluetooth_rxtx.c **** 			++le_promisc.active_aa[i].count;
-ARM GAS  /tmp/ccsbnBfC.s 			page 196
+ARM GAS  /tmp/ccEaklh0.s 			page 196
 
 
  7286              		.loc 1 2537 0
@@ -11758,7 +11758,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2547:bluetooth_rxtx.c **** 
 2548:bluetooth_rxtx.c **** 	le_promisc.active_aa[killme].aa = aa;
  7329              		.loc 1 2548 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 197
+ARM GAS  /tmp/ccEaklh0.s 			page 197
 
 
  7330 0048 45F83300 		str	r0, [r5, r3, lsl #3]
@@ -11818,7 +11818,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7375 000a 4022     		movs	r2, #64
  7376 000c 04A8     		add	r0, sp, #16
  7377              	.LVL733:
-ARM GAS  /tmp/ccsbnBfC.s 			page 198
+ARM GAS  /tmp/ccEaklh0.s 			page 198
 
 
  7378 000e FFF7FEFF 		bl	memset
@@ -11878,7 +11878,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7415              	.LVL740:
 2574:bluetooth_rxtx.c **** 			desired[i][j] ^= whitening[idx];
  7416              		.loc 1 2574 0 discriminator 2
-ARM GAS  /tmp/ccsbnBfC.s 			page 199
+ARM GAS  /tmp/ccEaklh0.s 			page 199
 
 
  7417 0056 4140     		eors	r1, r1, r0
@@ -11938,7 +11938,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2583:bluetooth_rxtx.c **** 
 2584:bluetooth_rxtx.c **** 		for (j = 0; j < 4; ++j) {
 2585:bluetooth_rxtx.c **** 			for (k = 0; k < (int)sizeof(desired[j]); ++k) {
-ARM GAS  /tmp/ccsbnBfC.s 			page 200
+ARM GAS  /tmp/ccEaklh0.s 			page 200
 
 
 2586:bluetooth_rxtx.c **** 				if (unpacked[i+k] != desired[j][k]) {
@@ -11998,7 +11998,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2601:bluetooth_rxtx.c **** 		// skip if no match
 2602:bluetooth_rxtx.c **** 		if (matching < 0)
 2603:bluetooth_rxtx.c **** 			continue;
-ARM GAS  /tmp/ccsbnBfC.s 			page 201
+ARM GAS  /tmp/ccEaklh0.s 			page 201
 
 
 2604:bluetooth_rxtx.c **** 
@@ -12058,7 +12058,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7534 00e8 4FF07F0E 		mov	lr, #127
  7535 00ec B0FBFEF9 		udiv	r9, r0, lr
  7536 00f0 0EFB1900 		mls	r0, lr, r9, r0
-ARM GAS  /tmp/ccsbnBfC.s 			page 202
+ARM GAS  /tmp/ccEaklh0.s 			page 202
 
 
  7537              	.LVL759:
@@ -12118,7 +12118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2624:bluetooth_rxtx.c **** 				 (idle_rxbuf[1] <<  8) |
  7579              		.loc 1 2624 0
  7580 0114 2268     		ldr	r2, [r4]
-ARM GAS  /tmp/ccsbnBfC.s 			page 203
+ARM GAS  /tmp/ccEaklh0.s 			page 203
 
 
 2623:bluetooth_rxtx.c **** 				 (idle_rxbuf[2] << 16) |
@@ -12178,7 +12178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7620              		.loc 1 2635 0
  7621 0148 52F83300 		ldr	r0, [r2, r3, lsl #3]
  7622 014c FFF7FEFF 		bl	le_set_access_address
-ARM GAS  /tmp/ccsbnBfC.s 			page 204
+ARM GAS  /tmp/ccEaklh0.s 			page 204
 
 
  7623              	.LVL774:
@@ -12238,7 +12238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7661              		@ sp needed
  7662 0176 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
  7663              	.LVL779:
-ARM GAS  /tmp/ccsbnBfC.s 			page 205
+ARM GAS  /tmp/ccEaklh0.s 			page 205
 
 
  7664              	.L812:
@@ -12298,7 +12298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7711              		.loc 1 2654 0
  7712 0014 44BF     		itt	mi
  7713 0016 40F68813 		movwmi	r3, #2440
-ARM GAS  /tmp/ccsbnBfC.s 			page 206
+ARM GAS  /tmp/ccEaklh0.s 			page 206
 
 
  7714 001a 2380     		strhmi	r3, [r4]	@ movhi
@@ -12358,7 +12358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2669:bluetooth_rxtx.c **** 		packet_cb = promisc_follow_cb;
  7750              		.loc 1 2669 0
  7751 004c 9A61     		str	r2, [r3, #24]
-ARM GAS  /tmp/ccsbnBfC.s 			page 207
+ARM GAS  /tmp/ccEaklh0.s 			page 207
 
 
 2670:bluetooth_rxtx.c **** 		le.crc_verify = 0;
@@ -12418,7 +12418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2681:bluetooth_rxtx.c **** 	u8 **adv_ind;
 2682:bluetooth_rxtx.c **** 	u8 adv_ind_len;
 2683:bluetooth_rxtx.c **** 	u16 ch[] = {2402, 2426, 2480};
-ARM GAS  /tmp/ccsbnBfC.s 			page 208
+ARM GAS  /tmp/ccEaklh0.s 			page 208
 
 
  7798              		.loc 1 2683 0
@@ -12478,7 +12478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7838 0040 0133     		adds	r3, r3, #1
  7839              	.LVL788:
  7840 0042 062B     		cmp	r3, #6
-ARM GAS  /tmp/ccsbnBfC.s 			page 209
+ARM GAS  /tmp/ccEaklh0.s 			page 209
 
 
  7841 0044 8B46     		mov	fp, r1
@@ -12538,7 +12538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7877 006e 2846     		mov	r0, r5
  7878 0070 FFF7FEFF 		bl	malloc
  7879              	.LVL796:
-ARM GAS  /tmp/ccsbnBfC.s 			page 210
+ARM GAS  /tmp/ccEaklh0.s 			page 210
 
 
 2709:bluetooth_rxtx.c **** 	for (i=0; i< num_adv_ind-1; i++) {
@@ -12598,7 +12598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7925              	.LVL804:
  7926 00ae 142B     		cmp	r3, #20
  7927 00b0 F8D1     		bne	.L843
-ARM GAS  /tmp/ccsbnBfC.s 			page 211
+ARM GAS  /tmp/ccEaklh0.s 			page 211
 
 
  7928              		.loc 1 2715 0 is_stmt 0
@@ -12658,7 +12658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  7975              	.LVL811:
 2721:bluetooth_rxtx.c **** 			u8 tot_len = (u8)(plen + 18);
 2722:bluetooth_rxtx.c **** 			u8 adv_len = (u8)(plen + 7);
-ARM GAS  /tmp/ccsbnBfC.s 			page 212
+ARM GAS  /tmp/ccEaklh0.s 			page 212
 
 
 2723:bluetooth_rxtx.c **** 			adv_ind[i][1] = tot_len;
@@ -12718,7 +12718,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8021              	.LVL816:
  8022 0136 F1E7     		b	.L840
  8023              	.L863:
-ARM GAS  /tmp/ccsbnBfC.s 			page 213
+ARM GAS  /tmp/ccEaklh0.s 			page 213
 
 
 2730:bluetooth_rxtx.c **** 			adv_ind[i][1] = tot_len;
@@ -12778,7 +12778,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8065 0164 6259     		ldr	r2, [r4, r5]
 2714:bluetooth_rxtx.c **** 		for (j=0; j<20; j++) adv_ind[i][j] = adv_overhead[j];
  8066              		.loc 1 2714 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 214
+ARM GAS  /tmp/ccEaklh0.s 			page 214
 
 
  8067 0166 0137     		adds	r7, r7, #1
@@ -12838,7 +12838,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8094 018e 4FF08062 		mov	r2, #67108864
  8095 0192 1A60     		str	r2, [r3]
  8096              	.LVL824:
-ARM GAS  /tmp/ccsbnBfC.s 			page 215
+ARM GAS  /tmp/ccEaklh0.s 			page 215
 
 
  8097 0194 0027     		movs	r7, #0
@@ -12898,7 +12898,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8128              	.LVL830:
 2788:bluetooth_rxtx.c **** 				}
 2789:bluetooth_rxtx.c **** 				msleep(10);
-ARM GAS  /tmp/ccsbnBfC.s 			page 216
+ARM GAS  /tmp/ccEaklh0.s 			page 216
 
 
  8129              		.loc 1 2789 0
@@ -12946,33 +12946,33 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8161 01e6 DAF80000 		ldr	r0, [r10]
  8162 01ea FFF7FEFF 		bl	free
  8163              	.LVL836:
-2798:bluetooth_rxtx.c **** 	free(adv_ind);
+2798:bluetooth_rxtx.c **** 	for(i=0; i<num_adv_ind; i++)
  8164              		.loc 1 2798 0
- 8165 01ee 2046     		mov	r0, r4
- 8166 01f0 FFF7FEFF 		bl	free
- 8167              	.LVL837:
-2799:bluetooth_rxtx.c **** 	for(i=0; i<num_adv_ind; i++)
- 8168              		.loc 1 2799 0
- 8169 01f4 0025     		movs	r5, #0
- 8170              	.LVL838:
- 8171              	.L853:
- 8172              		.loc 1 2799 0 is_stmt 0 discriminator 1
- 8173 01f6 B542     		cmp	r5, r6
-ARM GAS  /tmp/ccsbnBfC.s 			page 217
+ 8165 01ee 0025     		movs	r5, #0
+ 8166              	.LVL837:
+ 8167              	.L853:
+ 8168              		.loc 1 2798 0 is_stmt 0 discriminator 1
+ 8169 01f0 B542     		cmp	r5, r6
+ 8170 01f2 05DA     		bge	.L865
+2799:bluetooth_rxtx.c **** 		free(adv_ind[i]);
+ 8171              		.loc 1 2799 0 is_stmt 1 discriminator 2
+ 8172 01f4 54F82500 		ldr	r0, [r4, r5, lsl #2]
+ 8173 01f8 FFF7FEFF 		bl	free
+ARM GAS  /tmp/ccEaklh0.s 			page 217
 
 
- 8174 01f8 05DA     		bge	.L865
-2800:bluetooth_rxtx.c **** 		free(adv_ind[i]);
- 8175              		.loc 1 2800 0 is_stmt 1 discriminator 2
- 8176 01fa 54F82500 		ldr	r0, [r4, r5, lsl #2]
- 8177 01fe FFF7FEFF 		bl	free
- 8178              	.LVL839:
-2799:bluetooth_rxtx.c **** 	for(i=0; i<num_adv_ind; i++)
- 8179              		.loc 1 2799 0 discriminator 2
- 8180 0202 0135     		adds	r5, r5, #1
- 8181              	.LVL840:
- 8182 0204 F7E7     		b	.L853
- 8183              	.L865:
+ 8174              	.LVL838:
+2798:bluetooth_rxtx.c **** 	for(i=0; i<num_adv_ind; i++)
+ 8175              		.loc 1 2798 0 discriminator 2
+ 8176 01fc 0135     		adds	r5, r5, #1
+ 8177              	.LVL839:
+ 8178 01fe F7E7     		b	.L853
+ 8179              	.L865:
+2800:bluetooth_rxtx.c **** 	free(adv_ind);
+ 8180              		.loc 1 2800 0
+ 8181 0200 2046     		mov	r0, r4
+ 8182 0202 FFF7FEFF 		bl	free
+ 8183              	.LVL840:
 2801:bluetooth_rxtx.c **** 	
 2802:bluetooth_rxtx.c **** 	//JWHUR test
 2803:bluetooth_rxtx.c **** 	ICER0 = ICER0_ICE_USB;
@@ -13018,7 +13018,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8219              		.thumb
  8220              		.thumb_func
  8222              	bt_sync_le:
-ARM GAS  /tmp/ccsbnBfC.s 			page 218
+ARM GAS  /tmp/ccEaklh0.s 			page 218
 
 
  8223              	.LFB39:
@@ -13078,7 +13078,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2817:bluetooth_rxtx.c **** 					  0xff, 0xff, 0xff, 0xff, 0xff, 0xff, // adv mac address
  8256              		.loc 1 2817 0
  8257 0024 2370     		strb	r3, [r4]
-ARM GAS  /tmp/ccsbnBfC.s 			page 219
+ARM GAS  /tmp/ccEaklh0.s 			page 219
 
 
  8258              	.LVL846:
@@ -13138,7 +13138,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8297              		.loc 1 2838 0
  8298 0052 294B     		ldr	r3, .L881+8
  8299 0054 4FF08072 		mov	r2, #16777216
-ARM GAS  /tmp/ccsbnBfC.s 			page 220
+ARM GAS  /tmp/ccEaklh0.s 			page 220
 
 
  8300 0058 1A60     		str	r2, [r3]
@@ -13198,7 +13198,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8338 008a A376     		strb	r3, [r4, #26]
  8339              		.loc 1 2850 0 discriminator 2
  8340 008c E076     		strb	r0, [r4, #27]
-ARM GAS  /tmp/ccsbnBfC.s 			page 221
+ARM GAS  /tmp/ccEaklh0.s 			page 221
 
 
 2851:bluetooth_rxtx.c **** 		le_transmit(0x8e89bed6, adv_ind_len+3, adv_ind, ch[0]);
@@ -13258,7 +13258,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8382              		.loc 1 2855 0
  8383 00c4 1A60     		str	r2, [r3]
  8384              		.loc 1 2857 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 222
+ARM GAS  /tmp/ccEaklh0.s 			page 222
 
 
  8385 00c6 FFF7FEFF 		bl	free
@@ -13318,7 +13318,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8430              		.global	rx_generic_sync
  8431              		.thumb
  8432              		.thumb_func
-ARM GAS  /tmp/ccsbnBfC.s 			page 223
+ARM GAS  /tmp/ccEaklh0.s 			page 223
 
 
  8434              	rx_generic_sync:
@@ -13378,7 +13378,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2884:bluetooth_rxtx.c **** 	clkn_start();
  8470              		.loc 1 2884 0
  8471 0028 FFF7FEFF 		bl	clkn_start
-ARM GAS  /tmp/ccsbnBfC.s 			page 224
+ARM GAS  /tmp/ccEaklh0.s 			page 224
 
 
  8472              	.LVL874:
@@ -13438,7 +13438,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8513 0068 0222     		movs	r2, #2
  8514 006a 1A60     		str	r2, [r3]
  8515              	.L891:
-ARM GAS  /tmp/ccsbnBfC.s 			page 225
+ARM GAS  /tmp/ccEaklh0.s 			page 225
 
 
 2898:bluetooth_rxtx.c **** 		while (!(cc2400_status() & SYNC_RECEIVED));
@@ -13498,7 +13498,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8562              		@ args = 0, pretend = 0, frame = 0
  8563              		@ frame_needed = 0, uses_anonymous_args = 0
  8564 0000 08B5     		push	{r3, lr}
-ARM GAS  /tmp/ccsbnBfC.s 			page 226
+ARM GAS  /tmp/ccEaklh0.s 			page 226
 
 
  8565              		.cfi_def_cfa_offset 8
@@ -13558,7 +13558,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8610              		.cfi_offset 7, -12
  8611              		.cfi_offset 8, -8
  8612              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccsbnBfC.s 			page 227
+ARM GAS  /tmp/ccEaklh0.s 			page 227
 
 
 2918:bluetooth_rxtx.c **** 	u16 synch, syncl;
@@ -13618,7 +13618,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8651 0036 1420     		movs	r0, #20
  8652 0038 41F24B31 		movw	r1, #4939
  8653 003c FFF7FEFF 		bl	cc2400_set
-ARM GAS  /tmp/ccsbnBfC.s 			page 228
+ARM GAS  /tmp/ccEaklh0.s 			page 228
 
 
  8654              	.LVL893:
@@ -13678,7 +13678,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8697              	.L905:
 2941:bluetooth_rxtx.c **** #endif
 2942:bluetooth_rxtx.c **** 	while ((cc2400_get(FSMSTATE) & 0x1f) != STATE_STROBE_FS_ON);
-ARM GAS  /tmp/ccsbnBfC.s 			page 229
+ARM GAS  /tmp/ccEaklh0.s 			page 229
 
 
  8698              		.loc 1 2942 0 discriminator 1
@@ -13738,7 +13738,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 2955:bluetooth_rxtx.c **** #endif
 2956:bluetooth_rxtx.c **** 
 2957:bluetooth_rxtx.c **** 	// Restore state
-ARM GAS  /tmp/ccsbnBfC.s 			page 230
+ARM GAS  /tmp/ccEaklh0.s 			page 230
 
 
 2958:bluetooth_rxtx.c **** 	cc2400_set(SYNCH, synch);
@@ -13798,7 +13798,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8788              	.LVL910:
 2966:bluetooth_rxtx.c **** 	u16 f;
 2967:bluetooth_rxtx.c **** 	u8 i = 0;
-ARM GAS  /tmp/ccsbnBfC.s 			page 231
+ARM GAS  /tmp/ccEaklh0.s 			page 231
 
 
 2968:bluetooth_rxtx.c **** 	u8 buf[DMA_SIZE];
@@ -13858,7 +13858,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8826              	.LVL917:
  8827 0044 4406     		lsls	r4, r0, #25
  8828 0046 FBD5     		bpl	.L914
-ARM GAS  /tmp/ccsbnBfC.s 			page 232
+ARM GAS  /tmp/ccEaklh0.s 			page 232
 
 
  8829              	.L916:
@@ -13918,7 +13918,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8875 008e FFF7FEFF 		bl	cc2400_strobe
  8876              	.LVL924:
 2993:bluetooth_rxtx.c **** 
-ARM GAS  /tmp/ccsbnBfC.s 			page 233
+ARM GAS  /tmp/ccEaklh0.s 			page 233
 
 
 2994:bluetooth_rxtx.c **** 			/* give the CC2400 time to acquire RSSI reading */
@@ -13978,7 +13978,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 3002:bluetooth_rxtx.c **** 				i = 0;
 3003:bluetooth_rxtx.c **** 
 3004:bluetooth_rxtx.c **** 				handle_usb(clkn);
-ARM GAS  /tmp/ccsbnBfC.s 			page 234
+ARM GAS  /tmp/ccEaklh0.s 			page 234
 
 
  8919              		.loc 1 3004 0
@@ -14038,7 +14038,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  8963 010c 00000000 		.word	clkn
  8964 0110 3CC00920 		.word	537509948
  8965              		.cfi_endproc
-ARM GAS  /tmp/ccsbnBfC.s 			page 235
+ARM GAS  /tmp/ccEaklh0.s 			page 235
 
 
  8966              	.LFE43:
@@ -14098,7 +14098,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9005 0016 42F62231 		movw	r1, #11042
  9006 001a FFF7FEFF 		bl	cc2400_set
  9007              	.LVL937:
-ARM GAS  /tmp/ccsbnBfC.s 			page 236
+ARM GAS  /tmp/ccEaklh0.s 			page 236
 
 
 3028:bluetooth_rxtx.c **** 	cc2400_set(MDMTST0, 0x134b); // without PRNG
@@ -14158,7 +14158,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9052 0064 02EB4403 		add	r3, r2, r4, lsl #1
  9053 0068 33F8081C 		ldrh	r1, [r3, #-8]
  9054 006c 0220     		movs	r0, #2
-ARM GAS  /tmp/ccsbnBfC.s 			page 237
+ARM GAS  /tmp/ccEaklh0.s 			page 237
 
 
  9055 006e 0139     		subs	r1, r1, #1
@@ -14218,7 +14218,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9100 00b8 16D1     		bne	.L942
 3047:bluetooth_rxtx.c **** 				case 0:
 3048:bluetooth_rxtx.c **** 					TXLED_SET;
-ARM GAS  /tmp/ccsbnBfC.s 			page 238
+ARM GAS  /tmp/ccEaklh0.s 			page 238
 
 
 3049:bluetooth_rxtx.c **** 					break;
@@ -14278,7 +14278,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9132 00e0 114B     		ldr	r3, .L958+20
  9133              	.L955:
  9134 00e2 1A60     		str	r2, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 239
+ARM GAS  /tmp/ccEaklh0.s 			page 239
 
 
 3065:bluetooth_rxtx.c **** 				case 2:
@@ -14338,7 +14338,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9175              	.L959:
  9176 0112 00BF     		.align	2
  9177              	.L958:
-ARM GAS  /tmp/ccsbnBfC.s 			page 240
+ARM GAS  /tmp/ccEaklh0.s 			page 240
 
 
  9178 0114 DC080000 		.word	.LANCHOR2+2268
@@ -14398,7 +14398,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 3089:bluetooth_rxtx.c **** 		if(requested_mode != mode) {
  9223              		.loc 1 3089 0
  9224 0018 1868     		ldr	r0, [r3]
-ARM GAS  /tmp/ccsbnBfC.s 			page 241
+ARM GAS  /tmp/ccEaklh0.s 			page 241
 
 
  9225 001a FFF7FEFF 		bl	handle_usb
@@ -14458,7 +14458,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9271              		.loc 1 3098 0
  9272 0090 0E23     		movs	r3, #14
  9273 0092 00E0     		b	.L984
-ARM GAS  /tmp/ccsbnBfC.s 			page 242
+ARM GAS  /tmp/ccEaklh0.s 			page 242
 
 
  9274              	.L965:
@@ -14518,7 +14518,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 3119:bluetooth_rxtx.c **** 					break;
 3120:bluetooth_rxtx.c **** 				case MODE_BT_RSSI_LE:
 3121:bluetooth_rxtx.c **** 					bt_tracking_le(MODE_BT_RSSI_LE);
-ARM GAS  /tmp/ccsbnBfC.s 			page 243
+ARM GAS  /tmp/ccEaklh0.s 			page 243
 
 
  9308              		.loc 1 3121 0
@@ -14578,7 +14578,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 3137:bluetooth_rxtx.c **** 					cc2400_txtest(&modulation, &channel);
  9345              		.loc 1 3137 0
  9346 00de 6374     		strb	r3, [r4, #17]
-ARM GAS  /tmp/ccsbnBfC.s 			page 244
+ARM GAS  /tmp/ccEaklh0.s 			page 244
 
 
  9347              		.loc 1 3138 0
@@ -14638,7 +14638,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
 3152:bluetooth_rxtx.c **** 				case MODE_LED_SPECAN:
 3153:bluetooth_rxtx.c **** 					led_specan();
  9386              		.loc 1 3153 0
-ARM GAS  /tmp/ccsbnBfC.s 			page 245
+ARM GAS  /tmp/ccEaklh0.s 			page 245
 
 
  9387 0108 FFF7FEFF 		bl	led_specan
@@ -14698,7 +14698,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9430              		.comm	le_promisc,264,4
  9431              		.global	le
  9432              		.global	sync_channel
-ARM GAS  /tmp/ccsbnBfC.s 			page 246
+ARM GAS  /tmp/ccEaklh0.s 			page 246
 
 
  9433              		.global	start_sync
@@ -14758,7 +14758,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9487              		.comm	rssi_max,1,1
  9488              		.section	.rodata
  9489              		.align	2
-ARM GAS  /tmp/ccsbnBfC.s 			page 247
+ARM GAS  /tmp/ccEaklh0.s 			page 247
 
 
  9490              		.set	.LANCHOR2,. + 0
@@ -14818,7 +14818,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9548 0033 00       		.byte	0
  9549 0034 00       		.byte	0
  9550 0035 00       		.byte	0
-ARM GAS  /tmp/ccsbnBfC.s 			page 248
+ARM GAS  /tmp/ccEaklh0.s 			page 248
 
 
  9551 0036 01       		.byte	1
@@ -14878,7 +14878,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9605 006c 00       		.byte	0
  9606 006d 01       		.byte	1
  9607 006e 00       		.byte	0
-ARM GAS  /tmp/ccsbnBfC.s 			page 249
+ARM GAS  /tmp/ccEaklh0.s 			page 249
 
 
  9608 006f 00       		.byte	0
@@ -14938,19 +14938,19 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9662 00a5 00       		.byte	0
  9663 00a6 01       		.byte	1
  9666              	compile_info:
-ARM GAS  /tmp/ccsbnBfC.s 			page 250
+ARM GAS  /tmp/ccEaklh0.s 			page 250
 
 
- 9667 00a7 75626572 		.ascii	"ubertooth 2017-03-R2 (mwnl@mwnl-lenovo) 2019. 05. 1"
+ 9667 00a7 75626572 		.ascii	"ubertooth 2017-03-R2 (mwnl@mwnl-lenovo) 2019. 05. 2"
  9667      746F6F74 
  9667      68203230 
  9667      31372D30 
  9667      332D5232 
- 9668 00da 352E2028 		.ascii	"5. (\354\210\230) 14:46:57 KST\000"
- 9668      EC889829 
- 9668      2031343A 
- 9668      34363A35 
- 9668      37204B53 
+ 9668 00da 382E2028 		.ascii	"8. (\355\231\224) 09:54:46 KST\000"
+ 9668      ED999429 
+ 9668      2030393A 
+ 9668      35343A34 
+ 9668      36204B53 
  9671              	whitening_word:
  9672 00f0 40B2BCC3 		.word	-1011043776
  9673 00f4 1F374A5F 		.word	1598699295
@@ -14998,7 +14998,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9715 019c 9677F8E3 		.word	-470255722
  9716 01a0 46E9ABD0 		.word	-794039994
  9717 01a4 9E5333D8 		.word	-667724898
-ARM GAS  /tmp/ccsbnBfC.s 			page 251
+ARM GAS  /tmp/ccEaklh0.s 			page 251
 
 
  9718 01a8 BA980824 		.word	604543162
@@ -15058,7 +15058,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9772 0280 0492E51D 		.word	501584388
  9773 0284 FEB851FA 		.word	-95307522
  9774 0288 2AB4E7D4 		.word	-723012566
-ARM GAS  /tmp/ccsbnBfC.s 			page 252
+ARM GAS  /tmp/ccEaklh0.s 			page 252
 
 
  9775 028c 0CB62E26 		.word	640595468
@@ -15118,7 +15118,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9829 0364 51FA2AB4 		.word	-1272251823
  9830 0368 E7D40CB6 		.word	-1240673049
  9831 036c 2E2602C9 		.word	-922606034
-ARM GAS  /tmp/ccsbnBfC.s 			page 253
+ARM GAS  /tmp/ccEaklh0.s 			page 253
 
 
  9832 0370 F20E7FDC 		.word	-595652878
@@ -15178,7 +15178,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9886 0448 3F6E94BE 		.word	-1097568705
  9887 044c 0AED3935 		.word	892988682
  9888 0450 427B4ECD 		.word	-850494654
-ARM GAS  /tmp/ccsbnBfC.s 			page 254
+ARM GAS  /tmp/ccEaklh0.s 			page 254
 
 
  9889 0454 60EB6222 		.word	576908128
@@ -15238,7 +15238,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  9943 052c 5568CFA9 		.word	-1446025131
  9944 0530 196C5D4C 		.word	1281190937
  9945 0534 0492E51D 		.word	501584388
-ARM GAS  /tmp/ccsbnBfC.s 			page 255
+ARM GAS  /tmp/ccEaklh0.s 			page 255
 
 
  9946 0538 FEB851FA 		.word	-95307522
@@ -15298,7 +15298,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10000 0610 E18F1BA5 		.word	-1524920351
  10001 0614 AF427B4E 		.word	1316700847
  10002 0618 CD60EB62 		.word	1659592909
-ARM GAS  /tmp/ccsbnBfC.s 			page 256
+ARM GAS  /tmp/ccEaklh0.s 			page 256
 
 
  10003 061c 22902CEF 		.word	-282292190
@@ -15358,7 +15358,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10057 06f4 902CEFF0 		.word	-252760944
  10058 06f8 C78DD257 		.word	1473416647
  10059 06fc A13DA766 		.word	1722236321
-ARM GAS  /tmp/ccsbnBfC.s 			page 257
+ARM GAS  /tmp/ccEaklh0.s 			page 257
 
 
  10060 0700 B0753111 		.word	288454064
@@ -15418,7 +15418,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10114 07d8 ABD09E53 		.word	1402917035
  10115 07dc 33D8BA98 		.word	-1732585421
  10116 07e0 8DD257A1 		.word	-1588079987
-ARM GAS  /tmp/ccsbnBfC.s 			page 258
+ARM GAS  /tmp/ccEaklh0.s 			page 258
 
 
  10117 07e4 3DA766B0 		.word	-1335449795
@@ -15478,7 +15478,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10173 0882 23       		.byte	35
  10174 0883 02       		.byte	2
  10175 0884 0D       		.byte	13
-ARM GAS  /tmp/ccsbnBfC.s 			page 259
+ARM GAS  /tmp/ccEaklh0.s 			page 259
 
 
  10176 0885 1E       		.byte	30
@@ -15538,7 +15538,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10230 08c8 FF       		.byte	-1
  10231 08c9 FF       		.byte	-1
  10232 08ca 03       		.byte	3
-ARM GAS  /tmp/ccsbnBfC.s 			page 260
+ARM GAS  /tmp/ccEaklh0.s 			page 260
 
 
  10233 08cb 03       		.byte	3
@@ -15598,7 +15598,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10291 004c 6009     		.short	2400
  10294              	high_freq:
  10295 004e B309     		.short	2483
-ARM GAS  /tmp/ccsbnBfC.s 			page 261
+ARM GAS  /tmp/ccEaklh0.s 			page 261
 
 
  10298              	rssi_threshold:
@@ -15658,7 +15658,7 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10400 003c 00000000 		.space	4
  10403              	prev_clk.5421:
  10404 0040 00000000 		.space	4
-ARM GAS  /tmp/ccsbnBfC.s 			page 262
+ARM GAS  /tmp/ccEaklh0.s 			page 262
 
 
  10407              	slave_mac_address:
@@ -15683,52 +15683,52 @@ ARM GAS  /tmp/ccsbnBfC.s 			page 1
  10427              		.file 14 "cc2400_rangetest.h"
  10428              		.file 15 "/usr/include/newlib/string.h"
  10429              		.file 16 "/usr/include/newlib/stdlib.h"
-ARM GAS  /tmp/ccsbnBfC.s 			page 263
+ARM GAS  /tmp/ccEaklh0.s 			page 263
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bluetooth_rxtx.c
-     /tmp/ccsbnBfC.s:19     .text.msleep:0000000000000000 $t
-     /tmp/ccsbnBfC.s:23     .text.msleep:0000000000000000 msleep
-     /tmp/ccsbnBfC.s:65     .text.msleep:0000000000000028 $d
+     /tmp/ccEaklh0.s:19     .text.msleep:0000000000000000 $t
+     /tmp/ccEaklh0.s:23     .text.msleep:0000000000000000 msleep
+     /tmp/ccEaklh0.s:65     .text.msleep:0000000000000028 $d
                             *COM*:0000000000000004 clkn
-     /tmp/ccsbnBfC.s:70     .text.reverse8:0000000000000000 $t
-     /tmp/ccsbnBfC.s:74     .text.reverse8:0000000000000000 reverse8
-     /tmp/ccsbnBfC.s:122    .text.cc2400_rx:0000000000000000 $t
-     /tmp/ccsbnBfC.s:126    .text.cc2400_rx:0000000000000000 cc2400_rx
-     /tmp/ccsbnBfC.s:239    .text.cc2400_rx:0000000000000098 $d
-     /tmp/ccsbnBfC.s:246    .text.cc2400_rx_sync:0000000000000000 $t
-     /tmp/ccsbnBfC.s:250    .text.cc2400_rx_sync:0000000000000000 cc2400_rx_sync
-     /tmp/ccsbnBfC.s:380    .text.cc2400_rx_sync:00000000000000ac $d
-     /tmp/ccsbnBfC.s:387    .text.enqueue:0000000000000000 $t
-     /tmp/ccsbnBfC.s:391    .text.enqueue:0000000000000000 enqueue
-     /tmp/ccsbnBfC.s:501    .text.enqueue:0000000000000084 $d
+     /tmp/ccEaklh0.s:70     .text.reverse8:0000000000000000 $t
+     /tmp/ccEaklh0.s:74     .text.reverse8:0000000000000000 reverse8
+     /tmp/ccEaklh0.s:122    .text.cc2400_rx:0000000000000000 $t
+     /tmp/ccEaklh0.s:126    .text.cc2400_rx:0000000000000000 cc2400_rx
+     /tmp/ccEaklh0.s:239    .text.cc2400_rx:0000000000000098 $d
+     /tmp/ccEaklh0.s:246    .text.cc2400_rx_sync:0000000000000000 $t
+     /tmp/ccEaklh0.s:250    .text.cc2400_rx_sync:0000000000000000 cc2400_rx_sync
+     /tmp/ccEaklh0.s:380    .text.cc2400_rx_sync:00000000000000ac $d
+     /tmp/ccEaklh0.s:387    .text.enqueue:0000000000000000 $t
+     /tmp/ccEaklh0.s:391    .text.enqueue:0000000000000000 enqueue
+     /tmp/ccEaklh0.s:501    .text.enqueue:0000000000000084 $d
                             *COM*:0000000000000001 rssi_min
                             *COM*:0000000000000001 rssi_max
                             *COM*:0000000000000001 rssi_count
-     /tmp/ccsbnBfC.s:511    .text.le_set_access_address:0000000000000000 $t
-     /tmp/ccsbnBfC.s:515    .text.le_set_access_address:0000000000000000 le_set_access_address
-     /tmp/ccsbnBfC.s:542    .text.le_set_access_address:0000000000000014 $d
-     /tmp/ccsbnBfC.s:547    .text.cc2400_idle:0000000000000000 $t
-     /tmp/ccsbnBfC.s:551    .text.cc2400_idle:0000000000000000 cc2400_idle
-     /tmp/ccsbnBfC.s:665    .text.cc2400_idle:000000000000009c $d
+     /tmp/ccEaklh0.s:511    .text.le_set_access_address:0000000000000000 $t
+     /tmp/ccEaklh0.s:515    .text.le_set_access_address:0000000000000000 le_set_access_address
+     /tmp/ccEaklh0.s:542    .text.le_set_access_address:0000000000000014 $d
+     /tmp/ccEaklh0.s:547    .text.cc2400_idle:0000000000000000 $t
+     /tmp/ccEaklh0.s:551    .text.cc2400_idle:0000000000000000 cc2400_idle
+     /tmp/ccEaklh0.s:665    .text.cc2400_idle:000000000000009c $d
                             *COM*:0000000000000010 target
-     /tmp/ccsbnBfC.s:673    .text.cb_follow_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:678    .text.cb_follow_le:0000000000000000 cb_follow_le
-     /tmp/ccsbnBfC.s:892    .text.cb_follow_le:00000000000000ec $d
+     /tmp/ccEaklh0.s:673    .text.cb_follow_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:678    .text.cb_follow_le:0000000000000000 cb_follow_le
+     /tmp/ccEaklh0.s:892    .text.cb_follow_le:00000000000000ec $d
                             *COM*:0000000000000320 unpacked
                             *COM*:0000000000000004 idle_rxbuf
-     /tmp/ccsbnBfC.s:902    .text.connection_follow_cb:0000000000000000 $t
-     /tmp/ccsbnBfC.s:907    .text.connection_follow_cb:0000000000000000 connection_follow_cb
-     /tmp/ccsbnBfC.s:1178   .text.connection_follow_cb:0000000000000164 $d
-     /tmp/ccsbnBfC.s:1188   .text.vendor_request_handler:0000000000000000 $t
-     /tmp/ccsbnBfC.s:1192   .text.vendor_request_handler:0000000000000000 vendor_request_handler
-     /tmp/ccsbnBfC.s:1226   .text.vendor_request_handler:000000000000001a $d
-     /tmp/ccsbnBfC.s:1302   .text.vendor_request_handler:00000000000000b0 $t
-     /tmp/ccsbnBfC.s:1595   .text.vendor_request_handler:0000000000000230 $d
+     /tmp/ccEaklh0.s:902    .text.connection_follow_cb:0000000000000000 $t
+     /tmp/ccEaklh0.s:907    .text.connection_follow_cb:0000000000000000 connection_follow_cb
+     /tmp/ccEaklh0.s:1178   .text.connection_follow_cb:0000000000000164 $d
+     /tmp/ccEaklh0.s:1188   .text.vendor_request_handler:0000000000000000 $t
+     /tmp/ccEaklh0.s:1192   .text.vendor_request_handler:0000000000000000 vendor_request_handler
+     /tmp/ccEaklh0.s:1226   .text.vendor_request_handler:000000000000001a $d
+     /tmp/ccEaklh0.s:1302   .text.vendor_request_handler:00000000000000b0 $t
+     /tmp/ccEaklh0.s:1595   .text.vendor_request_handler:0000000000000230 $d
                             *COM*:0000000000000005 rr
-     /tmp/ccsbnBfC.s:1608   .text.vendor_request_handler:000000000000025c $t
-     /tmp/ccsbnBfC.s:2182   .text.vendor_request_handler:0000000000000548 $d
+     /tmp/ccEaklh0.s:1608   .text.vendor_request_handler:000000000000025c $t
+     /tmp/ccEaklh0.s:2182   .text.vendor_request_handler:0000000000000548 $d
                             *COM*:0000000000000001 cs_threshold_req
                             *COM*:0000000000000004 clkn_offset
                             *COM*:0000000000000002 clk100ns_offset
@@ -15739,176 +15739,176 @@ DEFINED SYMBOLS
                             *COM*:0000000000000004 clkn_next_drift_fix
                             *COM*:0000000000000002 clk_drift_correction
                             *COM*:0000000000000004 clkn_last_drift_fix
-     /tmp/ccsbnBfC.s:2200   .text.vendor_request_handler:0000000000000588 $t
-     /tmp/ccsbnBfC.s:2468   .text.vendor_request_handler:00000000000006c4 $d
+     /tmp/ccEaklh0.s:2200   .text.vendor_request_handler:0000000000000588 $t
+     /tmp/ccEaklh0.s:2468   .text.vendor_request_handler:00000000000006c4 $d
                             *COM*:000000000000003a tx_pkt
                             *COM*:0000000000000004 slave_mac_address_data
-ARM GAS  /tmp/ccsbnBfC.s 			page 264
+ARM GAS  /tmp/ccEaklh0.s 			page 264
 
 
-     /tmp/ccsbnBfC.s:2476   .text.enqueue_time:0000000000000000 $t
-     /tmp/ccsbnBfC.s:2480   .text.enqueue_time:0000000000000000 enqueue_time
-     /tmp/ccsbnBfC.s:2524   .text.enqueue_time:0000000000000024 $d
-     /tmp/ccsbnBfC.s:2529   .text.enqueue_with_ts:0000000000000000 $t
-     /tmp/ccsbnBfC.s:2534   .text.enqueue_with_ts:0000000000000000 enqueue_with_ts
-     /tmp/ccsbnBfC.s:2610   .text.enqueue_with_ts:0000000000000050 $d
-     /tmp/ccsbnBfC.s:2616   .text.TIMER0_IRQHandler:0000000000000000 $t
-     /tmp/ccsbnBfC.s:2621   .text.TIMER0_IRQHandler:0000000000000000 TIMER0_IRQHandler
-     /tmp/ccsbnBfC.s:2820   .text.TIMER0_IRQHandler:0000000000000110 $d
+     /tmp/ccEaklh0.s:2476   .text.enqueue_time:0000000000000000 $t
+     /tmp/ccEaklh0.s:2480   .text.enqueue_time:0000000000000000 enqueue_time
+     /tmp/ccEaklh0.s:2524   .text.enqueue_time:0000000000000024 $d
+     /tmp/ccEaklh0.s:2529   .text.enqueue_with_ts:0000000000000000 $t
+     /tmp/ccEaklh0.s:2534   .text.enqueue_with_ts:0000000000000000 enqueue_with_ts
+     /tmp/ccEaklh0.s:2610   .text.enqueue_with_ts:0000000000000050 $d
+     /tmp/ccEaklh0.s:2616   .text.TIMER0_IRQHandler:0000000000000000 $t
+     /tmp/ccEaklh0.s:2621   .text.TIMER0_IRQHandler:0000000000000000 TIMER0_IRQHandler
+     /tmp/ccEaklh0.s:2820   .text.TIMER0_IRQHandler:0000000000000110 $d
                             *COM*:0000000000000004 last_hop
-     /tmp/ccsbnBfC.s:2837   .text.EINT3_IRQHandler:0000000000000000 $t
-     /tmp/ccsbnBfC.s:2842   .text.EINT3_IRQHandler:0000000000000000 EINT3_IRQHandler
-     /tmp/ccsbnBfC.s:2873   .text.EINT3_IRQHandler:0000000000000024 $d
+     /tmp/ccEaklh0.s:2837   .text.EINT3_IRQHandler:0000000000000000 $t
+     /tmp/ccEaklh0.s:2842   .text.EINT3_IRQHandler:0000000000000000 EINT3_IRQHandler
+     /tmp/ccEaklh0.s:2873   .text.EINT3_IRQHandler:0000000000000024 $d
                             *COM*:0000000000000001 cs_trigger
-     /tmp/ccsbnBfC.s:2881   .text.DMA_IRQHandler:0000000000000000 $t
-     /tmp/ccsbnBfC.s:2886   .text.DMA_IRQHandler:0000000000000000 DMA_IRQHandler
-     /tmp/ccsbnBfC.s:3023   .text.DMA_IRQHandler:00000000000000bc $d
+     /tmp/ccEaklh0.s:2881   .text.DMA_IRQHandler:0000000000000000 $t
+     /tmp/ccEaklh0.s:2886   .text.DMA_IRQHandler:0000000000000000 DMA_IRQHandler
+     /tmp/ccEaklh0.s:3023   .text.DMA_IRQHandler:00000000000000bc $d
                             *COM*:0000000000000004 active_rxbuf
                             *COM*:0000000000000004 rx_tc
                             *COM*:0000000000000004 rx_err
-     /tmp/ccsbnBfC.s:3041   .text.le_transmit:0000000000000000 $t
-     /tmp/ccsbnBfC.s:3046   .text.le_transmit:0000000000000000 le_transmit
-     /tmp/ccsbnBfC.s:3344   .text.le_transmit:00000000000001a0 $d
-     /tmp/ccsbnBfC.s:3353   .text.le_jam:0000000000000000 $t
-     /tmp/ccsbnBfC.s:3358   .text.le_jam:0000000000000000 le_jam
-     /tmp/ccsbnBfC.s:3439   .text.le_jam:0000000000000074 $d
-     /tmp/ccsbnBfC.s:3444   .text.hop:0000000000000000 $t
-     /tmp/ccsbnBfC.s:3449   .text.hop:0000000000000000 hop
-     /tmp/ccsbnBfC.s:3696   .text.hop:0000000000000180 $d
-     /tmp/ccsbnBfC.s:3708   .text.bt_stream_rx:0000000000000000 $t
-     /tmp/ccsbnBfC.s:3713   .text.bt_stream_rx:0000000000000000 bt_stream_rx
-     /tmp/ccsbnBfC.s:3933   .text.bt_stream_rx:000000000000012c $d
+     /tmp/ccEaklh0.s:3041   .text.le_transmit:0000000000000000 $t
+     /tmp/ccEaklh0.s:3046   .text.le_transmit:0000000000000000 le_transmit
+     /tmp/ccEaklh0.s:3344   .text.le_transmit:00000000000001a0 $d
+     /tmp/ccEaklh0.s:3353   .text.le_jam:0000000000000000 $t
+     /tmp/ccEaklh0.s:3358   .text.le_jam:0000000000000000 le_jam
+     /tmp/ccEaklh0.s:3439   .text.le_jam:0000000000000074 $d
+     /tmp/ccEaklh0.s:3444   .text.hop:0000000000000000 $t
+     /tmp/ccEaklh0.s:3449   .text.hop:0000000000000000 hop
+     /tmp/ccEaklh0.s:3696   .text.hop:0000000000000180 $d
+     /tmp/ccEaklh0.s:3708   .text.bt_stream_rx:0000000000000000 $t
+     /tmp/ccEaklh0.s:3713   .text.bt_stream_rx:0000000000000000 bt_stream_rx
+     /tmp/ccEaklh0.s:3933   .text.bt_stream_rx:000000000000012c $d
                             *COM*:0000000000000001 cs_threshold_cur
                             *COM*:0000000000000001 cs_no_squelch
-     /tmp/ccsbnBfC.s:3949   .text.br_transmit:0000000000000000 $t
-     /tmp/ccsbnBfC.s:3954   .text.br_transmit:0000000000000000 br_transmit
-     /tmp/ccsbnBfC.s:4377   .text.br_transmit:000000000000025c $d
-     /tmp/ccsbnBfC.s:4390   .text.reset_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:4395   .text.reset_le:0000000000000000 reset_le
-     /tmp/ccsbnBfC.s:4458   .text.reset_le:0000000000000040 $d
-     /tmp/ccsbnBfC.s:4467   .text.reset_le_promisc:0000000000000000 $t
-     /tmp/ccsbnBfC.s:4472   .text.reset_le_promisc:0000000000000000 reset_le_promisc
-     /tmp/ccsbnBfC.s:4496   .text.reset_le_promisc:000000000000001c $d
+     /tmp/ccEaklh0.s:3949   .text.br_transmit:0000000000000000 $t
+     /tmp/ccEaklh0.s:3954   .text.br_transmit:0000000000000000 br_transmit
+     /tmp/ccEaklh0.s:4377   .text.br_transmit:000000000000025c $d
+     /tmp/ccEaklh0.s:4390   .text.reset_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:4395   .text.reset_le:0000000000000000 reset_le
+     /tmp/ccEaklh0.s:4458   .text.reset_le:0000000000000040 $d
+     /tmp/ccEaklh0.s:4467   .text.reset_le_promisc:0000000000000000 $t
+     /tmp/ccEaklh0.s:4472   .text.reset_le_promisc:0000000000000000 reset_le_promisc
+     /tmp/ccEaklh0.s:4496   .text.reset_le_promisc:000000000000001c $d
                             *COM*:0000000000000108 le_promisc
-     /tmp/ccsbnBfC.s:4501   .text.bt_generic_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:4506   .text.bt_generic_le:0000000000000000 bt_generic_le
-     /tmp/ccsbnBfC.s:4845   .text.bt_generic_le:00000000000001ac $d
-     /tmp/ccsbnBfC.s:4864   .text.bt_le_sync_rssi:0000000000000000 $t
-     /tmp/ccsbnBfC.s:4869   .text.bt_le_sync_rssi:0000000000000000 bt_le_sync_rssi
-     /tmp/ccsbnBfC.s:5234   .text.bt_le_sync_rssi:000000000000022c $d
-     /tmp/ccsbnBfC.s:5246   .text.bt_le_sync:0000000000000000 $t
-     /tmp/ccsbnBfC.s:5251   .text.bt_le_sync:0000000000000000 bt_le_sync
-     /tmp/ccsbnBfC.s:5741   .text.bt_le_sync:00000000000002b4 $d
+     /tmp/ccEaklh0.s:4501   .text.bt_generic_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:4506   .text.bt_generic_le:0000000000000000 bt_generic_le
+     /tmp/ccEaklh0.s:4845   .text.bt_generic_le:00000000000001ac $d
+     /tmp/ccEaklh0.s:4864   .text.bt_le_sync_rssi:0000000000000000 $t
+     /tmp/ccEaklh0.s:4869   .text.bt_le_sync_rssi:0000000000000000 bt_le_sync_rssi
+     /tmp/ccEaklh0.s:5234   .text.bt_le_sync_rssi:000000000000022c $d
+     /tmp/ccEaklh0.s:5246   .text.bt_le_sync:0000000000000000 $t
+     /tmp/ccEaklh0.s:5251   .text.bt_le_sync:0000000000000000 bt_le_sync
+     /tmp/ccEaklh0.s:5741   .text.bt_le_sync:00000000000002b4 $d
                             *COM*:0000000000000032 rxbuf1
-     /tmp/ccsbnBfC.s:5763   .text.bt_le_sync:0000000000000300 $t
-     /tmp/ccsbnBfC.s:5958   .text.bt_le_sync:000000000000040c $d
-     /tmp/ccsbnBfC.s:5969   .text.bt_le_sync_cfo:0000000000000000 $t
-ARM GAS  /tmp/ccsbnBfC.s 			page 265
+     /tmp/ccEaklh0.s:5763   .text.bt_le_sync:0000000000000300 $t
+     /tmp/ccEaklh0.s:5958   .text.bt_le_sync:000000000000040c $d
+     /tmp/ccEaklh0.s:5969   .text.bt_le_sync_cfo:0000000000000000 $t
+ARM GAS  /tmp/ccEaklh0.s 			page 265
 
 
-     /tmp/ccsbnBfC.s:5974   .text.bt_le_sync_cfo:0000000000000000 bt_le_sync_cfo
-     /tmp/ccsbnBfC.s:6452   .text.bt_le_sync_cfo:00000000000002b0 $d
-     /tmp/ccsbnBfC.s:6474   .text.bt_le_sync_cfo:00000000000002fc $t
-     /tmp/ccsbnBfC.s:6667   .text.bt_le_sync_cfo:0000000000000404 $d
-     /tmp/ccsbnBfC.s:6679   .text.bt_follow_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:6684   .text.bt_follow_le:0000000000000000 bt_follow_le
-     /tmp/ccsbnBfC.s:6714   .text.bt_follow_le:0000000000000018 $d
-     /tmp/ccsbnBfC.s:6720   .text.bt_tracking_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:6725   .text.bt_tracking_le:0000000000000000 bt_tracking_le
-     /tmp/ccsbnBfC.s:6774   .text.bt_tracking_le:000000000000002c $d
-     /tmp/ccsbnBfC.s:6780   .text.le_promisc_state:0000000000000000 $t
-     /tmp/ccsbnBfC.s:6785   .text.le_promisc_state:0000000000000000 le_promisc_state
-     /tmp/ccsbnBfC.s:6839   .text.promisc_recover_hop_increment:0000000000000000 $t
-     /tmp/ccsbnBfC.s:6844   .text.promisc_recover_hop_increment:0000000000000000 promisc_recover_hop_increment
-     /tmp/ccsbnBfC.s:6997   .text.promisc_recover_hop_increment:00000000000000c8 $d
-     /tmp/ccsbnBfC.s:7007   .text.promisc_recover_hop_interval:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7012   .text.promisc_recover_hop_interval:0000000000000000 promisc_recover_hop_interval
-     /tmp/ccsbnBfC.s:7135   .text.promisc_recover_hop_interval:0000000000000098 $d
-     /tmp/ccsbnBfC.s:7146   .text.promisc_follow_cb:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7151   .text.promisc_follow_cb:0000000000000000 promisc_follow_cb
-     /tmp/ccsbnBfC.s:7247   .text.promisc_follow_cb:0000000000000064 $d
-     /tmp/ccsbnBfC.s:7258   .text.see_aa:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7263   .text.see_aa:0000000000000000 see_aa
-     /tmp/ccsbnBfC.s:7342   .text.see_aa:0000000000000058 $d
-     /tmp/ccsbnBfC.s:7347   .text.cb_le_promisc:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7352   .text.cb_le_promisc:0000000000000000 cb_le_promisc
-     /tmp/ccsbnBfC.s:7667   .text.cb_le_promisc:000000000000017c $d
-     /tmp/ccsbnBfC.s:7680   .text.bt_promisc_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7685   .text.bt_promisc_le:0000000000000000 bt_promisc_le
-     /tmp/ccsbnBfC.s:7764   .text.bt_promisc_le:000000000000005c $d
-     /tmp/ccsbnBfC.s:7773   .text.bt_slave_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:7778   .text.bt_slave_le:0000000000000000 bt_slave_le
-     /tmp/ccsbnBfC.s:8205   .text.bt_slave_le:0000000000000220 $d
-     /tmp/ccsbnBfC.s:8217   .text.bt_sync_le:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8222   .text.bt_sync_le:0000000000000000 bt_sync_le
-     /tmp/ccsbnBfC.s:8417   .text.bt_sync_le:00000000000000f0 $d
-     /tmp/ccsbnBfC.s:8429   .text.rx_generic_sync:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8434   .text.rx_generic_sync:0000000000000000 rx_generic_sync
-     /tmp/ccsbnBfC.s:8546   .text.rx_generic_sync:0000000000000094 $d
-     /tmp/ccsbnBfC.s:8553   .text.rx_generic:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8558   .text.rx_generic:0000000000000000 rx_generic
-     /tmp/ccsbnBfC.s:8589   .text.rx_generic:000000000000001c $d
-     /tmp/ccsbnBfC.s:8594   .text.tx_generic:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8599   .text.tx_generic:0000000000000000 tx_generic
-     /tmp/ccsbnBfC.s:8757   .text.tx_generic:00000000000000dc $d
-     /tmp/ccsbnBfC.s:8767   .text.specan:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8772   .text.specan:0000000000000000 specan
-     /tmp/ccsbnBfC.s:8959   .text.specan:00000000000000fc $d
-     /tmp/ccsbnBfC.s:8969   .text.led_specan:0000000000000000 $t
-     /tmp/ccsbnBfC.s:8974   .text.led_specan:0000000000000000 led_specan
-     /tmp/ccsbnBfC.s:9178   .text.led_specan:0000000000000114 $d
-     /tmp/ccsbnBfC.s:9189   .text.startup.main:0000000000000000 $t
-     /tmp/ccsbnBfC.s:9194   .text.startup.main:0000000000000000 main
-     /tmp/ccsbnBfC.s:9240   .text.startup.main:0000000000000034 $d
-     /tmp/ccsbnBfC.s:9262   .text.startup.main:0000000000000084 $t
-     /tmp/ccsbnBfC.s:9419   .text.startup.main:000000000000012c $d
-     /tmp/ccsbnBfC.s:10363  .bss:0000000000000018 packet_cb
-ARM GAS  /tmp/ccsbnBfC.s 			page 266
+     /tmp/ccEaklh0.s:5974   .text.bt_le_sync_cfo:0000000000000000 bt_le_sync_cfo
+     /tmp/ccEaklh0.s:6452   .text.bt_le_sync_cfo:00000000000002b0 $d
+     /tmp/ccEaklh0.s:6474   .text.bt_le_sync_cfo:00000000000002fc $t
+     /tmp/ccEaklh0.s:6667   .text.bt_le_sync_cfo:0000000000000404 $d
+     /tmp/ccEaklh0.s:6679   .text.bt_follow_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:6684   .text.bt_follow_le:0000000000000000 bt_follow_le
+     /tmp/ccEaklh0.s:6714   .text.bt_follow_le:0000000000000018 $d
+     /tmp/ccEaklh0.s:6720   .text.bt_tracking_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:6725   .text.bt_tracking_le:0000000000000000 bt_tracking_le
+     /tmp/ccEaklh0.s:6774   .text.bt_tracking_le:000000000000002c $d
+     /tmp/ccEaklh0.s:6780   .text.le_promisc_state:0000000000000000 $t
+     /tmp/ccEaklh0.s:6785   .text.le_promisc_state:0000000000000000 le_promisc_state
+     /tmp/ccEaklh0.s:6839   .text.promisc_recover_hop_increment:0000000000000000 $t
+     /tmp/ccEaklh0.s:6844   .text.promisc_recover_hop_increment:0000000000000000 promisc_recover_hop_increment
+     /tmp/ccEaklh0.s:6997   .text.promisc_recover_hop_increment:00000000000000c8 $d
+     /tmp/ccEaklh0.s:7007   .text.promisc_recover_hop_interval:0000000000000000 $t
+     /tmp/ccEaklh0.s:7012   .text.promisc_recover_hop_interval:0000000000000000 promisc_recover_hop_interval
+     /tmp/ccEaklh0.s:7135   .text.promisc_recover_hop_interval:0000000000000098 $d
+     /tmp/ccEaklh0.s:7146   .text.promisc_follow_cb:0000000000000000 $t
+     /tmp/ccEaklh0.s:7151   .text.promisc_follow_cb:0000000000000000 promisc_follow_cb
+     /tmp/ccEaklh0.s:7247   .text.promisc_follow_cb:0000000000000064 $d
+     /tmp/ccEaklh0.s:7258   .text.see_aa:0000000000000000 $t
+     /tmp/ccEaklh0.s:7263   .text.see_aa:0000000000000000 see_aa
+     /tmp/ccEaklh0.s:7342   .text.see_aa:0000000000000058 $d
+     /tmp/ccEaklh0.s:7347   .text.cb_le_promisc:0000000000000000 $t
+     /tmp/ccEaklh0.s:7352   .text.cb_le_promisc:0000000000000000 cb_le_promisc
+     /tmp/ccEaklh0.s:7667   .text.cb_le_promisc:000000000000017c $d
+     /tmp/ccEaklh0.s:7680   .text.bt_promisc_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:7685   .text.bt_promisc_le:0000000000000000 bt_promisc_le
+     /tmp/ccEaklh0.s:7764   .text.bt_promisc_le:000000000000005c $d
+     /tmp/ccEaklh0.s:7773   .text.bt_slave_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:7778   .text.bt_slave_le:0000000000000000 bt_slave_le
+     /tmp/ccEaklh0.s:8205   .text.bt_slave_le:0000000000000220 $d
+     /tmp/ccEaklh0.s:8217   .text.bt_sync_le:0000000000000000 $t
+     /tmp/ccEaklh0.s:8222   .text.bt_sync_le:0000000000000000 bt_sync_le
+     /tmp/ccEaklh0.s:8417   .text.bt_sync_le:00000000000000f0 $d
+     /tmp/ccEaklh0.s:8429   .text.rx_generic_sync:0000000000000000 $t
+     /tmp/ccEaklh0.s:8434   .text.rx_generic_sync:0000000000000000 rx_generic_sync
+     /tmp/ccEaklh0.s:8546   .text.rx_generic_sync:0000000000000094 $d
+     /tmp/ccEaklh0.s:8553   .text.rx_generic:0000000000000000 $t
+     /tmp/ccEaklh0.s:8558   .text.rx_generic:0000000000000000 rx_generic
+     /tmp/ccEaklh0.s:8589   .text.rx_generic:000000000000001c $d
+     /tmp/ccEaklh0.s:8594   .text.tx_generic:0000000000000000 $t
+     /tmp/ccEaklh0.s:8599   .text.tx_generic:0000000000000000 tx_generic
+     /tmp/ccEaklh0.s:8757   .text.tx_generic:00000000000000dc $d
+     /tmp/ccEaklh0.s:8767   .text.specan:0000000000000000 $t
+     /tmp/ccEaklh0.s:8772   .text.specan:0000000000000000 specan
+     /tmp/ccEaklh0.s:8959   .text.specan:00000000000000fc $d
+     /tmp/ccEaklh0.s:8969   .text.led_specan:0000000000000000 $t
+     /tmp/ccEaklh0.s:8974   .text.led_specan:0000000000000000 led_specan
+     /tmp/ccEaklh0.s:9178   .text.led_specan:0000000000000114 $d
+     /tmp/ccEaklh0.s:9189   .text.startup.main:0000000000000000 $t
+     /tmp/ccEaklh0.s:9194   .text.startup.main:0000000000000000 main
+     /tmp/ccEaklh0.s:9240   .text.startup.main:0000000000000034 $d
+     /tmp/ccEaklh0.s:9262   .text.startup.main:0000000000000084 $t
+     /tmp/ccEaklh0.s:9419   .text.startup.main:000000000000012c $d
+     /tmp/ccEaklh0.s:10363  .bss:0000000000000018 packet_cb
+ARM GAS  /tmp/ccEaklh0.s 			page 266
 
 
-     /tmp/ccsbnBfC.s:10379  .bss:0000000000000028 data_cb
-     /tmp/ccsbnBfC.s:10367  .bss:000000000000001c le_jam_count
-     /tmp/ccsbnBfC.s:10267  .data:0000000000000004 le
-     /tmp/ccsbnBfC.s:10411  .bss:000000000000004a sync_channel
-     /tmp/ccsbnBfC.s:10383  .bss:000000000000002c start_sync
-     /tmp/ccsbnBfC.s:10387  .bss:0000000000000030 now_sync
-     /tmp/ccsbnBfC.s:10407  .bss:0000000000000044 slave_mac_address
-     /tmp/ccsbnBfC.s:10375  .bss:0000000000000024 dlen_bulk1
-     /tmp/ccsbnBfC.s:10371  .bss:0000000000000020 dlen
-     /tmp/ccsbnBfC.s:10298  .data:0000000000000050 rssi_threshold
-     /tmp/ccsbnBfC.s:10294  .data:000000000000004e high_freq
-     /tmp/ccsbnBfC.s:10290  .data:000000000000004c low_freq
-     /tmp/ccsbnBfC.s:10305  .bss:0000000000000000 modulation
-     /tmp/ccsbnBfC.s:10358  .bss:0000000000000014 ego_mode
-     /tmp/ccsbnBfC.s:10354  .bss:0000000000000013 jam_mode
-     /tmp/ccsbnBfC.s:10350  .bss:0000000000000012 requested_mode
-     /tmp/ccsbnBfC.s:10346  .bss:0000000000000011 mode
-     /tmp/ccsbnBfC.s:10309  .bss:0000000000000001 status
-     /tmp/ccsbnBfC.s:10342  .bss:0000000000000010 dma_discard
-     /tmp/ccsbnBfC.s:10322  .bss:0000000000000008 idle_buf_channel
-     /tmp/ccsbnBfC.s:10318  .bss:0000000000000004 idle_buf_clk100ns
-     /tmp/ccsbnBfC.s:10313  .bss:0000000000000002 idle_buf_clkn_high
-     /tmp/ccsbnBfC.s:10286  .data:000000000000004a le_adv_channel
-     /tmp/ccsbnBfC.s:10338  .bss:000000000000000e requested_channel
-     /tmp/ccsbnBfC.s:10282  .data:0000000000000048 hop_timeout
-     /tmp/ccsbnBfC.s:10334  .bss:000000000000000c hop_direct_channel
-     /tmp/ccsbnBfC.s:10262  .data:0000000000000000 channel
-     /tmp/ccsbnBfC.s:10330  .bss:000000000000000b do_hop
-     /tmp/ccsbnBfC.s:10326  .bss:000000000000000a hop_mode
-     /tmp/ccsbnBfC.s:9666   .rodata:00000000000000a7 compile_info
+     /tmp/ccEaklh0.s:10379  .bss:0000000000000028 data_cb
+     /tmp/ccEaklh0.s:10367  .bss:000000000000001c le_jam_count
+     /tmp/ccEaklh0.s:10267  .data:0000000000000004 le
+     /tmp/ccEaklh0.s:10411  .bss:000000000000004a sync_channel
+     /tmp/ccEaklh0.s:10383  .bss:000000000000002c start_sync
+     /tmp/ccEaklh0.s:10387  .bss:0000000000000030 now_sync
+     /tmp/ccEaklh0.s:10407  .bss:0000000000000044 slave_mac_address
+     /tmp/ccEaklh0.s:10375  .bss:0000000000000024 dlen_bulk1
+     /tmp/ccEaklh0.s:10371  .bss:0000000000000020 dlen
+     /tmp/ccEaklh0.s:10298  .data:0000000000000050 rssi_threshold
+     /tmp/ccEaklh0.s:10294  .data:000000000000004e high_freq
+     /tmp/ccEaklh0.s:10290  .data:000000000000004c low_freq
+     /tmp/ccEaklh0.s:10305  .bss:0000000000000000 modulation
+     /tmp/ccEaklh0.s:10358  .bss:0000000000000014 ego_mode
+     /tmp/ccEaklh0.s:10354  .bss:0000000000000013 jam_mode
+     /tmp/ccEaklh0.s:10350  .bss:0000000000000012 requested_mode
+     /tmp/ccEaklh0.s:10346  .bss:0000000000000011 mode
+     /tmp/ccEaklh0.s:10309  .bss:0000000000000001 status
+     /tmp/ccEaklh0.s:10342  .bss:0000000000000010 dma_discard
+     /tmp/ccEaklh0.s:10322  .bss:0000000000000008 idle_buf_channel
+     /tmp/ccEaklh0.s:10318  .bss:0000000000000004 idle_buf_clk100ns
+     /tmp/ccEaklh0.s:10313  .bss:0000000000000002 idle_buf_clkn_high
+     /tmp/ccEaklh0.s:10286  .data:000000000000004a le_adv_channel
+     /tmp/ccEaklh0.s:10338  .bss:000000000000000e requested_channel
+     /tmp/ccEaklh0.s:10282  .data:0000000000000048 hop_timeout
+     /tmp/ccEaklh0.s:10334  .bss:000000000000000c hop_direct_channel
+     /tmp/ccEaklh0.s:10262  .data:0000000000000000 channel
+     /tmp/ccEaklh0.s:10330  .bss:000000000000000b do_hop
+     /tmp/ccEaklh0.s:10326  .bss:000000000000000a hop_mode
+     /tmp/ccEaklh0.s:9666   .rodata:00000000000000a7 compile_info
                             *COM*:0000000000000008 syncword
                             *COM*:0000000000000032 rxbuf2
-     /tmp/ccsbnBfC.s:9489   .rodata:0000000000000000 $d
-     /tmp/ccsbnBfC.s:9493   .rodata:0000000000000000 whitening_index
-     /tmp/ccsbnBfC.s:9536   .rodata:0000000000000028 whitening
-     /tmp/ccsbnBfC.s:9671   .rodata:00000000000000f0 whitening_word
-     /tmp/ccsbnBfC.s:10154  .rodata:0000000000000870 hop_interval_lut
-     /tmp/ccsbnBfC.s:10258  .data:0000000000000000 $d
-     /tmp/ccsbnBfC.s:10301  .bss:0000000000000000 $d
-     /tmp/ccsbnBfC.s:10391  .bss:0000000000000034 restart_jamming.5256
-     /tmp/ccsbnBfC.s:10395  .bss:0000000000000038 restart_jamming.5310
-     /tmp/ccsbnBfC.s:10399  .bss:000000000000003c first_ts.5415
-     /tmp/ccsbnBfC.s:10403  .bss:0000000000000040 prev_clk.5421
+     /tmp/ccEaklh0.s:9489   .rodata:0000000000000000 $d
+     /tmp/ccEaklh0.s:9493   .rodata:0000000000000000 whitening_index
+     /tmp/ccEaklh0.s:9536   .rodata:0000000000000028 whitening
+     /tmp/ccEaklh0.s:9671   .rodata:00000000000000f0 whitening_word
+     /tmp/ccEaklh0.s:10154  .rodata:0000000000000870 hop_interval_lut
+     /tmp/ccEaklh0.s:10258  .data:0000000000000000 $d
+     /tmp/ccEaklh0.s:10301  .bss:0000000000000000 $d
+     /tmp/ccEaklh0.s:10391  .bss:0000000000000034 restart_jamming.5256
+     /tmp/ccEaklh0.s:10395  .bss:0000000000000038 restart_jamming.5310
+     /tmp/ccEaklh0.s:10399  .bss:000000000000003c first_ts.5415
+     /tmp/ccEaklh0.s:10403  .bss:0000000000000040 prev_clk.5421
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
@@ -15923,7 +15923,7 @@ memcpy
 rbit
 clkn_stop
 dio_ssp_stop
-ARM GAS  /tmp/ccsbnBfC.s 			page 267
+ARM GAS  /tmp/ccEaklh0.s 			page 267
 
 
 cs_reset
